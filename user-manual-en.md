@@ -62,7 +62,7 @@ _Speed Navigation Bar_
 
 _Screen title_
 
-![](images-en/image01.x-emf)
+![](images-en/image01.png)
 
 _ELM Connection status_
 
@@ -82,7 +82,7 @@ You may change the four main screens with different actions:
 
 Tapping on the "Screen" tap button gives you access to the extra controls:
 
-![](images-en/image02.x-emf)These are:
+![](images-en/image02.png)These are:
 
 - Temporary hide HobDrive
 - Exit HobDrive
@@ -99,7 +99,7 @@ During the first run hobDrive will ask you to choose ELM adapter's serial port o
 
 You may always open this screen later by going Screens ➧ Settings ➧ OBD Port Settings.
 
-![](images-en/image03.x-emf)
+![](images-en/image03.png)
 
 _Restart Bluetooth scan_
 
@@ -137,7 +137,7 @@ After successful connection you may configure extra parameters by activating the
 
 ### Vehicle Settings Screen 
 
-![](images-en/image04.x-emf)This screen allows to you choose a specific type of vehicle to work with.
+![](images-en/image04.png)This screen allows to you choose a specific type of vehicle to work with.
 
 - **Name:** Name of your vehicle's profile.
 - **Copy, Delete**: Commands to clone, rename or remove the current profile. You can't remove the last profile.
@@ -207,7 +207,7 @@ When "Beta Channel" option is enabled, the program will check for the presence o
 
 Visual theme selection screen.
 
-![](images-en/image05.x-emf)Themes are split into groups for day and night driving. Day/night switching is automatic, and pre-defined (by default - 7am and 8pm).
+![](images-en/image05.png)Themes are split into groups for day and night driving. Day/night switching is automatic, and pre-defined (by default - 7am and 8pm).
 
 Light themes are preferable for bright sunny day and reduce light glares, also improving the readability of the screen.
 
@@ -277,7 +277,7 @@ The screen gives you the key values on your current trip or other selected time 
 
 On pressing the "Trip" tab hobDrive gives you a selection of possible tracking intervals. After the new selection all sensors will change their values to reflect the data stored for the new interval.
 
-![](images-en/image08.x-emf)
+![](images-en/image08.png)
 
 Available trip intervals:
 
@@ -305,7 +305,7 @@ Displayed values include:
 - Fuel consumption on warmed-up engine
 - Gasoline cost per kilometer
 
-![](images-en/image10.x-emf)Green-shaded sensors may be tuned up for extra precision.
+![](images-en/image10.png)Green-shaded sensors may be tuned up for extra precision.
 
 Pressing the price sensor will open screen with current fuel price per liter and currency selector.
 
@@ -317,11 +317,11 @@ This screen gives you detailed information on fuel in tank.
 
 **Estimated level of fuel** and **fuel volume** are calculated using the entered information on fueling and consumption data.
 
-![](images-en/image12.x-emf)Pressing one of the fuel level sensors opens up a calibration dialog for fuel tank. On first program usage you must enter the volume of your tank, and (approximate) volume of already consumed fuel.
+![](images-en/image12.png)Pressing one of the fuel level sensors opens up a calibration dialog for fuel tank. On first program usage you must enter the volume of your tank, and (approximate) volume of already consumed fuel.
 
 From here on, hobDrive automatically compute fuel volume. To keep the calculations correct you must record the fueling data. On every fueling you must enter a new fueling record by choosing "Trip" → "New fueling ". In the dialog box you should enter:
 
-- ![](images-en/image13.x-emf)Fuel volume (in liters)
+- ![](images-en/image13.png)Fuel volume (in liters)
 - Fuel price per liter
 - Total fuel price (updated automatically)
 - Odometer readings
@@ -343,7 +343,7 @@ Beside the described above key parameters, hobDrive provides a number of optiona
 
 To activate these, choose Screens tab and then select the required screen:
 
-![](images-en/image14.x-emf)
+![](images-en/image14.png)
 
 ### Fueling and Events Screen 
 
@@ -396,7 +396,7 @@ This screen gives you a MIL code reading functionality.
 
 Upon activation it reads and describes the Check Engine codes:
 
-![](images-en/image17.x-emf)Active error codes need immediate attention and diagnostics.
+![](images-en/image17.png)Active error codes need immediate attention and diagnostics.
 
 Pending error codes are potential errors that may trigger at a later point.
 
@@ -408,13 +408,13 @@ On some vehicles for complete reset of error codes you should restart the car ig
 
 ### HUD Mode 
 
-![](images-en/image18.x-emf)HUD mode is a special layout to be used with windscreen projection.
+![](images-en/image18.png)HUD mode is a special layout to be used with windscreen projection.
 
 You may activate the mirrored HUD mode by pressing the HUD button.
 
 This mode disables all extra control elements and theme elements.
 
-![](images-en/image19.x-emf)If you place the you smartphone or navigation unit on a panel, it'll reflect the data to the windscreen, enabling you to read all the data reflected.
+![](images-en/image19.png)If you place the you smartphone or navigation unit on a panel, it'll reflect the data to the windscreen, enabling you to read all the data reflected.
 
 This mode provides enhanced comfort on long night journeys, since even with the night themes the display is usually very bright in the darkness, which distracts the eye from the road.
 
@@ -448,17 +448,17 @@ Fuel trims within several per cent margin indicate normal engine operation.
 
 ### Zero to 60 Miles 
 
-![](images-en/image25.x-emf)This screen used to measure vehicle efficiency in 0-100 km/h acceleration.  
+![](images-en/image25.png)This screen used to measure vehicle efficiency in 0-100 km/h acceleration.  
 The measurement starts automatically when you start driving.  
 Depending on the refresh rate of movement sensors, the end result may not be entirely accurate.
 
 ### Quarter Time 
 
-![](images-en/image26.x-emf)Measuring the time needed for passing quarter-mile distance (402 m).
+![](images-en/image26.png)Measuring the time needed for passing quarter-mile distance (402 m).
 
 ### Break Time 
 
-![](images-en/image27.x-emf)The measurement of braking time and distance at a certain speed. Helps to estimate the efficiency of the braking system, and to experiment with braking styles in dangerous road conditions.
+![](images-en/image27.png)The measurement of braking time and distance at a certain speed. Helps to estimate the efficiency of the braking system, and to experiment with braking styles in dangerous road conditions.
 
 ## Customization of the Sensors 
 
