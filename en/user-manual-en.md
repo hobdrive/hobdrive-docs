@@ -1,4 +1,4 @@
-![](images-ru/image01.png)
+![](../logo.png)
 
 [http://hobdrive.com](http://hobdrive.com/)
 
@@ -63,7 +63,7 @@ _Speed Navigation Bar_
 
 _Screen title_
 
-![](images-en/image01.png)
+![](images/image01.png)
 
 _ELM Connection status_
 
@@ -83,7 +83,7 @@ You may change the four main screens with different actions:
 
 Tapping on the "Screen" tap button gives you access to the extra controls:
 
-![](images-en/image02.png)
+![](images/image02.png)
 
 These are:
 
@@ -102,7 +102,7 @@ During the first run hobDrive will ask you to choose ELM adapter's serial port o
 
 You may always open this screen later by going Screens ➧ Settings ➧ OBD Port Settings.
 
-![](images-en/image03.png)
+![](images/image03.png)
 
 _Restart Bluetooth scan_
 
@@ -140,7 +140,7 @@ After successful connection you may configure extra parameters by activating the
 
 ### Vehicle Settings Screen
 
-![](images-en/image04.png)
+![](images/image04.png)
 
 This screen allows you to choose a specific type of vehicle to work with.
 
@@ -212,7 +212,7 @@ When "Beta Channel" option is enabled, the program will check for the presence o
 
 Visual theme selection screen.
 
-![](images-en/image05.png)
+![](images/image05.png)
 
 Themes are split into groups for day and night driving. Day/night switching is automatic, and pre-defined (by default - 7am and 8pm).
 
@@ -246,7 +246,7 @@ HobDrive, in addition to displaying data, constantly monitors the engine conditi
 
 ### General Screen
 
-![](images-en/image06.jpeg)
+![](images/image06.jpeg)
 
 Screen with common vehicle sensors.
 
@@ -270,7 +270,7 @@ Detailed sensors description:
 
 ### Trip Computer Screen
 
-![](images-en/image07.jpeg)
+![](images/image07.jpeg)
 
 The screen gives you the key values on your current trip or other selected time interval, enabling evaluation of overall trip efficiency and cost, as well as instant consumption values. Most of the parameters are displayed for the currently selected time interval (current trip by default).
 
@@ -286,7 +286,7 @@ The screen gives you the key values on your current trip or other selected time 
 
 On pressing the "Trip" tab hobDrive gives you a selection of possible tracking intervals. After the new selection all sensors will change their values to reflect the data stored for the new interval.
 
-![](images-en/image08.png)
+![](images/image08.png)
 
 Available trip intervals:
 
@@ -302,7 +302,7 @@ Manual reset is possible for values of "Auto Trip" and «Trip A, Trip B" modes.
 
 ### Fuel Consumption Details Screen
 
-![](images-en/image09.jpeg)
+![](images/image09.jpeg)
 
 This screen gives you detailed information on fuel consumption.
 
@@ -316,7 +316,7 @@ Displayed values include:
 - Fuel consumption on warmed-up engine
 - Gasoline cost per kilometer
 
-![](images-en/image10.png)
+![](images/image10.png)
 
 Green-shaded sensors may be tuned up for extra precision.
 
@@ -324,19 +324,19 @@ Pressing the price sensor will open screen with current fuel price per liter and
 
 ### Fuel Details Screen
 
-![](images-en/image11.jpeg)
+![](images/image11.jpeg)
 
 This screen gives you detailed information on fuel in tank.
 
 **Estimated level of fuel** and **fuel volume** are calculated using the entered information on fueling and consumption data.
 
-![](images-en/image12.png)
+![](images/image12.png)
 
 Pressing one of the fuel level sensors opens up a calibration dialog for fuel tank. On first program usage you must enter the volume of your tank, and (approximate) volume of already consumed fuel.
 
 From here on, hobDrive automatically compute fuel volume. To keep the calculations correct you must record the fueling data. On every fueling you must enter a new fueling record by choosing "Trip" → "New fueling ". In the dialog box you should enter:
 
-![](images-en/image13.png)
+![](images/image13.png)
 
 - Fuel volume (in liters)
 - Fuel price per liter
@@ -360,17 +360,17 @@ Beside the described above key parameters, hobDrive provides a number of optiona
 
 To activate these, choose Screens tab and then select the required screen:
 
-![](images-en/image14.png)
+![](images/image14.png)
 
 ### Fueling and Events Screen
 
-![](images-en/image15.jpeg)
+![](images/image15.jpeg)
 
 The screen is used for the analysis of information on filling stations and hobDrive-stored events.
 
 Data on filling stations and maintenance records are entered in the appropriate screens activated from the "Trip" tab:
 
-![](images-en/image16.jpeg)
+![](images/image16.jpeg)
 
 The table shows the following fields:
 
@@ -413,7 +413,7 @@ This screen gives you a MIL code reading functionality.
 
 Upon activation it reads and describes the Check Engine codes:
 
-![](images-en/image17.png)
+![](images/image17.png)
 
 Active error codes need immediate attention and diagnostics.
 
@@ -427,13 +427,13 @@ On some vehicles for complete reset of error codes you should restart the car ig
 
 ### HUD Mode
 
-![](images-en/image18.png)HUD mode is a special layout to be used with windscreen projection.
+![](images/image18.png)HUD mode is a special layout to be used with windscreen projection.
 
 You may activate the mirrored HUD mode by pressing the HUD button.
 
 This mode disables all extra control elements and theme elements.
 
-![](images-en/image19.png)If you place the you smartphone or navigation unit on a panel, it'll reflect the data to the windscreen, enabling you to read all the data reflected.
+![](images/image19.png)If you place the you smartphone or navigation unit on a panel, it'll reflect the data to the windscreen, enabling you to read all the data reflected.
 
 This mode provides enhanced comfort on long night journeys, since even with the night themes the display is usually very bright in the darkness, which distracts the eye from the road.
 
@@ -443,7 +443,7 @@ To return back, click the Back button.
 
 ### Fuel Trims Screen
 
-![](images-en/image20.png)STFT and LTFT fuel trims are the parameters that define engine efficiency in using the air-fuel mix.
+![](images/image20.png)STFT and LTFT fuel trims are the parameters that define engine efficiency in using the air-fuel mix.
 
 For old or unclean engines their absolute value may be high (20per cent and more). This could trigger error codes.
 
@@ -451,31 +451,31 @@ Fuel trims within several per cent margin indicate normal engine operation.
 
 ### More Sensors Screen
 
-![](images-en/image21.png)
+![](images/image21.png)
 
 This screen gives you some detailed sensors which could be of interest to professional servicing teams.
 
 ### Lambda Sensors Screen
 
-![](images-en/image22.png)
+![](images/image22.png)
 
 Shows the readings of oxygen sensors (depending on the car less than four values are possible).
 
 ### Toyota Sensors Screen
 
-![](images-en/image23.png)
+![](images/image23.png)
 
 Screen with Toyota specific sensors.
 
 ### Sensor List Screen
 
-![](images-en/image24.png)
+![](images/image24.png)
 
 Screen with all available sensors and their descriptions. Tapping any of the sensors will activate its reading. Tap once again to deactivate the sensor.
 
 ### Zero to 60 Miles
 
-![](images-en/image25.png)
+![](images/image25.png)
 
 This screen is used to measure vehicle efficiency in 0-100 km/h acceleration.  
 The measurement starts automatically when you start driving.  
@@ -483,13 +483,13 @@ Depending on the refresh rate of movement sensors, the end result may not be ent
 
 ### Quarter Time
 
-![](images-en/image26.png)
+![](images/image26.png)
 
 Measuring the time needed for passing quarter-mile distance (402 m).
 
 ### Brake Time
 
-![](images-en/image27.png)
+![](images/image27.png)
 
 The measurement of braking time and distance at a certain speed. Helps to estimate the efficiency of the braking system, and to experiment with braking styles in dangerous road conditions.
 
