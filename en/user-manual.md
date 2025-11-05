@@ -144,26 +144,40 @@ This screen allows you to choose a specific type of vehicle to work with.
 
 - **Name:** Name of your vehicle's profile.
 - **Copy, Delete**: Commands to clone, rename or remove the current profile. You can't remove the last profile.
+- **Load from Template**: Select one of the ready-made and tested profiles by vehicle models.
+- **Share**: Upload your current profile to our website (after processing it will be available to other users)
 - **Vehicle Type**: Type of the vehicle and link parameters.
-- **Standard -** suits fine for majority vehicles, or **Toyota** for Toyota vehicles with extended PIDs available.
+- **Standard -** suits fine for majority OBD2 vehicles. For some manufacturers, hobDrive supports special connection modes. Some models (like Toyota, Ford) offer more sensors in this mode. Some models can only work with their specific profile (like VAZ Yanvar, Mikas, Bosch ECU, Nissan Custom, etc.)
 - **Init String template, Init String**: These fields allow to enter extra OBD parameters for setting up the adapter-car link. Template list includes standard Init commands for right-hand drive cars and for some partially OBD2 compatible vehicles (Like Japan Domestic Market, Asia market). For the majority of OBD2 cars this field can be left blank.
 - **Fuel Consumption:** method used for fuel consumption calculations:
 
 - **MAF Sensor:** This is the default case, suitable for most **gasoline** vehicles. Fuel calculation is done via MAF (Mass Air Flow) sensor**.**
 - **MAP Sensor:** Fuel calculation is done using MAP (Manifold Absolute Pressure) sensor. This method requires calibration (see Vehicle calibration)
 - **Injector Sensor:** Fuel calculation is based on a injector timing sensor, available in many Toyota and toyota-derived vehicles (scion, lexus, etc). This method requires calibration (see Vehicle calibration).
-- **EngineLoad sensor:** Fuel calculation is based on engine load sensor. Provides rough approximation, used mainly for **diesel** engines. This method requires calibration (see Vehicle calibration.
+- **EngineLoad sensor:** Fuel calculation is based on engine load sensor. Provides rough approximation, used mainly for **diesel** engines. This method requires calibration (see Vehicle calibration).
+- **Built-in sensor**: Fuel calculation based on the vehicle's internal hourly consumption sensor (present, for example, in vehicles with Yanvar, Mikas ECU).
 
 If you are unsure which method is best for your vehicle, start one-by-one from the top of the list and monitor the "Liters per Hour" sensor in out-of-gear mode.
 
 If you own Toyota car and «**Injector Sensor**» option does show fuel consumption, this method is preferable.
 
+For diesel vehicles, only the **Engine Load** method calculates adequate readings.
+
 Each option has its own calibration parameters. Empty fields mean default values, which must be calibrated for more precise calculation (see Vehicle calibration section for details).
 
 All other parameters are optional and could be used to tuneup the hobDrive operation:
 
+- **Weight:** Total vehicle weight in kilograms. Used only in estimated power and efficiency calculations. Default value - 1300kg.
+- **Tank Volume**: Used when calculating estimated fuel level in tank. Always specified in liters. Default 40L.
+
 - **Speed correction factor**: Allows to tuneup speed and odometer values. Required if your car equipped with nonstandard tires, or if your speed counter is incorrect. Vehicle odometer could give incorrect readings, too. If possible, use GPS for speed and mileage calculation.  
     Default value is "1".
+
+**Example:** if speedometer shows 57, but you're actually going 60, then the Speed Correction parameter should be set to 1.05. But the odometer can also be wrong (for example, thinking you're driving when you're actually spinning in a snowbank). If possible, it's better to measure mileage by GPS. Speed accuracy can also be checked via GPS.
+
+Discrepancies with reality within 1% are acceptable, but discrepancies up to 10% are possible. This can happen if you have non-standard tires, for example. HobDrive cannot count mileage and consumption when not connected to the car. If HobDrive starts with a delay, or there are frequent connection resets (due to hardware problems, for example), then discrepancies in odometer readings will accumulate.
+
+This practically does not affect statistics, since with each new refueling you synchronize the readings.
 - **Maximum idle speed**: Speed value for vehicle in idling mode or in traffic jam.  
     Default value is "5" km\\h (3 mph).
 - **Hot engine temperature**: Temperature, when engine is considered "warmed-up". Used in mileage sensors for calculation of warmup price and MPG on warmed up engine.  
@@ -191,6 +205,8 @@ Default setting is off.
 Default setting is off.
 
 - **Reset Instant consumption On Idle:** If set, instant and short-term consumption values will be zeroed on every stop/start of the car. Provides more precise estimates on instant consumption for acceleration/deceleration.
+- **Max Antifreeze Temperature**: Temperature value after which hobDrive will issue an audio and visual overheating warning. Default - 95 degrees.
+- **Max Fuel Correction**: Maximum value of the long-term fuel trim parameter, after which hobDrive will issue a warning about mixture inefficiency. Default - 11%.
 
 ### System Settings Screen
 
@@ -250,6 +266,12 @@ Screen with common vehicle sensors.
 
 All sensors are read sequentially, reading speed depends on the performance of your ELM adapter and target device. Delay of 1-2 seconds is often normal.
 
+By clicking on the status popup panel (circle at bottom left), you will see:
+
+- Detailed OBD2 and GPS connection status.
+- "Reconnect" button - for forced connection attempt
+- "Fast Reading Mode" option. When this option is enabled, hobDrive disables calculation of derived data (consumption, mileage, etc.) and updates only the data visible on the current screen at maximum speed. The mode can be used for diagnostics when sensor polling speed is important.
+
 All OBD2 sensor values are transferred from ECU (Engine Control Unit) to the hobDrive. They may not be absolutely correct, some may even be entirely incorrect. This is not hobDrive's limitation but rather particular features of your vehicle's ECU.
 
 Different hobDrive sensors have different update interval. For instance RPM updated most often, while antifreeze temperature sensor normally updated once every 10 seconds.
@@ -265,6 +287,8 @@ Detailed sensors description:
 - **Antifreeze temperature:** Current antifreeze (and engine) temperature. The key parameter for assessing engine warm-up level.
 - **Intake temperature:** Air temperature at the combustion chamber inlet. Usually close to ambient temperature but may differ to either side depending on the mode of operation.
 - **Ambient temperature:** Ambient air temperature. Could be unavailable on some of vehicles.
+
+Various sensors use the most appropriate formatting for graphical display of their status. On sensors with background graphics (like speed), you can see a couple of small labels - these are the current minimum and maximum achieved values.
 
 ### Trip Computer Screen
 
@@ -352,6 +376,12 @@ The **Maximum Temperature** and **Maximum Speed** parameters keep the data of ma
 
 The **Average Speed** parameter is calculated for the currently selected time interval, taking into account all idling time.
 
+Some cars transmit the real fuel level indicator from the ECU. This sensor is called **ECUFuelLevel.**
+
+In hobDrive, the "real" indicator is not used, but is overridden by the calculated one, based on manually entered data and fuel consumption data.
+
+You can display the readings of the native fuel level sensor: in the default-landscape.layout file, change FuelLevel to **ECUFuelLevel**. If this sensor shows nothing for you, then your car does not support displaying the real fuel level in the tank.
+
 ### Extra Screens
 
 Beside the described above key parameters, hobDrive provides a number of optional screens for more detailed fine-tuning.
@@ -404,6 +434,12 @@ Using refueling records, HobDrive allows you to estimate your fuel costs per gas
 By pressing the "New Record" button, you can enter an arbitrary vehicle maintenance record.
 
 The "Missed Trip" action allows you to make a correction to the program's calculated data by adding a trip that wasn't accounted for for some reason (for example, when you forgot to turn on HobDrive).
+
+In the dialog you need to independently enter the current odometer reading. After this, hobDrive will calculate the approximate amount of fuel consumed (you can correct it yourself). When saving, this data will be added to your current calculated data.
+
+In vehicles with a fuel level sensor working through the ECU, hobDrive will automatically enter this value in the dialog.
+
+If your vehicle provides readings of the "real" odometer, this data will also be automatically entered in the fields, you just need to check them.
 
 ### Diagnostics Screen
 
@@ -525,10 +561,37 @@ This means that when using the MAF method, you need to multiply the current AFR 
 
 When using EngineLoad, in the simplest case, you need to similarly change the "Load Fuel Consumption Coefficient".
 
+The obtained value should be compared with the consumption readings on the "Trip Computer" screen for a relatively long interval: "refueling", "month", "all time", and based on the discrepancies, correct your parameter (AFR, VE, or "injector performance").
+
+For example, with a real consumption reading of 12 L/100km, HobDrive shows consumption for the month of 11 L/100km.
+
+This means that when using the MAF method, you need to multiply the current AFR by (12/11 = 1.09). When using MAP, you likewise need to multiply the current VE by 1.09. When using Injector, the injector performance is corrected (multiplied by 1.09).
+
+When using EngineLoad, in the simplest case, you need to similarly change the "Load Fuel Consumption Coefficient".
+
+Another quick way to select a correction coefficient is to look at fuel consumption in liters/hour on a warmed-up engine at idle speed. For many gasoline engines, it should be equal to half the engine volume. For example, if hobDrive shows 1 liter per hour and you have a 1.6L engine, then idle consumption should be 0.8 liters per hour. New VE value = 95 * 0.8/1 = 76.
+
+It may also be worth calibrating speed - since mileage is calculated from it, and therefore consumption also depends on it.
+
+**Attention!** All non-integer parameters are entered with a dot as the decimal separator.
+
 Calibration for «**MAF Sensor**»
 
 - **Air-Fuel ratio (AFR) calibration:** One of the key values, shows the ratio between air and fuel in the combustion chambers.  
     The default value is «14.7»
+
+Examples for different fuels:
+
+Air:Fuel (AFR)
+
+| Fuel Type | AFR Ratio |
+|-----------|-----------|
+| Unleaded gasoline | 14.7:1 |
+| Propane (LPG) | 15.5:1 |
+| Methane (CNG) | 17.2:1 |
+| Diesel fuel | 14.6:1 |
+| Methanol (methyl alcohol) | 6.4:1 |
+| Ethanol (ethyl alcohol) | 9.0:1 |
 
 Calibration for «**MAP Sensor**»
 
@@ -566,6 +629,11 @@ The contents of the file can be exported from the default configuration - «defa
 The file lists the sensors used to record data. By default, only cumulative sensors data is recorded.  
 <br/>Data is written to the "track" folder in binary format and can be converted to Excel spreadsheets with «track2csv.exe» utility found here:  
 **<https://github.com/cail/hobd/raw/master/lib/Track2CSV.exe>**
+
+You need to run this program with the full path parameter to the "track" folder:
+
+- In explorer, drag the "track" folder from the "hobdrive" folder to the track2csv.exe program icon
+- After running, the program will convert all log files in the track folder to csv format - which can be opened in Excel or another spreadsheet.
 
 ## Typical Issues
 
@@ -625,17 +693,13 @@ In many operating systems this function is called «navigation software path» o
 
 Information on setting up and linking ELM adapter is accessible in "Help" section of the site: <http://hobdrive.com/faq>
 
-### PC installation (carputer, car pc)
+### Installation on Personal Computer (carputer, car pc)
 
-The latest version of the .Net framework is the only requirement for hobDrive installation to the PC (carputer, touchpad, etc.). The most recent Windows OS (Vista / Windows 7) have it installed by default.
+For hobDrive to work on a personal computer (carputer, touchpad, etc.), the only requirement is an installed fresh .net framework. Usually on modern Windows it is already installed by default. On Linux systems, it is necessary to install the "mono" environment and run HobDrive with the command "mono hobdrive.exe".
 
 The serial port is required to connect the USB/COM-based OBD-II adapter.
 
 Since hobDrive can work with Bluetooth devices directly, setting up Bluetooth communication via virtual COM port is not required.
-
-### Installation on Personal Computer (carputer, car pc)
-
-For hobDrive to work on a personal computer (carputer, touchpad, etc.), the only requirement is an installed fresh .net framework. Usually on modern Windows it is already installed by default. On Linux systems, it is necessary to install the "mono" environment and run HobDrive with the command "mono hobdrive.exe".
 
 - Available depending on licensing form [↑](#footnote-ref-1)
 
