@@ -8,3 +8,4 @@
 
 [User Guide](en/user-manual.md) 
 
+[Layout Format spec](en/LAYOUT_SPEC.md)

@@ -8,36 +8,38 @@
 
 ## Дополнительные функции
 
-[fuel](ru/fuel-methods.md)
+[Методы расчета расхода и их калибровочные коэффициенты](ru/fuel-methods.md)
 
-[shiftposition](ru/shiftposition.md)
+[Текущая передача, настройка передач](ru/shiftposition.md)
 
-[statistics](ru/statistics.md)
+[Статистика поездок и записей](ru/statistics.md)
 
-[profiles](ru/profiles.md)
+[Готовые профили автомобилей](ru/profiles.md)
 
-[speed](ru/speed-diff.md)
+[Разница в показаниях скорости](ru/speed-diff.md)
 
-[voltage](ru/voltage.md)
+[Коррекция показаний напряжения](ru/voltage.md)
 
-[backups](ru/backups.md)
+[Как перенести все настройки или сделать бэкап?](ru/backups.md)
 
-[hidden](ru/hidden-configs.md)
+[Системные и скрытые настройки](ru/hidden-configs.md)
 
 ## Оформление
 
-[layouts](ru/layouts.md)
+[Спецификация формата Layout](ru/LAYOUT_SPEC_RU.md)
 
-[dynamic](ru/dynamic-expr.md)
+[Оформление, скины и расположение датчиков](ru/layouts.md)
+
+[Динамические выражения в файлах настроек](ru/dynamic-expr.md)
 
 ## Вопросы ответы
 
-[bad](ru/bad-elms.md)
+[Проблемы кривых (урезанных, контрафактных) адаптеров ELM327](ru/bad-elms.md)
 
-[custom](ru/custom-ecus.md)
+[Диагностика ABS, SRS, и подобных отдельных систем](ru/custom-ecus.md)
 
-[faqs](ru/faqs.md)
+[Вопросы и ответы](ru/faqs.md)
 
-[licensing](ru/licensing.md)
+[Условия лицензирования](ru/licensing.md)
 
-[problems](ru/problems.md)
+[Отчет о проблеме, сбое](ru/problems.md)
