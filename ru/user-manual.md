@@ -1,5 +1,6 @@
+[English Index](../README.md) | [Индекс](../README-ru.md) 
 ![](../logo.png)
-[http://hobdrive.com](http://hobdrive.com/) | <http://хобдрайв.рф>  | [support@hobdrive.com](mailto:support@hobdrive.com) | [Индекс](README-ru.md) 
+[hobdrive.ru](http://hobdrive.ru/) | [support@hobdrive.com](mailto:support@hobdrive.com)
 
 # Руководство пользователя
 

@@ -1,14 +1,10 @@
-![](logo.png)
-[http://hobdrive.com](http://hobdrive.com/)  
-<http://хобдрайв.рф>  
-[support@hobdrive.com](mailto:support@hobdrive.com)
-
-# hobdrive Knowledgebase Index
-
 [English](README.md) | [Russian](README-ru.md) 
 
+![](logo.png)
 
-[English User Guide](en/user-manual-en.md) 
+[hobdrive.com](http://hobdrive.com/) | [support@hobdrive.com](mailto:support@hobdrive.com)
 
+# hobdrive Knowledge base Index
 
+[User Guide](en/user-manual.md) 
 

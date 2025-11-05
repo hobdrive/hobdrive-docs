@@ -1,8 +1,6 @@
+[English](../README.md) | [Russian](../README-ru.md) 
 ![](../logo.png)
-
-[http://hobdrive.com](http://hobdrive.com/)
-
-[support@hobdrive.com](mailto:support@hobdrive.com)
+[hobdrive.com](http://hobdrive.com/) | [support@hobdrive.com](mailto:support@hobdrive.com)
 
 # HobDrive User's Manual
 

@@ -1,13 +1,43 @@
+[English](README.md) | [Russian](README-ru.md)
 ![](logo.png)
-[http://hobdrive.com](http://hobdrive.com/)  
-<http://хобдрайв.рф>  
-[support@hobdrive.com](mailto:support@hobdrive.com)
+[hobdrive.ru](http://hobdrive.ru/) | [support@hobdrive.com](mailto:support@hobdrive.com)
 
 # Хобдрайв - Статьи и информация
 
-[English](README.md) | [Русский](README-ru.md) 
+[Руководство пользователя](ru/user-manual.md) 
 
-[Руководство пользователя](ru/user-manual-ru.md) 
+## Дополнительные функции
 
+[fuel](ru/fuel-methods.md)
 
+[shiftposition](ru/shiftposition.md)
 
+[statistics](ru/statistics.md)
+
+[profiles](ru/profiles.md)
+
+[speed](ru/speed-diff.md)
+
+[voltage](ru/voltage.md)
+
+[backups](ru/backups.md)
+
+[hidden](ru/hidden-configs.md)
+
+## Оформление
+
+[layouts](ru/layouts.md)
+
+[dynamic](ru/dynamic-expr.md)
+
+## Вопросы ответы
+
+[bad](ru/bad-elms.md)
+
+[custom](ru/custom-ecus.md)
+
+[faqs](ru/faqs.md)
+
+[licensing](ru/licensing.md)
+
+[problems](ru/problems.md)
