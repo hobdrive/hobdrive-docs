@@ -1,4 +1,5 @@
 ![](images-ru/image01.png)
+
 [http://hobdrive.com](http://hobdrive.com/)
 
 [support@hobdrive.com](mailto:support@hobdrive.com)
@@ -37,7 +38,7 @@ HobDrive is a software complex working with your vehicle via standard OBD-II ada
      - [Sensor List Screen](#sensor-list-screen)
      - [Zero to 60 Miles](#zero-to-60-miles)
      - [Quarter Time](#quarter-time)
-     - [Break Time](#break-time)
+     - [Brake Time](#brake-time)
 5. [Customization of the Sensors](#customization-of-the-sensors)
 6. [Vehicle Calibration](#vehicle-calibration)
    - [Parameter Calibration](#parameter-calibration)
@@ -49,14 +50,14 @@ HobDrive is a software complex working with your vehicle via standard OBD-II ada
 12. [Installation and Setup Requirements](#installation-and-setup-requirements)
     - [Installation to Windows Mobile/CE Systems](#installation-to-windows-mobile-ce-systems)
 
-# HobDrive Features 
+# HobDrive Features
 
 - Functional, flexible and powerful User Interface beats classic trip computer devices in ease of use and features.
 - Full integration into your multimedia car system.
 - A single information hub - no need for extra hardware devices, sensors or displays.
 - Unique analysis and statistic collection features.
 
-## Interface Basics 
+## Interface Basics
 
 _Speed Navigation Bar_
 
@@ -82,16 +83,18 @@ You may change the four main screens with different actions:
 
 Tapping on the "Screen" tap button gives you access to the extra controls:
 
-![](images-en/image02.png)These are:
+![](images-en/image02.png)
+
+These are:
 
 - Temporary hide HobDrive
 - Exit HobDrive
 - Entering the "Settings" tab
 - Selecting and activation of extra screens
 
-## Before Start 
+## Before Start
 
-### Connect Your Vehicle 
+### Connect Your Vehicle
 
 The very first thing you must do after installing hobDrive is setting it up to find and link with your OBD-II ELM adapter and vehicle.
 
@@ -119,7 +122,7 @@ To connect ELM327 WiFi adapter you should first setup WiFi network with your ada
 
 **Android/Windows Phone:** 192.168.0.10:35000
 
-Windows CE: tcp://192.168.0.10:35000
+**Windows CE:** tcp://192.168.0.10:35000
 
 After you choose the correct device to connect and press the OK button, the status should change to Yellow (the hobDrive link information should show the status string INIT - initialization), followed by Green OK signal indicating successful hobDrive connection.
 
@@ -131,13 +134,15 @@ Some devices with widcomm stack require you to link the smartphone/navigator to 
 
 The additional parameter "ELM Connection Delay" is used for problem ELM adapters which can not operate at high speeds and often "break off" the connection. Please find optimal link interruption timing.
 
-### Settings Screen 
+### Settings Screen
 
 After successful connection you may configure extra parameters by activating the Settings screen. This gives you the access to the following screens: "OBD Port Settings", "Vehicle Settings", "System Settings", "Network", "Theme", "Language", "Units", "About".
 
-### Vehicle Settings Screen 
+### Vehicle Settings Screen
 
-![](images-en/image04.png)This screen allows to you choose a specific type of vehicle to work with.
+![](images-en/image04.png)
+
+This screen allows you to choose a specific type of vehicle to work with.
 
 - **Name:** Name of your vehicle's profile.
 - **Copy, Delete**: Commands to clone, rename or remove the current profile. You can't remove the last profile.
@@ -189,13 +194,13 @@ Default setting is off.
 
 - **Reset Instant consumption On Idle:** If set, instant and short-term consumption values will be zeroed on every stop/start of the car. Provides more precise estimates on instant consumption for acceleration/deceleration.
 
-### System Settings Screen 
+### System Settings Screen
 
 This screen allows to change system hobDrive options. Touch any option label to get a detailed explanation of what this option does.
 
 Any change requires restart of the hobDrive.
 
-#### Version and Updates Tab 
+#### Version and Updates Tab
 
 Setting up automatic software update options.
 
@@ -203,11 +208,13 @@ If on, hobDrive will check for updates once a week (depending on the license). Y
 
 When "Beta Channel" option is enabled, the program will check for the presence of beta versions and offer to update to them. Updating to beta versions is recommended only for experienced users.
 
-#### Theme Tab 
+#### Theme Tab
 
 Visual theme selection screen.
 
-![](images-en/image05.png)Themes are split into groups for day and night driving. Day/night switching is automatic, and pre-defined (by default - 7am and 8pm).
+![](images-en/image05.png)
+
+Themes are split into groups for day and night driving. Day/night switching is automatic, and pre-defined (by default - 7am and 8pm).
 
 Light themes are preferable for bright sunny day and reduce light glares, also improving the readability of the screen.
 
@@ -217,7 +224,7 @@ During long night rides it is recommended to enable HUD mode with a dark theme, 
 
 On changing the theme a small hobDrive delay is possible.
 
-#### Language Tab 
+#### Language Tab
 
 In this section you may choose the interface language.
 
@@ -225,11 +232,11 @@ When changing, a small delay is possible.
 
 Note: On Android systems, the language is determined automatically.
 
-#### Units Tab 
+#### Units Tab
 
 Here you may choose to work either with European or US imperial units.
 
-## HobDrive Usage 
+## HobDrive Usage
 
 **Attention! A vehicle is a source of increased danger.** Be careful and do not get distracted while driving by working with the program and detailed data analysis. We are not responsible for any accidents or injuries caused by using this program.
 
@@ -237,9 +244,11 @@ All accumulated data in the program is saved - you can always view it in detail 
 
 HobDrive, in addition to displaying data, constantly monitors the engine condition and warns of possible malfunctions. When a problem occurs, you will hear a warning sound signal and visual indicator. See the "Diagnostics" section for a more detailed description.
 
-### General Screen 
+### General Screen
 
-![](images-en/image06.jpeg)Screen with common vehicle sensors.
+![](images-en/image06.jpeg)
+
+Screen with common vehicle sensors.
 
 All sensors are read sequentially, reading speed depends on the performance of your ELM adapter and target device. Delay of 1-2 seconds is often normal.
 
@@ -259,7 +268,7 @@ Detailed sensors description:
 - **Intake temperature:** Air temperature at the combustion chamber inlet. Usually close to ambient temperature but may differ to either side depending on the mode of operation.
 - **Ambient temperature:** Ambient air temperature. Could be unavailable on some of vehicles.
 
-### Trip Computer Screen 
+### Trip Computer Screen
 
 ![](images-en/image07.jpeg)
 
@@ -291,9 +300,11 @@ Available trip intervals:
 
 Manual reset is possible for values of "Auto Trip" and «Trip A, Trip B" modes.
 
-### Fuel Consumption Details Screen 
+### Fuel Consumption Details Screen
 
-![](images-en/image09.jpeg)This screen gives you detailed information on fuel consumption.
+![](images-en/image09.jpeg)
+
+This screen gives you detailed information on fuel consumption.
 
 Displayed values include:
 
@@ -305,11 +316,13 @@ Displayed values include:
 - Fuel consumption on warmed-up engine
 - Gasoline cost per kilometer
 
-![](images-en/image10.png)Green-shaded sensors may be tuned up for extra precision.
+![](images-en/image10.png)
+
+Green-shaded sensors may be tuned up for extra precision.
 
 Pressing the price sensor will open screen with current fuel price per liter and currency selector.
 
-### Fuel Details Screen 
+### Fuel Details Screen
 
 ![](images-en/image11.jpeg)
 
@@ -317,11 +330,15 @@ This screen gives you detailed information on fuel in tank.
 
 **Estimated level of fuel** and **fuel volume** are calculated using the entered information on fueling and consumption data.
 
-![](images-en/image12.png)Pressing one of the fuel level sensors opens up a calibration dialog for fuel tank. On first program usage you must enter the volume of your tank, and (approximate) volume of already consumed fuel.
+![](images-en/image12.png)
+
+Pressing one of the fuel level sensors opens up a calibration dialog for fuel tank. On first program usage you must enter the volume of your tank, and (approximate) volume of already consumed fuel.
 
 From here on, hobDrive automatically compute fuel volume. To keep the calculations correct you must record the fueling data. On every fueling you must enter a new fueling record by choosing "Trip" → "New fueling ". In the dialog box you should enter:
 
-- ![](images-en/image13.png)Fuel volume (in liters)
+![](images-en/image13.png)
+
+- Fuel volume (in liters)
 - Fuel price per liter
 - Total fuel price (updated automatically)
 - Odometer readings
@@ -337,7 +354,7 @@ The **Maximum Temperature** and **Maximum Speed** parameters keep the data of ma
 
 The **Average Speed** parameter is calculated for the currently selected time interval, taking into account all idling time.
 
-### Extra Screens 
+### Extra Screens
 
 Beside the described above key parameters, hobDrive provides a number of optional screens for more detailed fine-tuning.
 
@@ -345,7 +362,7 @@ To activate these, choose Screens tab and then select the required screen:
 
 ![](images-en/image14.png)
 
-### Fueling and Events Screen 
+### Fueling and Events Screen
 
 ![](images-en/image15.jpeg)
 
@@ -367,7 +384,7 @@ The table shows the following fields:
 
 The last displayed entry is a line with totals: the total mileage, the total amount of money spent, the total fuel consumption per gas station.
 
-### Vehicle Records Management 
+### Vehicle Records Management
 
 For each refueling, select "Actions" → "New Refueling", and in the dialog you need to enter data about the fuel filled:
 
@@ -390,13 +407,15 @@ By pressing the "New Record" button, you can enter an arbitrary vehicle maintena
 
 The "Missed Trip" action allows you to make a correction to the program's calculated data by adding a trip that wasn't accounted for for some reason (for example, when you forgot to turn on HobDrive).
 
-### Diagnostics Screen 
+### Diagnostics Screen
 
 This screen gives you a MIL code reading functionality.
 
 Upon activation it reads and describes the Check Engine codes:
 
-![](images-en/image17.png)Active error codes need immediate attention and diagnostics.
+![](images-en/image17.png)
+
+Active error codes need immediate attention and diagnostics.
 
 Pending error codes are potential errors that may trigger at a later point.
 
@@ -406,7 +425,7 @@ Please be aware that deleting the error from the list does not solve the problem
 
 On some vehicles for complete reset of error codes you should restart the car ignition.
 
-### HUD Mode 
+### HUD Mode
 
 ![](images-en/image18.png)HUD mode is a special layout to be used with windscreen projection.
 
@@ -422,7 +441,7 @@ On many cars, simple reflection on the windscreen would "double" or even "triple
 
 To return back, click the Back button.
 
-### Fuel Trims Screen 
+### Fuel Trims Screen
 
 ![](images-en/image20.png)STFT and LTFT fuel trims are the parameters that define engine efficiency in using the air-fuel mix.
 
@@ -430,37 +449,51 @@ For old or unclean engines their absolute value may be high (20per cent and more
 
 Fuel trims within several per cent margin indicate normal engine operation.
 
-### More Sensors Screen 
+### More Sensors Screen
 
-![](images-en/image21.png)This screen gives you some detailed sensors which could be of interest to professional servicing teams.
+![](images-en/image21.png)
 
-### Lambda Sensors Screen 
+This screen gives you some detailed sensors which could be of interest to professional servicing teams.
 
-![](images-en/image22.png)Shows the readings of oxygen sensors (depending on the car less than four values are possible).
+### Lambda Sensors Screen
 
-### Toyota Sensors Screen 
+![](images-en/image22.png)
 
-![](images-en/image23.png)Screen with Toyota specific sensors.
+Shows the readings of oxygen sensors (depending on the car less than four values are possible).
 
-### Sensor List Screen 
+### Toyota Sensors Screen
 
-![](images-en/image24.png)Screen with all available sensors and their descriptions. Tapping any of the sensors will activate it's reading. Tap once again to deactivate the sensor.
+![](images-en/image23.png)
 
-### Zero to 60 Miles 
+Screen with Toyota specific sensors.
 
-![](images-en/image25.png)This screen used to measure vehicle efficiency in 0-100 km/h acceleration.  
+### Sensor List Screen
+
+![](images-en/image24.png)
+
+Screen with all available sensors and their descriptions. Tapping any of the sensors will activate its reading. Tap once again to deactivate the sensor.
+
+### Zero to 60 Miles
+
+![](images-en/image25.png)
+
+This screen is used to measure vehicle efficiency in 0-100 km/h acceleration.  
 The measurement starts automatically when you start driving.  
 Depending on the refresh rate of movement sensors, the end result may not be entirely accurate.
 
-### Quarter Time 
+### Quarter Time
 
-![](images-en/image26.png)Measuring the time needed for passing quarter-mile distance (402 m).
+![](images-en/image26.png)
 
-### Break Time 
+Measuring the time needed for passing quarter-mile distance (402 m).
 
-![](images-en/image27.png)The measurement of braking time and distance at a certain speed. Helps to estimate the efficiency of the braking system, and to experiment with braking styles in dangerous road conditions.
+### Brake Time
 
-## Customization of the Sensors 
+![](images-en/image27.png)
+
+The measurement of braking time and distance at a certain speed. Helps to estimate the efficiency of the braking system, and to experiment with braking styles in dangerous road conditions.
+
+## Customization of the Sensors
 
 Calibration mode is activated via «Screens» → «Settings» → «Edit sensors layout».
 
@@ -470,7 +503,7 @@ The dialogue mode is used for setting the widget type (text, bar graph, circular
 
 Each parameter has a description which can be activated by pressing the parameter label (left). Typical parameter values can be either selected from drop-down lists or entered manually.
 
-## Vehicle Calibration 
+## Vehicle Calibration
 
 Fuel Economy calculation method calibration is required for more precise MPG calculations or when hobdrive shows incorrect fuel economy values.
 
@@ -480,7 +513,7 @@ For fuel consumption calibration, first know your real fuel economy: using full 
 
 Then, you should compare these numbers with what you get on main hobdrive screen, applying the difference coefficient into appropriate method's coefficient field.
 
-### Parameter Calibration 
+### Parameter Calibration
 
 The simplest way to adjust coefficients and precise fuel consumption calibration is to compare HobDrive readings with real fuel consumption from the tank.
 
@@ -522,9 +555,9 @@ Calibration for «**EngineLoad Sensor**»
     The default value is  
     «0.025, 0.025, 0.10, 0.20, 0.3, 0.4, 0.3, 0.3, 0.3, 0.3»  
     Each number is a multiplier for the MPG EngineLoad value at the specific RPM.  
-    For instance, RPM 2000 and EngineLoad of 40% mean consumption rate of 0.10\*40 = 4 liters\\hour
+    For instance, RPM 2000 and EngineLoad of 40% mean consumption rate of 0.10\*40 = 4 liters/hour
 
-## Beta-functionality 
+## Beta-functionality
 
 Part of the hobDrive functionality is still in active development and is being tested. You can experiment with it (we give no guarantees whatsoever).
 
@@ -536,7 +569,7 @@ The file lists the sensors used to record data. By default, only cumulative sens
 <br/>Data is written to the "track" folder in binary format and can be converted to Excel spreadsheets with «track2csv.exe» utility found here:  
 **<https://github.com/cail/hobd/raw/master/lib/Track2CSV.exe>**
 
-## Typical Issues 
+## Typical Issues
 
 - **HobDrive cannot connect to the vehicle**
 
@@ -552,7 +585,7 @@ For USB adapters operating from mobile devices, a typical problem is lack of pow
 
 Bluetooth ELM adapters operating through USB-BT dongles often suffer from poor quality of the latter.
 
-## Hardware Requirements (Windows) 
+## Hardware Requirements (Windows)
 
 - Operating systems: WindowsCE, WindowsMobile, Windows xp/vista/7
 - .net3.5 environment
@@ -563,24 +596,24 @@ Bluetooth ELM adapters operating through USB-BT dongles often suffer from poor q
 - Bluetooth chipset (or USB-Bluetooth adapter) with standard Microsoft bluetooth stack (for Bluetooth ELM327 adapters)
 - USB-Serial driver for virtual COM port (for USB ELM327 adapters)
 
-## Hardware Requirements (Android) 
+## Hardware Requirements (Android)
 
 - Android 4.x and higher
 - 512Mb RAM
 - Bluetooth or WiFi
 
-## Optional Requirements 
+## Optional Requirements
 
 - Internet access: auto updates<sup>[\[1\]](#footnote-1)</sup>, reporting statistics data to the external web-service<sup>[\[2\]](#footnote-2)</sup>.
 - GPS chipset: position tracking, trip tracking<sup>[\[3\]](#footnote-3)</sup>.
 
-## Installation and Setup Requirements 
+## Installation and Setup Requirements
 
 Installation on Windows Mobile smartphones or PocketPC is done in the standard way - through a CAB file.
 
 Installation on Android systems - through application stores or directly via APK file.
 
-### Installation to Windows Mobile/CE Systems 
+### Installation to Windows Mobile/CE Systems
 
 The application requires netcf3.5 environment; if it is not on your smartphone, you can install it yourself (<http://www.microsoft.com/downloads/en/details.aspx?FamilyID=e3821449-3c6b-42f1-9fd9-0041345b3385&displaylang=en>).
 
@@ -602,7 +635,7 @@ The serial port is required to connect the USB/COM-based OBD-II adapter.
 
 Since hobDrive can work with Bluetooth devices directly, setting up Bluetooth communication via virtual COM port is not required.
 
-### Installation on Personal Computer (carputer, car pc) 
+### Installation on Personal Computer (carputer, car pc)
 
 For hobDrive to work on a personal computer (carputer, touchpad, etc.), the only requirement is an installed fresh .net framework. Usually on modern Windows it is already installed by default. On Linux systems, it is necessary to install the "mono" environment and run HobDrive with the command "mono hobdrive.exe".
 
