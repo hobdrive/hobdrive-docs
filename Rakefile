@@ -10,3 +10,6 @@ task :prep do
     sh "cp ../hobd/changelog_en ./en/changelog_en.md"
 end
 
+task :build do
+    sh "bundle exec jekyll b"
+end
