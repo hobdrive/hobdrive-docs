@@ -7,46 +7,9 @@
 HobDrive is a software complex working with your vehicle via standard OBD-II adapter and giving you the functionality of a powerful trip computer on your Windows (Windows Phone 8 / WinCE / WinMobile), Android or Car PC (Linux/XP/Vista/7).
 
 ## Table of Contents
-
-1. [HobDrive Features](#hobdrive-features)
-2. [Interface Basics](#interface-basics)
-3. [Before Start](#before-start)
-   - [Connect Your Vehicle](#connect-your-vehicle)
-   - [Settings Screen](#settings-screen)
-   - [Vehicle Settings Screen](#vehicle-settings-screen)
-   - [System Settings Screen](#system-settings-screen)
-     - [Version and Updates Tab](#version-and-updates-tab)
-     - [Theme Tab](#theme-tab)
-     - [Language Tab](#language-tab)
-     - [Units Tab](#units-tab)
-4. [HobDrive Usage](#hobdrive-usage)
-   - [General Screen](#general-screen)
-   - [Trip Computer Screen](#trip-computer-screen)
-   - [Fuel Consumption Details Screen](#fuel-consumption-details-screen)
-   - [Fuel Details Screen](#fuel-details-screen)
-   - [Extra Screens](#extra-screens)
-     - [Fueling and Events Screen](#fueling-and-events-screen)
-     - [Vehicle Records Management](#vehicle-records-management)
-     - [Diagnostics Screen](#diagnostics-screen)
-     - [HUD Mode](#hud-mode)
-     - [Fuel Trims Screen](#fuel-trims-screen)
-     - [More Sensors Screen](#more-sensors-screen)
-     - [Lambda Sensors Screen](#lambda-sensors-screen)
-     - [Toyota Sensors Screen](#toyota-sensors-screen)
-     - [Sensor List Screen](#sensor-list-screen)
-     - [Zero to 60 Miles](#zero-to-60-miles)
-     - [Quarter Time](#quarter-time)
-     - [Brake Time](#brake-time)
-5. [Customization of the Sensors](#customization-of-the-sensors)
-6. [Vehicle Calibration](#vehicle-calibration)
-   - [Parameter Calibration](#parameter-calibration)
-7. [Beta-functionality](#beta-functionality)
-8. [Typical Issues](#typical-issues)
-9. [Hardware Requirements (Windows)](#hardware-requirements-windows)
-10. [Hardware Requirements (Android)](#hardware-requirements-android)
-11. [Optional Requirements](#optional-requirements)
-12. [Installation and Setup Requirements](#installation-and-setup-requirements)
-    - [Installation to Windows Mobile/CE Systems](#installation-to-windows-mobile-ce-systems)
+{:.no_toc}
+* TOC
+{:toc}
 
 # HobDrive Features
 
