@@ -1,8 +1,13 @@
 # HobDrive Layout Specification
 
-[English](../en/LAYOUT_SPEC.m]) | [Russian](../ru/LAYOUT_SPEC_RU.md)
+[Index](../README.md) | [English](../en/LAYOUT_SPEC.md) | [Russian](../ru/LAYOUT_SPEC_RU.md)
 
 This document collects the layout tags, attributes and options used by HobDrive UI layout files.
+
+## Table of Contents
+{:.no_toc}
+* TOC
+{:toc}
 
 ## Layout Contract
 - Inputs: XML-like layout files (tags: `ui`, `section`, `grid`, `item`, `union`, `stack-vertical`, `stack-horizontal`, etc.)
