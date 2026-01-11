@@ -118,8 +118,9 @@ Represents a widget in a grid or stack. Common attributes and usages:
 - `actions` — comma-separated list of actions available in sensor info dialog. Example: `actions="SetupOdometer"`.
 - `units` — visual placement of unit text: `units="below"`, `units="aside"` or `units="hidden"`.
 - `interval` — an update interval used for dynamic UI behaviour or internal timers (different from sensor `period`).
+- `decorator-XXX` - special syntax to enable decorators.
 
-Example usages found in `default-tripcomp.layout`:
+Example usages:
 ```xml
 <item id="FuelLevel" if='${Layout_ECUFuel != true}' inherit="_FuelIndicator, _EditAction" onclick="NewFueling"/>
 <item id="Odometer" if="${Layout_ECU_Odometer != true}" actions="SetupOdometer" size="large" inherit="_EditAction"/>
@@ -141,18 +142,264 @@ Examples:
 ## Special item types
 - type="button" — clickable button. Use `action`="invoke(NAME)" to call ECU/service action.
 - type="static" — static text block. E.g. `type="static" size="micro"`
-- gauge / chart / image decorators — declared either as `item` with nested decorators or in gauge/theme files; can accept decorators like `image`, and attributes `image-path`, `image-scale`, `image-width`, `image-height`, `image-rotate`.
+- gauge / chart / image decorators — declared either as `item` with nested decorators or in gauge/theme files; can accept decorators.
 
 ## Decorators and nested elements
-- `item` may contain nested decorators (per changelog). Example syntax:
+
+`item` may contain nested decorators. Example syntax:
+
 <item id="Speed">
   <image image-zorder="bottom" image-path="images/dashboard-svgrepo-com.svg" image-scale="0.5"/>
   <image image-zorder="bottom" image-path="images/arrow.png" image-scale="0.5"/>
 </item>
 
-- Common decorator attributes: `image-zorder`, `image-path`, `image-scale`, `image-width`, `image-height`, `image-rotate` (can contain dynamic expressions).
+### `image` decorator
 
-Other decorators exist for progress/tile/padding etc., and many can accept dynamic expressions such as `image-rotate='$${ Sensor_Value - 45 }'`.
+Attributes: `image-zorder`, `image-path`, `image-scale`, `image-width`, `image-height`, `image-rotate` (can contain dynamic expressions).
+
+Many attributes can accept dynamic expressions such as `image-rotate='$${ Sensor_Value - 45 }'`.
+
+### progress decorator
+
+```xml
+<item id="Speed" decorator-10="touch-progress"/>
+```
+
+This is a system decorator, used to draw dynamic line on press.
+
+### tile decorator
+
+```xml
+<item id="Speed" decorator-10="tile"/>
+```
+
+Draws a tile behind the gauge.
+
+
+### padding decorator
+
+Padding decorator is used to "pad" space in iitem.
+Values are for TOP, RIGHT, BOTTOM, LEFT.
+
+You can use percentage values.
+
+```xml
+<item id="Speed">
+    <padding padding="0 0 0 120"/>
+</item/>
+```
+
+### crop decorator
+
+Crop decorator cuts (hides) part of the previously rendered widget.
+
+```xml
+<item id="Test" border-opacity="1" type='roundbar' red-green="150,0">
+  <crop crop="10% 10% 10% 10%"/>
+</item>
+```
+
+### visibile / visibility decorator
+
+This decorator just enables/disables drawing in runtime. You can use dynamic $$ evaluation.
+
+```xml
+<item id="AT_R" visibility='$${Sensor_Value}'/>
+```
+### filter decorator
+
+The filter decorator is a powerful tool for applying visual effects and transformations to UI elements. It supports both draw effects (visual filters) and matrix transformations (geometric changes).
+
+#### Attributes
+
+- `effect` — semicolon-separated list of filter functions to apply. Each filter is a function call with parameters.
+- `mode` — controls when the filter is applied in the rendering pipeline:
+  - `before` — applies filter before rendering the target element, then renders the element normally
+  - `in` (default) — applies filter to the target element only
+  - `after` — renders the target element first, then applies filter
+- `interval` — optional; update interval in milliseconds for dynamic filter expressions (using `$${}` syntax)
+
+#### Draw Effects
+
+These filters modify the visual appearance without changing geometry. Multiple filters can be chained with semicolons.
+
+**blur(radiusX, radiusY)**
+- Applies Gaussian blur to the element
+- `radiusX` — horizontal blur radius in pixels
+- `radiusY` — vertical blur radius in pixels
+- Example: `effect="blur(2,2)"` — applies 2px blur in both directions
+
+**drop-shadow(dx, dy, sigmaX, sigmaY)**
+- Creates a drop shadow effect
+- `dx` — horizontal shadow offset in pixels
+- `dy` — vertical shadow offset in pixels
+- `sigmaX` — horizontal blur sigma
+- `sigmaY` — vertical blur sigma (optional, defaults to sigmaX if omitted)
+- Shadow color is black
+- Example: `effect="drop-shadow(5,5,3,3)"` — shadow offset 5px right and down with 3px blur
+
+**transparent(alpha)**
+- Adjusts element transparency
+- `alpha` — opacity reduction (0.0 = fully transparent, 1.0 = no change)
+- Example: `effect="transparent(0.5)"` — makes element 50% more transparent
+
+**dilate(radiusX, radiusY)**
+- Expands bright areas (morphological dilation)
+- `radiusX` — horizontal dilation radius in pixels
+- `radiusY` — vertical dilation radius in pixels
+- Example: `effect="dilate(2,2)"` — expands bright areas by 2px
+
+**erode(radiusX, radiusY)**
+- Shrinks bright areas (morphological erosion)
+- `radiusX` — horizontal erosion radius in pixels
+- `radiusY` — vertical erosion radius in pixels
+- Example: `effect="erode(2,2)"` — erodes bright areas by 2px
+
+**brightness(factor)**
+- Adjusts brightness of the element
+- `factor` — brightness multiplier (0.0 = black, 1.0 = original, >1.0 = brighter)
+- Example: `effect="brightness(1.5)"` — increases brightness by 50%
+
+**contrast(factor)**
+- Adjusts contrast of the element
+- `factor` — contrast multiplier (0.0 = gray, 1.0 = original, >1.0 = higher contrast)
+- Example: `effect="contrast(1.3)"` — increases contrast by 30%
+
+**invert()**
+- Inverts colors (negative effect)
+- No parameters
+- Example: `effect="invert()"` — creates color negative
+
+**sepia()**
+- Applies sepia tone (warm brownish tint)
+- No parameters
+- Example: `effect="sepia()"` — vintage photo effect
+
+**grayscale()**
+- Converts to grayscale (luminance-based)
+- No parameters
+- Uses standard luminance weights (R: 0.2126, G: 0.7152, B: 0.0722)
+- Example: `effect="grayscale()"` — black and white effect
+
+**saturate(amount)**
+- Adjusts color saturation
+- `amount` — saturation change (-1.0 = desaturate, 0.0 = no change, >0.0 = more saturated)
+- Example: `effect="saturate(0.5)"` — increases saturation by 50%
+- Example: `effect="saturate(-0.3)"` — reduces saturation by 30%
+
+**colorfilter(r, g, b)**
+- Tints the element with a specific color while preserving brightness
+- `r` — red component (0-255)
+- `g` — green component (0-255)
+- `b` — blue component (0-255)
+- Converts image to grayscale then applies color tint
+- Example: `effect="colorfilter(255,100,50)"` — orange tint
+
+**remove-black()**
+- Makes black pixels transparent (useful for removing black backgrounds)
+- No parameters
+- Alpha channel becomes proportional to pixel brightness
+- Example: `effect="remove-black()"` — removes black background from images
+
+#### Matrix Transformations
+
+**Important:** Matrix transformations (rotate, offset, zoom) modify geometry and should not be mixed with draw effects in the same filter. Use separate `<filter>` decorators if you need both.
+
+**rotate(angle, [pivotX, pivotY])**
+- Rotates the element
+- `angle` — rotation angle in degrees
+- `pivotX` — optional; horizontal pivot point (percentage or pixels, default: 50%)
+- `pivotY` — optional; vertical pivot point (percentage or pixels, default: 50%)
+- Example: `effect="rotate(45)"` — rotates 45° around center
+- Example: `effect="rotate(90,0%,0%)"` — rotates 90° around top-left corner
+- Dynamic example: `effect="rotate($${Sensor_Value})"` — rotates based on sensor value
+
+**offset(dx, dy)**
+- Translates (moves) the element
+- `dx` — horizontal offset (percentage or pixels)
+- `dy` — vertical offset (percentage or pixels)
+- Example: `effect="offset(10,20)"` — moves 10px right, 20px down
+- Example: `effect="offset(50%,0)"` — moves 50% of width to the right
+
+**zoom(scale)** or **zoom(scaleX, scaleY, [pivotX, pivotY])**
+- Scales the element
+- `scale` — uniform scale factor (1.0 = original size)
+- OR:
+- `scaleX` — horizontal scale factor
+- `scaleY` — vertical scale factor
+- `pivotX` — optional; horizontal scaling center (percentage or pixels)
+- `pivotY` — optional; vertical scaling center (percentage or pixels)
+- Example: `effect="zoom(1.5)"` — scales to 150% around center
+- Example: `effect="zoom(2,1)"` — doubles width only
+- Example: `effect="zoom(0.5,0.5,0%,0%)"` — scales to 50% from top-left corner
+
+#### Usage Examples
+
+Simple blur effect:
+```xml
+<item id="Speed">
+  <filter effect="blur(2,2)"/>
+</item>
+```
+
+Multiple chained effects:
+```xml
+<item id="Temperature">
+  <filter effect="grayscale();saturate(0.5);brightness(1.2)"/>
+</item>
+```
+
+Dynamic rotation based on sensor value:
+```xml
+<item id="Compass">
+  <filter effect="rotate($${Sensor_Value},50%,50%)" interval="100"/>
+</item>
+```
+
+Mode usage with multiple decorators:
+```xml
+<item id="Speed" type="chart" chart='line'>
+  <break/>
+  <image image-zorder="bottom" image-path="images/ui/arrow.png"/>
+  <filter effect="rotate($${180+Sensor_Value%360},50%,50%)" mode="in" interval="100"/>
+  <filter effect="blur(1,1)" mode="after"/>
+  <padding padding="0 0 0 120"/>
+</item>
+```
+
+Color tinting:
+```xml
+<item id="Warning">
+  <filter effect="colorfilter(255,0,0)"/>  <!-- Red tint -->
+</item>
+```
+
+#### Best Practices
+
+- Chain multiple draw effects in a single filter using semicolons for better performance
+- Don't mix matrix transformations with draw effects in the same `effect` attribute
+- Use `interval` attribute only when you have dynamic `$${}` expressions that need periodic updates
+- Use `mode="in"` (default) for most cases; use `mode="before"` or `mode="after"` for special layering needs
+- Pair `<break/>` decorator before filters when you want to apply effects only to subsequent decorators, not the base element
+
+### break decorator
+
+You can use break to abort overlaying of other decorators.
+Break means drawing pipeline starts from empty.
+
+In this example break is used to apply filters
+only to the image decorator. not to the original
+content of "Speed" gauge (value and chart).
+
+```xml
+<item id="Speed" type="chart" chart='line'>
+  <break/>
+  <image image-zorder="bottom" image-path="images/ui/arrow-circle-right.png" image-scale="0.6"/>
+  <filter effect="rotate($${180+Sensor_Value%360},50%,50%)" mode="in" interval="100"/>
+  <filter effect="blur(1,1)"/>
+  <padding padding="0 0 0 120"/>
+</item>
+```
 
 ## Layout-level attributes and features from changelog
 - `if` — conditional rendering for section or item. Can use sensor names, boolean flags like `PortraitLayout`, `LandscapeLayout`, or compound expressions.
