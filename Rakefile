@@ -12,4 +12,39 @@ end
 
 task :build do
     sh "bundle exec jekyll b"
+    Rake::Task[:relativize_urls].invoke
+end
+
+task :relativize_urls do
+  puts "Converting absolute URLs to relative..."
+  
+  Dir.glob("_site/**/*.html").each do |file|
+    content = File.read(file)
+    
+    # Calculate depth based on file path relative to _site
+    relative_path = file.sub('_site/', '')
+    depth = relative_path.split('/').size - 1
+    depth = 0 if depth < 0
+    prefix = depth > 0 ? ('../' * depth) : './'
+    
+    # Convert absolute internal paths to relative
+    modified = content.gsub(/(href|src)="\/([^"]*)"/) do
+      attr = $1
+      path = $2
+      
+      # Skip if it's a protocol-relative URL (starts with //)
+      next "#{attr}=\"/#{path}\"" if path.start_with?('/')
+      
+      # For root path
+      if path.empty?
+        "#{attr}=\"#{prefix.chomp('/')}\""
+      else
+        "#{attr}=\"#{prefix}#{path}\""
+      end
+    end
+    
+    File.write(file, modified) if modified != content
+  end
+  
+  puts "Done!"
 end

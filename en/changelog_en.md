@@ -1,3 +1,58 @@
+- v1.9.2 08/02/2026
+  - Added odometer (mileage) correction coefficient. Separate from speed - allows correcting mileage if needed,
+    to align it with the built-in odometer readings.
+  - Fixed DashKit screen operation.
+  - Improvements in other settings screens.
+  - In some cases offline license verification was not working - fixed.
+
+- v1.9.1 31/01/2026
+  - Fixed crashes when switching screens.
+  - Gear indicator can be configured to display Roman or Arabic numerals (screen settings).
+  - Added graphs and direction improvements to the GPS screen
+
+- v1.9.0 11/01/2026
+  - Accelerated rendering of UI elements (OpenGL renderer enabled by default on all platforms)
+  - Conditional element "if" is now supported in gauge descriptions
+  - DashB3: uses effects and filters to improve appearance
+  - Sensor values are rendered with outlines for better readability
+  - Text and description outline rendering is configurable, can be disabled in UI settings.
+  - Fixed button display in sensor details dialog
+
+- v1.8.20 04/01/2026
+  - Fixed error reset buttons
+  - Improvements in data and cloud management screen, settings for cloud upload frequency, deletion of old data
+
+- v1.8.19 02/01/2026
+  - Fixed Bluetooth connection.
+  - Fixed DashKit skin selection dialog
+  
+- v1.8.18 01/01/2026
+  - Improved UI settings and themes
+  - Added ability to select multiple background images in each theme
+  - Themes can be added via DashKits. BlueRain2 theme is available as an example.
+  - Fixed broken "All Sensors" screen, now you can view all sensor values at once.
+
+- v1.8.17.2 05/12/2025
+  - Automatically corrected missing translations in all languages.
+  - ECU: 
+    Opel VB X20DTH
+    Opel AstraJ A14NET+OBD CAN
+
+- v1.8.17 01/12/2025
+  - Test build via maui
+
+- v1.8.16 17/10/2025
+  - License verification issue from website - fixed.
+
+- v1.8.15 17/10/2025
+  - Experimental support for Dash Panels - ready-made skins and screens from the network.
+    "Dash Panels Settings" dialog
+
+- v1.8.12 03/10/2025
+  - Issue with overlapping error reset buttons
+  - Issue on dual-fuel mode - flow meter parameters were always taken from the primary fuel type (broken in v1.8.7)
+  - iOS: crashes when working with Bluetooth 4 adapters
+
 - v1.8.11 29/09/2025
   - Fixed calculation of driving efficiency
   - Additional fields in sensor settings, more descriptions.
