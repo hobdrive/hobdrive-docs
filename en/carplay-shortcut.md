@@ -11,6 +11,14 @@ This guide will help you set up automatic launching of the hobDrive app when you
 
 The iOS Shortcuts app allows you to create automation that triggers when specific events occur on your device. By setting up a CarPlay connection automation, you can ensure that hobDrive automatically starts whenever you connect to your car's CarPlay system, making your driving experience seamless and convenient.
 
+### Important Notes About iOS Behavior
+
+- **Phone must be unlocked**: iOS starts the application only if your phone is unlocked
+- **CarPlay and locked phone**: iOS may start the application if CarPlay is enabled, even with a locked phone
+- **Bluetooth/ELM connection**: Connection to Bluetooth/ELM adapter starts only if the phone screen is active
+
+These limitations are part of iOS security and privacy features. For the best experience, ensure your phone is unlocked when connecting to CarPlay.
+
 ### Requirements
 
 - iPhone running iOS 13.1 or later
@@ -26,8 +34,6 @@ Follow these step-by-step instructions to create the automation:
 
 Locate and tap the **Shortcuts** app on your iPhone home screen. The icon looks like two overlapping squares with rounded corners.
 
-![](images/shortcut-step01.png)
-
 If you can't find the Shortcuts app, you can download it from the App Store (it's free and made by Apple).
 
 ### Step 2: Navigate to Automation
@@ -36,13 +42,9 @@ If you can't find the Shortcuts app, you can download it from the App Store (it'
 2. If this is your first automation, you'll see a screen explaining what automations can do
 3. Tap the **Create Personal Automation** button (or the **+** button if you already have other automations)
 
-![](images/shortcut-step02.png)
-
 ### Step 3: Select CarPlay Trigger
 
 Scroll through the list of automation triggers and select **CarPlay**.
-
-![](images/shortcut-step03.png)
 
 This trigger will activate whenever your iPhone connects to or disconnects from a CarPlay system.
 
@@ -55,8 +57,6 @@ You'll see two options:
 
 Select **When Connecting** by tapping it. A checkmark will appear next to your selection.
 
-![](images/shortcut-step04.png)
-
 Tap **Next** in the top right corner to continue.
 
 ### Step 5: Add the Open App Action
@@ -67,15 +67,11 @@ Now you need to tell the automation what to do when CarPlay connects.
 2. In the search field, type "Open App"
 3. Select the **Open App** action from the results
 
-![](images/shortcut-step05.png)
-
 ### Step 6: Select hobDrive App
 
 1. Tap on the word **App** in the action block (it will appear as a blue link)
 2. Scroll through your installed apps or use the search field to find **hobDrive**
 3. Tap **hobDrive** to select it
-
-![](images/shortcut-step06.png)
 
 The action block should now read "Open hobDrive".
 
@@ -87,15 +83,11 @@ By default, iOS will ask for your confirmation before running the automation. To
 2. You'll see a summary screen with a toggle for **Ask Before Running**
 3. Turn **OFF** the "Ask Before Running" toggle
 
-![](images/shortcut-step07.png)
-
 A dialog will appear warning you that the automation will run without your confirmation. Tap **Don't Ask** to confirm.
 
 ### Step 8: Complete the Setup
 
 Tap **Done** in the top right corner to save your automation.
-
-![](images/shortcut-step08.png)
 
 Your automation is now active and will automatically launch hobDrive whenever you connect to CarPlay!
 
