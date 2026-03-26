@@ -14,6 +14,10 @@
 
 [Layout Format spec](en/LAYOUT_SPEC.md)
 
+## iOS Integration
+
+[Automatically Launch hobDrive on CarPlay with Shortcuts](en/carplay-shortcut.md)
+
 ## Questions
 
 [FAQs](en/faqs.md)

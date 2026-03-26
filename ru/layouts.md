@@ -97,7 +97,9 @@ https://hobdrive.userecho.com/knowledge-bases/4/articles/242-kak-perenesti-vse-n
 "EditSensorsLayout" - вход в режим редактирования сенсоров
 "CorrectionInformation" - информация по коррекции расхода с учетом торможения двигателем.
 "go(General)" - переход на экран с указанным именем
-"run(winamp trololo.mp3)" - запуск указанного приложения с командной строкой. На андроид системе - запуск указанного глобального действия (intent).
+"run(winamp trololo.mp3)" - запуск указанного приложения с командной строкой.
+"run(intent(android.intent.action.MEDIA_PLAY))" - На андроид системе - запуск указанного глобального действия (intent).
+"run(shell(ls))" - runs command via shell on android.
 ```
 
 Помимо "onclick" доступны также атрибуты "ondoubleclick" и "onhold" - соответственно действие при двойном клике, и при долгом нажатии.
