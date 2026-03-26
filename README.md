@@ -14,6 +14,14 @@
 
 [Layout Format spec](en/LAYOUT_SPEC.md)
 
+[Dynamic Expressions in Configuration Files](en/dynamic-expr.md)
+
+## Technical
+
+[Dynamic Expressions: Core Syntax](en/dynamic-expr-core.md)
+
+[ECUXML Format Specification](en/ecuxml_spec.md)
+
 ## iOS Integration
 
 [Automatically Launch hobDrive on CarPlay with Shortcuts](en/carplay-shortcut.md)

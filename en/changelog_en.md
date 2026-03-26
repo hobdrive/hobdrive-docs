@@ -1,3 +1,10 @@
+- v1.9.3 20/02/2026
+  - Added support for mirrored CarPlay screen on iOS.
+
+- v1.9.3 15/02/2026
+  - Various minor UI improvements.
+  - Sensor selection screen in settings is now more convenient, with search capability and display of currently selected sensor.
+  
 - v1.9.2 08/02/2026
   - Added odometer (mileage) correction coefficient. Separate from speed - allows correcting mileage if needed,
     to align it with the built-in odometer readings.
