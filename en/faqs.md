@@ -14,3 +14,7 @@ When unable to connect to the vehicle: check that it is OBD2 compatible. If your
 For USB adapters operating from mobile devices, a typical problem is lack of power.
 
 Bluetooth ELM adapters operating through USB-BT dongles often suffer from poor quality of the latter.
+
+### Hello! Where can I download the latest update?
+
+If you purchased from the website - through the app. Settings, version and updates. You can also enable the beta channel there. If RuStore - then through the RuStore beta channel: https://www.rustore.ru/catalog/app/hobdrivedemo.android?testingSubscription=beta
