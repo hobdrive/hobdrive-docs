@@ -15,6 +15,10 @@ task :build do
     Rake::Task[:relativize_urls].invoke
 end
 
+task :run_dev do
+    sh "bundle exec jekyll s"
+end
+
 task :relativize_urls do
   puts "Converting absolute URLs to relative..."
   

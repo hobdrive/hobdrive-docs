@@ -1,7 +1,10 @@
-- v1.9.3 20/02/2026
-  - Added support for mirrored CarPlay screen on iOS.
-
-- v1.9.3 15/02/2026
+- v1.9.4 14/03/2026
+  - First attempt at implementing Widgets for Android.
+  - Fixed black screen (zero brightness) on some head units.
+  - GPS sensors were not displayed (broken in 1.9.3).
+  - Refuelings and events were not shown or recorded in statistics (broken in 1.9.3).
+  - Reduced brightness of red flashing when connection error occurs.
+  - Support for duplicate CarPlay screen on iOS.
   - Various minor UI improvements.
   - Sensor selection screen in settings is now more convenient, with search capability and display of currently selected sensor.
   
