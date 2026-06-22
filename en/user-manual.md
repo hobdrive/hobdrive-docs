@@ -1,604 +1,606 @@
-[English](../README.md) | [Russian](../README-ru.md) 
+[English](../README.md) | [Russian](../README-ru.md)
 ![](../logo.png)
 [hobdrive.com](http://hobdrive.com/) | [support@hobdrive.com](mailto:support@hobdrive.com)
 
 # HobDrive User's Manual
 
-HobDrive is a software complex working with your vehicle via standard OBD-II adapter and giving you the functionality of a powerful trip computer on your Windows (Windows Phone 8 / WinCE / WinMobile), Android or Car PC (Linux/XP/Vista/7).
+HobDrive is an onboard computer and diagnostic platform for your vehicle. It works through an OBD-II adapter and the device's GPS / sensors. This version of the manual focuses on modern mobile platforms: Android and iOS, including CarPlay.
 
 ## Table of Contents
 {:.no_toc}
 * TOC
 {:toc}
 
-# HobDrive Features
+## Documentation Structure
 
-- Functional, flexible and powerful User Interface beats classic trip computer devices in ease of use and features.
-- Full integration into your multimedia car system.
-- A single information hub - no need for extra hardware devices, sensors or displays.
-- Unique analysis and statistic collection features.
+This manual is now the **overview layer**: it provides the basic setup flow and a mental model of the screens.
+
+Detailed technical topics were moved into separate knowledge base articles:
+
+- Connection, profiles, compatibility: [Ready-made vehicle profiles](profiles.md), [Problematic ELM327 adapters](bad-elms.md), [ABS/SRS and custom ECU diagnostics](custom-ecus.md).
+- Fuel economy and calibration: [Fuel consumption methods and coefficients](fuel-methods.md), [Fuel economy: questions and answers](fuel-questions.md), [Speed reading differences](speed-diff.md), [Voltage correction](voltage.md).
+- Screens and UI customization: [Layout design, skins, and sensor placement](layouts.md), [HobDrive Markup Language specification](LAYOUT_SPEC.md), [Dynamic expressions](dynamic-expr.md), [Dynamic expressions: core syntax](dynamic-expr-core.md).
+- Data, reports, support: [Backups and settings transfer](backups.md), [Trip statistics](statistics.md), [How to report a problem](problems.md), [Licensing](licensing.md).
+- iOS / CarPlay: [Automatic launch via Shortcuts](carplay-shortcut.md).
+
+If you are setting up HobDrive for the first time, read this manual from top to bottom and follow the links in the relevant sections when you need the deeper technical articles.
+
+## What HobDrive Does Today
+
+HobDrive combines the following in one application:
+
+- Live display of current vehicle and trip parameters.
+- ECU diagnostics, reading and clearing fault codes.
+- Fuel economy, refueling, ownership cost, and driving efficiency analytics.
+- Customizable screens, user sensors, themes, and DashKits.
+- Data backups and background cloud upload.
+- Extra modes: HUD, GPS graphs screen, acceleration screen, and engine hours.
+
+## Supported Platforms
+
+- Android: widgets, advanced UI settings, cloud sync, and DashKits.
+- iOS: Bluetooth LE and Wi-Fi adapter support, updated screens, and CarPlay mirroring.
+
+Note: older Windows / WinCE / WinMobile platforms and their instructions are no longer supported and are not covered in this manual.
+
+## Quick Start
+
+### 1. Connect the ELM327 Adapter
+
+Open: **Screens -> Settings -> ELM Connection Parameters**.
+
+Connection options:
+
+- **Bluetooth**: select the adapter from the list, or choose BTLE4. On Android/iOS the adapter usually needs to be paired in the system settings first.
+- **Wi-Fi**: connect to the adapter's Wi-Fi network and enter an address in the form `ip:port`.
+- **USB** (Android, if supported by the device and adapter): select the detected USB adapter.
+- **Simulator**: for GPS-based testing without a real vehicle.
+
+More about adapter quality and compatibility: [Problematic ELM327 adapters](bad-elms.md).
+
+### 2. Check the Connection Status
+
+In the status indicator:
+
+- **Green**: connection to the adapter and vehicle is active.
+- **Yellow**: the adapter is found and responding, but there is a problem communicating with the vehicle.
+- **Red**: problem communicating with the adapter.
+
+This makes troubleshooting faster because you can see whether the issue is on the adapter side or the vehicle side.
+
+### 3. Select the Vehicle Profile
+
+Open: **Settings -> Vehicle Parameters**.
+
+Recommended order:
+
+1. Try **Load from Template**.
+2. If no template exists, configure the profile manually.
+3. When the setup works, share the profile through **Share**.
+
+More: [Ready-made vehicle profiles](profiles.md), [ABS/SRS and custom ECU diagnostics](custom-ecus.md).
 
 ## Interface Basics
 
-_Speed Navigation Bar_
-
-_Screen title_
-
-![](images/image01.png)
-
-_ELM Connection status_
-
-_HUD Mode activation_
-
-_Trips and tracking intervals_
-
-_Extra screens and settings_
-
-HobDrive is controlled by tapping the touch-screen elements and screen controls or by touching and scrolling (panning) the elements for browsing and accessing the information outside of the current screen.
-
-You may change the four main screens with different actions:
-
-- Flicking (pressing, holding, panning)
-- Tapping the respective segment of the speed navigation bar
-- Using joystick keys (if available)
-
-Tapping on the "Screen" tap button gives you access to the extra controls:
+HobDrive has a set of main screens and additional screens.
 
 ![](images/image02.png)
 
-These are:
+Navigation works through:
 
-- Temporary hide HobDrive
-- Exit HobDrive
-- Entering the "Settings" tab
-- Selecting and activation of extra screens
+- swipes between screens,
+- the top quick navigation bar,
+- the **Screens** menu.
 
-## Before Start
+A long press on a sensor opens extended information about its calculation and source data.
 
-### Connect Your Vehicle
-
-The very first thing you must do after installing hobDrive is setting it up to find and link with your OBD-II ELM adapter and vehicle.
-
-During the first run hobDrive will ask you to choose ELM adapter's serial port or Bluetooth address (in case of Bluetooth ELM).
-
-You may always open this screen later by going Screens ➧ Settings ➧ OBD Port Settings.
+Opening the **Screens** panel gives access to additional controls:
 
 ![](images/image03.png)
 
-_Restart Bluetooth scan_
+- Temporarily hide the app (Hide)
+# HobDrive User's Manual
 
-**ELM327-USB**
+HobDrive is a trip computer and vehicle diagnostics platform that works through an OBD-II adapter and the device's GPS/sensors. This version of the manual focuses on modern mobile platforms: Android and iOS, including CarPlay.
 
-For USB-ELM OBD-II adapter you have to find and select the COM port number it is attached to. Please notice Android now does not support this.
+## Settings Screen
 
-**ELM327-Bluetooth**
+Key sections:
 
-For Bluetooth - ELM adapter you have to choose its name from the list. PIN code screen is used for entering PIN code for adapter link (found in adapter documentation). On some WinCE devices you have to add adapter to "trusted" list, and enter PIN code in system bluetooth dialog.
+- ELM connection parameters
+## How This Documentation Is Organized
 
-On Android and Windows Phone devices you should always first pair your ELM in system bluetooth dialog, and only then choose it in hobdrive.
+This manual now serves as an **overview layer**: it explains the basic setup flow and the purpose of the main screens.
 
-**ELM327-WiFi**
+More detailed technical material has been moved into separate knowledge base articles:
 
-To connect ELM327 WiFi adapter you should first setup WiFi network with your adapter (read adapter's manual for that). Some devices require manual TCP/IP configuration for that. Next, you should choose/enter an IP address of your adapter:
+- Connection, profiles, compatibility: [Ready-made vehicle profiles](profiles.md), [Problematic ELM327 adapters](bad-elms.md), [Diagnostics for ABS/SRS and specific ECUs](custom-ecus.md).
+- Consumption and calibration: [Fuel calculation methods and coefficients](fuel-methods.md), [Fuel consumption: questions and answers](fuel-questions.md), [Speed discrepancy](speed-diff.md), [Voltage correction](voltage.md).
+- Screens and interface setup: [Layouts, skins, and sensor placement](layouts.md), [Layout language specification](LAYOUT_SPEC.md), [Dynamic expressions](dynamic-expr.md), [Dynamic expressions: core syntax](dynamic-expr-core.md).
+- Data, reports, support: [Backups and settings migration](backups.md), [Trip statistics](statistics.md), [How to report a problem](problems.md), [Licensing](licensing.md).
+- iOS/CarPlay: [Automated launch via Shortcuts](carplay-shortcut.md).
 
-**Android/Windows Phone:** 192.168.0.10:35000
+If you are setting up HobDrive for the first time, read this manual top to bottom and use the linked articles for deeper detail where needed.
 
-**Windows CE:** tcp://192.168.0.10:35000
+## What HobDrive Does Today
+- System settings
+HobDrive combines the following in one app:
 
-After you choose the correct device to connect and press the OK button, the status should change to Yellow (the hobDrive link information should show the status string INIT - initialization), followed by Green OK signal indicating successful hobDrive connection.
+- Real-time display of current vehicle and trip parameters.
+- ECU diagnostics, reading and clearing error codes.
+- Fuel consumption, refueling, cost of ownership, and driving efficiency analysis.
+- Customizable screens, user sensors, themes, and DashKits.
+- Data backups and background cloud uploads.
+- Extra modes such as HUD, GPS charts, acceleration screen, and engine hours.
 
-Red indicator and ERROR message means you have adapter or car connection problems. See the Typical Issues section of the Manual.
+## Supported Platforms
 
-Bluetooth "fail" status may mean that your device does not support full Bluetooth stack required by hobDrive, or that you did not enable BT stack (you need to enable it manually in the system manager).
+- Android: widgets, advanced interface settings, cloud sync, and DashKits.
+- iOS: Bluetooth LE and Wi-Fi adapter support, updated screens, and CarPlay mirror mode.
 
-Some devices with widcomm stack require you to link the smartphone/navigator to the ELM adapter prior to linking hobDrive to the ELM adapter from the hobDrive configuration dialog.
+Note: older Windows/WinCE/WinMobile platforms and their related instructions are no longer supported and are not covered in this manual.
 
-The additional parameter "ELM Connection Delay" is used for problem ELM adapters which can not operate at high speeds and often "break off" the connection. Please find optimal link interruption timing.
+## Quick Start
 
-### Settings Screen
+### 1. Connect Your ELM327 Adapter
 
-After successful connection you may configure extra parameters by activating the Settings screen. This gives you the access to the following screens: "OBD Port Settings", "Vehicle Settings", "System Settings", "Network", "Theme", "Language", "Units", "About".
+Open: **Screens -> Settings -> ELM Connection Settings**.
 
-### Vehicle Settings Screen
+Connection options:
 
-![](images/image04.png)
+- **Bluetooth**: select the adapter from the list, or choose BTLE4. On Android/iOS the adapter usually needs to be paired in system settings first.
+- **Wi-Fi**: connect to the adapter's Wi-Fi network and enter the address in `ip:port` format.
+- **USB** (Android, if supported by the device and adapter): select the detected USB adapter.
+- **Simulator**: for GPS-based testing without a real car.
 
-This screen allows you to choose a specific type of vehicle to work with.
+For adapter quality and compatibility details, see [Problematic ELM327 adapters](bad-elms.md).
 
-- **Name:** Name of your vehicle's profile.
-- **Copy, Delete**: Commands to clone, rename or remove the current profile. You can't remove the last profile.
-- **Load from Template**: Select one of the ready-made and tested profiles by vehicle models.
-- **Share**: Upload your current profile to our website (after processing it will be available to other users)
-- **Vehicle Type**: Type of the vehicle and link parameters.
-- **Standard -** suits fine for majority OBD2 vehicles. For some manufacturers, hobDrive supports special connection modes. Some models (like Toyota, Ford) offer more sensors in this mode. Some models can only work with their specific profile (like VAZ Yanvar, Mikas, Bosch ECU, Nissan Custom, etc.)
-- **Init String template, Init String**: These fields allow to enter extra OBD parameters for setting up the adapter-car link. Template list includes standard Init commands for right-hand drive cars and for some partially OBD2 compatible vehicles (Like Japan Domestic Market, Asia market). For the majority of OBD2 cars this field can be left blank.
-- **Fuel Consumption:** method used for fuel consumption calculations:
+### 2. Check Connection Status
 
-- **MAF Sensor:** This is the default case, suitable for most **gasoline** vehicles. Fuel calculation is done via MAF (Mass Air Flow) sensor**.**
-- **MAP Sensor:** Fuel calculation is done using MAP (Manifold Absolute Pressure) sensor. This method requires calibration (see Vehicle calibration)
-- **Injector Sensor:** Fuel calculation is based on a injector timing sensor, available in many Toyota and toyota-derived vehicles (scion, lexus, etc). This method requires calibration (see Vehicle calibration).
-- **EngineLoad sensor:** Fuel calculation is based on engine load sensor. Provides rough approximation, used mainly for **diesel** engines. This method requires calibration (see Vehicle calibration).
-- **Built-in sensor**: Fuel calculation based on the vehicle's internal hourly consumption sensor (present, for example, in vehicles with Yanvar, Mikas ECU).
+In the connection indicator:
 
-If you are unsure which method is best for your vehicle, start one-by-one from the top of the list and monitor the "Liters per Hour" sensor in out-of-gear mode.
+- **Green**: the adapter and vehicle link is active.
+- **Yellow**: the adapter was found and is responding, but there is a problem communicating with the vehicle.
+- **Red**: a problem with the adapter connection.
 
-If you own Toyota car and «**Injector Sensor**» option does show fuel consumption, this method is preferable.
+This distinction is useful for quick diagnosis because it shows where the issue actually is.
 
-For diesel vehicles, only the **Engine Load** method calculates adequate readings.
+### 3. Choose a Vehicle Profile
 
-Each option has its own calibration parameters. Empty fields mean default values, which must be calibrated for more precise calculation (see Vehicle calibration section for details).
+Open: **Settings -> Vehicle Settings**.
 
-All other parameters are optional and could be used to tuneup the hobDrive operation:
+Recommended order:
 
-- **Weight:** Total vehicle weight in kilograms. Used only in estimated power and efficiency calculations. Default value - 1300kg.
-- **Tank Volume**: Used when calculating estimated fuel level in tank. Always specified in liters. Default 40L.
+1. Try **Load from Template**.
+2. If there is no suitable template, configure the profile manually.
+3. If the profile works well, share it through **Share**.
 
-- **Speed correction factor**: Allows to tuneup speed and odometer values. Required if your car equipped with nonstandard tires, or if your speed counter is incorrect. Vehicle odometer could give incorrect readings, too. If possible, use GPS for speed and mileage calculation.  
-    Default value is "1".
+See also: [Ready-made vehicle profiles](profiles.md), [Diagnostics for ABS/SRS and specific ECUs](custom-ecus.md).
 
-**Example:** if speedometer shows 57, but you're actually going 60, then the Speed Correction parameter should be set to 1.05. But the odometer can also be wrong (for example, thinking you're driving when you're actually spinning in a snowbank). If possible, it's better to measure mileage by GPS. Speed accuracy can also be checked via GPS.
+## Interface Basics
 
-Discrepancies with reality within 1% are acceptable, but discrepancies up to 10% are possible. This can happen if you have non-standard tires, for example. HobDrive cannot count mileage and consumption when not connected to the car. If HobDrive starts with a delay, or there are frequent connection resets (due to hardware problems, for example), then discrepancies in odometer readings will accumulate.
+The app has a set of main screens and additional screens.
 
-This practically does not affect statistics, since with each new refueling you synchronize the readings.
-- **Maximum idle speed**: Speed value for vehicle in idling mode or in traffic jam.  
-    Default value is "5" km\\h (3 mph).
-- **Hot engine temperature**: Temperature, when engine is considered "warmed-up". Used in mileage sensors for calculation of warmup price and MPG on warmed up engine.  
-    Default value "60°C" (140 F).
-- **Trip autoreset interval**: The time period after which turning on the car would mean a new trip and the reset of the hobDrive's "Auto-trip" calculation interval.  
-    Default value - "600 sec" (10 minutes).
-- **Trim Fuel Economy on engine conditions**: You can enable more precise calculation of consumed fuel by using the information on the "engine braking" status. In this state, external conditions (the sharp slowdown, downshifting, chop deceleration) force the car ECU to cut off fuel supply to the engine. If such state occurs, the sensor for "Fuel per hour" consumption will be switched to "0".
+![](images/image02.png)
 
-You can find out the volume of fuel corrected in this way at any time by touching the "fuel per hour" sensor.
+Navigation is done by:
+- **Copy / Delete**: commands to clone the current profile, rename it, or remove it. The last profile cannot be deleted.
+- swiping between screens,
+- using the top navigation bar,
+- using the **Screens** menu.
+- **Share**: upload your current profile to our website. After processing, it will be available to other users.
+Long-pressing a sensor opens extended information about its calculation and input data.
+- **Init string template / Init string**: lets you specify extra ELM commands to configure the adapter-vehicle link. The template list contains typical initialization commands for right-hand-drive cars and for some partially OBD2-compatible vehicles. For most OBD2 vehicles this field can stay empty.
+Opening the **Screens** tab gives access to extra controls:
+**Fuel calculation method:**
+![](images/image03.png)
+Several fuel calculation methods are available. If you are not sure which one your vehicle supports, try them one by one starting from the first and watch the **Fuel per Hour** sensor at idle.
+- Temporarily hide the app
+- Exit the app
+- Open the **Settings** tab
+- Choose and activate extra screens
+- **MAF Sensor**: default for most gasoline vehicles. Fuel is calculated from the MAF (Mass Air Flow) sensor.
+## Settings Screen
+- **Injector Sensor**: fuel is calculated from the injector pulse sensor, available on many Toyota and Toyota-derived vehicles. This method requires calibration.
+Key sections:
+If you own a Toyota and the **Injector Sensor** method shows fuel consumption, it is the preferred one. For diesel vehicles, only **Engine Load** produces reasonable readings.
+- ELM connection settings
+- Vehicle settings
+- System settings
+- Sensor layout settings
+- Network / Theme / Language / Units / About
+Each method has its own calibration parameters. Empty fields mean default values, but for more accurate results they should be calibrated. See the calibration section below.
+### Vehicle Settings
+**Correction and calibration parameters:**
+On this screen you can configure the vehicle type and connection parameters. If there is a ready-made profile for your vehicle, use **Load from Template** first. Only if no template exists should you configure the parameters manually.
+- **Speed correction**: adjusts speed and mileage readings. Use it if your tires are non-standard or the speedometer is inaccurate. By default the value is `1`.
+See also: [Ready-made vehicle profiles](profiles.md).
+**Driving and engine operation parameters:**
+**Main profile parameters:**
+- **Maximum idle speed**: speed at which the car is considered stopped or in traffic. Default is `5 km/h`.
+- **Name**: the name of your vehicle profile.
+- **Copy / Delete**: commands that let you clone the current profile, rename it, or delete it. The last profile cannot be deleted.
+- **Load from Template**: choose one of the ready-made and tested vehicle profiles.
+- **Share**: upload your current profile to our website; after processing it will be available to other users.
+- **Type**: the vehicle class and connection mode used with the ELM adapter. **Standard** is suitable for most OBD2 vehicles. For some manufacturers HobDrive supports special connection modes. Some models, such as Toyota or Ford, provide more sensors in that mode. Some models can work only with their specific profile, such as VAZ Yanvar, Mikas, Bosch ECU, Nissan Custom, and others.
+- **Init string template / Init string**: extra ELM commands used to tune the adapter-to-vehicle connection. The template list includes typical initialization commands for right-hand-drive cars and some partially OBD2-compatible vehicles. For most OBD2-compatible cars this field can remain empty.
+- **Trip reset interval**: number of seconds after which turning the ignition on again counts as a new trip and resets the Auto-Trip interval. Default is `600 s` (10 minutes).
+**Fuel calculation method:**
+**Precision correction options:**
+Several fuel calculation methods are available. If you are unsure which one your vehicle supports, try them in order from the top of the list and watch the **fuel per hour** sensor at idle.
+- **Fuel correction on engine braking**: improves fuel consumption calculation using engine-braking status. In this state the ECU stops fuel delivery to the cylinders. Default is off. Warning: on some vehicles this status is not read correctly.
+- **MAF Sensor**: the default choice for most gasoline vehicles. Fuel is calculated from the MAF (Mass Air Flow) sensor.
+- **MAP Sensor**: fuel is calculated from the MAP (Manifold Absolute Pressure) sensor. Requires calibration.
+- **Injector Sensor**: fuel is calculated from the injector pulse sensor available in many Toyota and Toyota-derived vehicles. Requires calibration.
+- **Engine Load Sensor**: fuel is calculated from engine load. This is a rough approximation used mainly for diesel vehicles. Requires calibration.
+- **Built-in Sensor**: fuel is calculated from the vehicle's built-in hourly consumption sensor, present for example in some Yanvar and Mikas ECUs.
+- **Fuel correction by Lambda**: HobDrive uses Lambda, the air-fuel ratio. This can improve fuel consumption accuracy. It is relevant for MAF/MAP methods. Default is off.
+If you own a Toyota and the **Injector Sensor** option shows fuel consumption, that method is preferable. For diesel vehicles, only the **Engine Load** method gives adequate readings.
+**Display parameters:**
+Each method has its own calibration parameters.
+- **Max coolant temperature**: temperature after which HobDrive shows an audio and visual overheating warning. Default is `95 C`.
+**Correction and calibration parameters:**
 
-_Attention:_ on some vehicles this state may be read incorrectly; you will have to confirm the correct operation of the sensor manually.
+- **Speed correction**: adjusts speed and mileage readings. The mileage is calculated from speed, so this also affects distance. Use this if you have non-standard tires or if the speedometer is inaccurate. Default value is `1`.
+- **Odometer correction**: a separate coefficient used to align mileage with the dashboard odometer. This lets you correct distance independently from speed. Default value is `1`.
+- **Tank volume**: used to estimate fuel level in the tank. Always specified in liters. Default value is `40` liters.
+- **Weight**: total vehicle weight in kilograms. Used only in estimated power and efficiency calculations. Default value is `1300` kg.
 
-Default setting is off.
+**Driving and engine behavior parameters:**
 
-- **Trim Fuel Economy by LTFT value**: HobDrive uses the LTFT (long term fuel trim) value to correct the fuel consumption rate. Can be used only on certain cars equipped with MAF/MAP methods. Can be used on Toyota Prius and similar cars to correct bio-ethanol fuel consumption.
+- **Maximum idle speed**: the speed at which the car is considered stopped or in traffic. Default value is `5 km/h`.
+- **Warm engine temperature**: the temperature at which the engine is considered warmed up. Used in warm engine mileage and fuel readings. Default value is `60°C`.
+- **Trip reset interval**: the time period in seconds after which ignition on is treated as a new trip and the Auto Trip interval is reset. Default value is `600` seconds.
 
-Default setting is off.
+**Precise fuel correction parameters:**
 
-- **Trim Fuel Economy by Lambda value:** HobDrive uses Lambda value - Air-Fuel ratio for the car. The value may differ from the benchmark AFR. Setting the parameter may improve the precision of fuel consumption calculations. Can be used with MAF/MAP methods.
+- **Engine braking fuel correction**: enables more accurate fuel consumption calculation using engine braking state. In that state the ECU stops fuel injection into the cylinders. Default is off. _Attention_: not every vehicle reports this state correctly.
+- **LTFT fuel correction**: HobDrive uses LTFT (long-term fuel trim) to correct fuel consumption. This can be used on some vehicles with MAF/MAP methods and on Toyota Prius for bio-ethanol adjustments. Default is off.
+- **Lambda fuel correction**: HobDrive uses the Lambda value, or air-fuel ratio, to improve consumption accuracy. This is relevant for MAF/MAP methods. Default is off.
+- Configuration of sensor count and display parameters for screens.
+**Display parameters:**
+- Gear indicator style selection (Roman or Arabic numerals).
+- **Max antifreeze temperature**: the temperature above which HobDrive will issue an audio and visual overheating warning. Default is `95°C`.
+- **Max fuel trim**: the maximum long-term fuel trim value above which HobDrive will issue a warning about mixture inefficiency. Default is `11%`.
 
-Default setting is off.
+**Calibration tip:** if trip statistics consistently differ from refueling-based consumption, first align distance readings (speed/odometer), then adjust the fuel coefficients.
 
-- **Idle Speed (Instant consumption):** The speed considered as idling mode for calculation of instant and short-term consumption. Evens out the readings of respective sensors.
+See also: [Speed discrepancy](speed-diff.md).
 
-Default setting is off.
+### Sensor and Screen Settings
+- multiple background images within one theme,
+Current capabilities include:
 
-- **Reset Instant consumption On Idle:** If set, instant and short-term consumption values will be zeroed on every stop/start of the car. Provides more precise estimates on instant consumption for acceleration/deceleration.
-- **Max Antifreeze Temperature**: Temperature value after which hobDrive will issue an audio and visual overheating warning. Default - 95 degrees.
-- **Max Fuel Correction**: Maximum value of the long-term fuel trim parameter, after which hobDrive will issue a warning about mixture inefficiency. Default - 11%.
+- A convenient sensor picker with search and current selection display.
+- Setting the number of sensors and display parameters per screen.
+- Reordering the main screens and selecting screens that should always stay active.
+- Setting the gear indicator style, either Roman or Arabic numerals.
+- Showing or hiding date and time.
 
-### System Settings Screen
+### Appearance
 
-This screen allows to change system hobDrive options. Touch any option label to get a detailed explanation of what this option does.
+Supported options include:
 
-Any change requires restart of the hobDrive.
+- light and dark themes,
+- multiple background images in a single theme,
+- advanced readability controls such as text/value outlines that can be turned off.
 
-#### Version and Updates Tab
+## Main and Extra Screens
 
-Setting up automatic software update options.
+### Main Readings
 
-If on, hobDrive will check for updates once a week (depending on the license). You may disable this and perform only manual checks.
-
-When "Beta Channel" option is enabled, the program will check for the presence of beta versions and offer to update to them. Updating to beta versions is recommended only for experienced users.
-
-#### Theme Tab
-
-Visual theme selection screen.
-
+This is the screen with current vehicle state while driving. All sensors are read sequentially, and reading speed depends on the performance of the ELM adapter and device. A 1-2 second delay in readings may be normal.
+- **Acceleration**: instantaneous acceleration in meters per second squared, showing how hard the vehicle is speeding up or slowing down.
+![](images/image02.png)
+- **Fuel level**: estimated fuel level in the tank. Initial calibration is required; see the Fuel Details screen.
+**Main sensors:**
 ![](images/image05.png)
-
-Themes are split into groups for day and night driving. Day/night switching is automatic, and pre-defined (by default - 7am and 8pm).
-
-Light themes are preferable for bright sunny day and reduce light glares, also improving the readability of the screen.
-
-Dark themes are better to use at night.
-
-During long night rides it is recommended to enable HUD mode with a dark theme, since in this mode the brightness is minimal and your eyes are better adopted to road conditions.
-
-On changing the theme a small hobDrive delay is possible.
-
-#### Language Tab
-
-In this section you may choose the interface language.
-
-When changing, a small delay is possible.
-
-Note: On Android systems, the language is determined automatically.
-
-#### Units Tab
-
-Here you may choose to work either with European or US imperial units.
-
-## HobDrive Usage
-
-**Attention! A vehicle is a source of increased danger.** Be careful and do not get distracted while driving by working with the program and detailed data analysis. We are not responsible for any accidents or injuries caused by using this program.
-
-All accumulated data in the program is saved - you can always view it in detail after the trip, after stopping.
-
-HobDrive, in addition to displaying data, constantly monitors the engine condition and warns of possible malfunctions. When a problem occurs, you will hear a warning sound signal and visual indicator. See the "Diagnostics" section for a more detailed description.
-
-### General Screen
-
-![](images/image06.jpeg)
-
-Screen with common vehicle sensors.
-
-All sensors are read sequentially, reading speed depends on the performance of your ELM adapter and target device. Delay of 1-2 seconds is often normal.
-
-By clicking on the status popup panel (circle at bottom left), you will see:
+- **Speed**: the current vehicle speed. The readings come from the vehicle sensors and should normally match the speedometer. They may differ from GPS speed. For correction, see the calibration section.
+- **Acceleration**: instant acceleration in meters per second squared, showing how hard the car is accelerating or slowing down.
+- **RPM**: current engine speed.
+- **Fuel level**: estimated fuel level in the tank. Initial calibration is required, see the Fuel Details screen.
+- **Fuel economy**: fuel economy in liters per 100 km for the current trip. This is the main vehicle efficiency metric.
+- **Voltage**: the vehicle electrical system voltage. This can be used to judge alternator performance or battery discharge.
+- **Antifreeze temperature**: current coolant and engine temperature. This is the main parameter used to judge engine warm-up.
+- **Intake temperature**: air temperature at the intake. Usually close to ambient temperature.
+- **Ambient temperature**: outside air temperature. May be unavailable on some vehicles.
+- **Fuel per hour**: instant fuel consumption per unit of time, in liters. Typical values at idle are 0.5 to 1.5 liters per hour depending on the engine. This lets you monitor the engine operating mode and the effect of extra loads such as air conditioning.
+Sensors use the most appropriate formatting for graphical display. On sensors with background graphics, such as speed, you can also see the current minimum and maximum values reached.
+- **Fuel economy**: average trip fuel economy for the selected period. This is the main overall efficiency metric.
+**Status panel controls:**
+- **Distance run**: total distance for the trip. See the calibration section if it differs from the dashboard odometer.
+By tapping the status popup panel in the lower-left corner, you will see:
 
 - Detailed OBD2 and GPS connection status.
-- "Reconnect" button - for forced connection attempt
-- "Fast Reading Mode" option. When this option is enabled, hobDrive disables calculation of derived data (consumption, mileage, etc.) and updates only the data visible on the current screen at maximum speed. The mode can be used for diagnostics when sensor polling speed is important.
+- A **Reconnect** button for forcing a new connection attempt.
+- A **Fast Reading Mode** option that disables calculated data and focuses on reading visible data at maximum speed, useful for diagnostics.
 
-All OBD2 sensor values are transferred from ECU (Engine Control Unit) to the hobDrive. They may not be absolutely correct, some may even be entirely incorrect. This is not hobDrive's limitation but rather particular features of your vehicle's ECU.
+### Trip Computer
 
-Different hobDrive sensors have different update interval. For instance RPM updated most often, while antifreeze temperature sensor normally updated once every 10 seconds.
+This screen shows the main values for the current trip or the selected time interval, letting you evaluate both overall efficiency and instantaneous consumption values.
+- **Week**: accumulated values for the current week, reset at Sunday midnight.
+![](images/image05.png)
+- **Fill up**: values for the current refueling period. HobDrive resets this interval when you enter a new fueling record.
+**Main metrics:**
 
-Detailed sensors description:
+- **Trip Time**: time spent in the vehicle with ignition on.
+- **Idle Time**: time spent in traffic, at lights, or otherwise stopped. Very slow movement, under 5 km/h by default, is also treated as idling.
+- **Fuel per hour**: instantaneous fuel consumption per unit of time, in liters. Typical idle values are 0.5-1.5 liters per hour. This helps monitor engine state and the effect of extra loads such as air conditioning.
+- **Instant fuel economy**: fuel economy for the last few seconds. Useful for observing efficiency changes while driving.
+- **Fuel economy**: average consumption for the current trip or selected interval, in liters per 100 km. This is the main measure of overall vehicle efficiency.
+- **Short term fuel economy**: fuel economy over the last few minutes. Useful for short-term driving analysis.
+- **Distance Run**: total distance for the trip or selected interval. See the calibration section if it differs from the dashboard odometer.
+- **Fuel Consumed**: total fuel used during the selected interval, in liters.
 
-- **Speed:** Current vehicle's speed. The readings are taken from the car sensors and normally equal to your speed meter readings. The reading could differ from the real GPS-measured speed due to vehicle errors. For correction of speed meter readings please see Vehicle calibration section.
-- **Acceleration:** instant acceleration, shows how fast you are gaining speed or slowing down. Shown in meters per square second.
-- **RPM:** Current RPM of vehicle engine.
-- **Fuel level:** Estimated fuel level in the tank. Calibration is required prior to using the sensor. See .
-- **Fuel economy:** Fuel economy in liters per 100km or in Miles Per Gallon. Calculated for current trip or for a given time interval (see the Trip Computer screen). This is the key parameter defining the efficiency of your vehicle.
-- **Current:** Voltage of the vehicle systems. Can be used to assess the performance of the generator or battery discharge level. May differ from the actual battery voltage, because in fact shows the OBD-II connector voltage.
-- **Antifreeze temperature:** Current antifreeze (and engine) temperature. The key parameter for assessing engine warm-up level.
-- **Intake temperature:** Air temperature at the combustion chamber inlet. Usually close to ambient temperature but may differ to either side depending on the mode of operation.
-- **Ambient temperature:** Ambient air temperature. Could be unavailable on some of vehicles.
-
-Various sensors use the most appropriate formatting for graphical display of their status. On sensors with background graphics (like speed), you can see a couple of small labels - these are the current minimum and maximum achieved values.
-
-### Trip Computer Screen
-
-![](images/image07.jpeg)
-
-The screen gives you the key values on your current trip or other selected time interval, enabling evaluation of overall trip efficiency and cost, as well as instant consumption values. Most of the parameters are displayed for the currently selected time interval (current trip by default).
-
-- **Trip Time:** Time spent in vehicle with ignition on.
-- **Idle Time:** Time in traffic jams, at traffic light, etc. Very slow moving (less than 5 km/h by default) is also treated as idling.
-- **Fuel per hour:** Instant fuel consumption per time unit. Common values for out-of-gear engine is 0.5 - 1.5 liters per hour depending on the engine. This parameter allows to monitor the engine operation mode and the impact of extra load (such as air conditioning) on fuel consumption.
-- **Instant fuel economy:** MPG for the last few seconds. Helps in assessment of vehicle fuel efficiency dynamics. May be very different from the stated fuel efficiency of the vehicle.
-- **Fuel economy:** Average trip (selected period) MPG. This is a key parameter showing overall performance and fuel efficiency of your car. Displayed in liters per 100 km. Calculated as (fuel consumed) % (distance passed) \* 100.
-- **Short term fuel economy:** fuel efficiency for the last few minutes. Provides an option to track the efficiency of your driving short-term. May differ from the total consumption readings depending on driving mode over the past few minutes.
-- **Antifreeze temperature:** As one of most important readings, this value is replicated from the Main screen.
-- **Distance Run:** Total mileage for the trip (the current time period analyzed). See the Vehicle calibration for information on setting this parameter (if different from values shown on integrated odometer).
-- **Fuel Consumed:** Total amount of fuel consumed on current trip (selected period), in liters.
-
-On pressing the "Trip" tab hobDrive gives you a selection of possible tracking intervals. After the new selection all sensors will change their values to reflect the data stored for the new interval.
-
+Tap the **Trip** tab to choose from the available tracking intervals. When a new interval is selected, all values update to reflect the stored data for that interval.
+- fuel consumed while idling,
 ![](images/image08.png)
-
+- cost of idle time,
 Available trip intervals:
-
-- **Auto Trip:** Current trip. Selected automatically as soon as minimum interval between ignition off/on is reached (10 minutes by default).
-- **Day:** Aggregated data for today. Zeroed at midnight; helps to assess daily consumption.
-- **Week:** Aggregated data for current week. Zeroed at Sunday midnight; helps to assess weekly consumption.
-- **Month:** Aggregated data for current month.
-- **All time:** Total aggregated data.
-- **Fill up:** Data for current fillup; hobDrive resets this as soon as you enter a new fueling record by pressing the "New fillup" button. See Fuel Details screen for more details on fuel tracking.
-- **Trip A, Trip B:** Data collected for two manually entered trips. Allows you to track some custom trips.
-
-Manual reset is possible for values of "Auto Trip" and «Trip A, Trip B" modes.
-
-### Fuel Consumption Details Screen
-
-![](images/image09.jpeg)
-
-This screen gives you detailed information on fuel consumption.
-
-Displayed values include:
-
-- Fuel consumed in idling (jams, stops),
-- Fuel economy excluding idling (jams, stops)
-- Cost of jams and idling
-- Cost of fuel consumed for the trip
-- Fuel consumption for engine warm-up (to 60 degrees)
-- Fuel consumption on warmed-up engine
-- Gasoline cost per kilometer
-
+- fuel used for engine warm-up,
+- **Auto Trip**: current trip. Selected automatically once the minimum ignition-off/ignition-on interval is reached, 10 minutes by default.
+- **Day**: aggregated data for today. Reset at midnight.
+- **Week**: aggregated data for the current week. Reset at Sunday midnight.
+- **Month**: aggregated data for the current month.
+- **All time**: all aggregated data.
+- **Fill up**: data for the current fueling period. HobDrive resets this when you enter a new fueling record.
+- **Trip A, Trip B**: data for two manually managed trips.
+- fuel cost per kilometer.
+Manual reset is possible for **Auto Trip** and **Trip A / Trip B** modes.
 ![](images/image10.png)
-
-Green-shaded sensors may be tuned up for extra precision.
-
-Pressing the price sensor will open screen with current fuel price per liter and currency selector.
-
-### Fuel Details Screen
-
-![](images/image11.jpeg)
-
-This screen gives you detailed information on fuel in tank.
-
-**Estimated level of fuel** and **fuel volume** are calculated using the entered information on fueling and consumption data.
-
+### Fuel Consumption Details
+Sensors highlighted in green can be fine-tuned for higher accuracy.
+![](images/image09.png)
+Tapping the price sensor opens a screen where you can set the current fuel price per liter and the currency.
+This screen provides detailed information about fuel consumption.
+### Fuel Details
+Displayed values include:
+This screen shows detailed information about fuel in the tank.
+- Fuel consumed while idling, such as in traffic or at lights.
+- Fuel economy excluding idling.
+- The cost of idle time.
+- The cost of fuel consumed for the trip.
+- Fuel consumed during engine warm-up to 60 degrees.
+- Fuel consumed on a warmed-up engine.
+- Fuel cost per kilometer.
+![](images/image09.png)
+Green-shaded sensors can be tuned for extra precision.
+![](images/image10.png)
+Tapping the price sensor opens a screen where you can set the current fuel price per liter and currency.
+Tapping one of the fuel level sensors opens the tank calibration dialog. On first use you must enter the tank volume and the approximate amount of fuel already consumed.
+### Fuel Details
+After that, HobDrive automatically tracks the remaining fuel volume. To keep the calculation accurate, you need to record refueling events. Each refill should be entered through **Trip -> New fueling**.
+![](images/image10.png)
+On this screen HobDrive also calculates:
+This screen provides detailed information about fuel in the tank and tank calibration.
+- **Range on remaining fuel**,
+The current **estimated fuel level** and **estimated fuel volume** in the tank are calculated from fueling records and consumption data.
+- **Next refuel** - an approximate time to the next refill based on weekly consumption,
+![](images/image11.png)
+- **Average speed** - calculated for the currently selected time interval, including idle time.
+Tapping one of the fuel level sensors opens the tank calibration dialog. On first use you must enter your tank volume and an approximate amount of fuel already consumed.
+Some cars report the real fuel level from the ECU. In HobDrive this sensor is called **ECUFuelLevel**.
+HobDrive then decreases the estimated fuel amount automatically. To keep it accurate, you need to enter fueling records regularly.
+HobDrive does not use the raw value as the main fuel level display. Instead, it shows the calculated value based on entered data and fuel consumption.
+Additional values calculated on this screen include:
+### Fueling and Events
+- **Mileage on remaining fuel**
+- **Continuous driving time on remaining fuel**
+- **Next fueling**: approximate time to the next refueling based on weekly average consumption
+- **Maximum temperature and speed**: the maximum observed value
+- **Average speed**: calculated for the current selected interval including all idle time
 ![](images/image12.png)
-
-Pressing one of the fuel level sensors opens up a calibration dialog for fuel tank. On first program usage you must enter the volume of your tank, and (approximate) volume of already consumed fuel.
-
-From here on, hobDrive automatically compute fuel volume. To keep the calculations correct you must record the fueling data. On every fueling you must enter a new fueling record by choosing "Trip" → "New fueling ". In the dialog box you should enter:
-
+Some cars transmit the real fuel level from the ECU. In HobDrive this value is overridden by the calculated one based on entered fuel and consumption data.
+This screen is used to analyze refueling and event data saved by HobDrive.
+### Refueling and Events
+The table contains the following fields:
+![](images/image12.png)
+- **Category**: event category. Tapping a category filters the list to that category.
+This screen is used to analyze refueling and event data saved by HobDrive.
+- **Odometer**: odometer reading at the time the record was entered.
+Available table fields include:
+- **Instant, Total Consumption**: two calculated values showing estimated fuel consumption. Instant consumption is the consumption since the last refueling and is correct only for full-tank refills. Total consumption is the fuel consumption across the whole history of recorded refueling events.
+- **Category**: event type. Tapping a category filters the records.
+- **Cost**: the amount spent on the event or refueling.
+- **Odometer**: the odometer reading at the time of entry.
+- **Filled**: for refueling entries, the total liters filled.
+- **Instant, Total Consumption**: two calculated fuel consumption values. Instant consumption is fuel use since the last refuel and is correct only for full-tank refueling. Total consumption is the cumulative fuel use over the full history.
+- **Tags, notes**: arbitrary data attached to the record.
+- **Date**: the event date.
+- **Date**: event date.
+The last row shows totals: total mileage, total amount spent, and total fuel consumption.
+The last row shows totals: total mileage, total amount spent, and total fuel consumption.
+Sorting, filtering, and editing are available.
+You can sort, filter, and edit records.
+**Recording fuel and events:**
+**Recording refueling events:**
+Entries are added through the **Actions** tab:
+Data is entered through the **Actions** panel:
 ![](images/image13.png)
+![](images/image13.png)
+- **New fueling**: when you refuel, enter the amount of fuel, price, odometer reading, and notes. HobDrive can compare its estimated odometer with the real one. You can choose automatic correction, manual correction in the dialog, or correcting only the odometer without changing consumption.
+- **New record**: add an arbitrary vehicle maintenance record.
+- **Missed trip**: add an unaccounted trip, for example if you forgot to start HobDrive. Enter the odometer reading and HobDrive will estimate the fuel used, which you can adjust manually. On vehicles with an ECU fuel level sensor, the values will be filled automatically.
+- **New fueling**: every time you refuel, enter the amount of fuel added, the cost, the odometer reading, and notes. HobDrive can compare its estimated odometer reading with the real one. You can choose how to correct the difference: automatically, manually in the dialog, or only correct the odometer without adjusting fuel consumption.
+Using refueling records, HobDrive lets you estimate fuel costs, total ownership cost, and the cost per kilometer of mileage.
+- **Missed trip**: add an unaccounted trip, for example if you forgot to start HobDrive. Enter the current odometer reading and HobDrive will estimate the consumed fuel; you can adjust it manually. On vehicles with an ECU-based fuel level sensor, the values are entered automatically.
+### GPS and Motion
+Using refueling records, HobDrive can estimate your fuel cost per station, total ownership cost, and cost per kilometer.
+The GPS screen provides charts and improved movement direction display.
+### GPS and Motion
+**Acceleration screen**: a dedicated acceleration screen with analysis of the device G-sensor and direction detection.
+The GPS screen shows graphs and an improved display of driving direction.
+**Power screen**: improved calculation based on current parameters.
+**Acceleration screen**: a separate acceleration screen with device G-sensor analysis and direction detection.
+### Engine Hours
+**Power screen**: improved calculation based on current parameters.
+The EngineHours screen shows total engine running time and is useful for planning maintenance by engine hours.
+### Engine Hours
+### Diagnostics and Extra Screens
+The EngineHours screen shows total engine operating time and is useful for service planning, for example every N engine hours.
+Besides the main screens, HobDrive provides extended diagnostic information.
+In addition to the main screens, HobDrive provides extended diagnostic information.
+![](images/image11.png)
+![](images/image11.png)
+**Diagnostics screen**: a screen for diagnostic warning codes, engine errors, and their descriptions.
+**Diagnostics screen**: a screen for diagnosing various warnings, engine errors, and their descriptions.
+![](images/image16.png)
+![](images/image16.png)
+When activated, it reads diagnostic trouble codes:
 
-- Fuel volume (in liters)
-- Fuel price per liter
-- Total fuel price (updated automatically)
-- Odometer readings
-- Notices (name of the filling station, comments, etc.)
+- **Active codes**: need immediate attention and diagnosis.
+- **Pending codes**: possible future problems.
 
-The hobDrive uses these records to give you stats on fueling cost per station, total cost of vehicle ownership, total cost per kilometer, etc.
+The **Clear DTCs** button resets the codes if needed. _Attention_: clearing the codes does not fix the underlying problem. Freeze-frame data can be useful for service diagnostics.
 
-This screen also shows the estimated **mileage the car will run on the remaining fuel** and the **time left for continuous movement of the car on the remaining fuel**.
+## Sensor Appearance Settings
 
-The "**Next fuel station**" parameter estimates approximate time till the next filling. The assessment is calculated using weekly consumption average and the current fuel level.
+Sensor appearance setup is activated through **Screens -> Settings -> Sensor Layout**.
 
-The **Maximum Temperature** and **Maximum Speed** parameters keep the data of maximum respective value.
+When this mode is active, tapping any sensor on any screen opens the configuration dialog.
 
-The **Average Speed** parameter is calculated for the currently selected time interval, taking into account all idling time.
+The dialog lets you configure:
 
-Some cars transmit the real fuel level indicator from the ECU. This sensor is called **ECUFuelLevel.**
+- widget type (text, bar, circular gauge, chart),
+- value range,
+- colors,
+- other visual parameters.
 
-In hobDrive, the "real" indicator is not used, but is overridden by the calculated one, based on manually entered data and fuel consumption data.
+Each parameter has a description that appears when you long-press it.
 
-You can display the readings of the native fuel level sensor: in the default-landscape.layout file, change FuelLevel to **ECUFuelLevel**. If this sensor shows nothing for you, then your car does not support displaying the real fuel level in the tank.
+See also for advanced layout customization: [Layouts, skins, and sensor placement](layouts.md), [Layout language specification](LAYOUT_SPEC.md), [Dynamic expressions](dynamic-expr.md).
 
-### Extra Screens
+**Fuel trims screen**:
 
-Beside the described above key parameters, hobDrive provides a number of optional screens for more detailed fine-tuning.
+![](images/image19.png)
 
-To activate these, choose Screens tab and then select the required screen:
+STFT and LTFT are ECU parameters that define how efficiently the engine uses the air-fuel mixture.
 
-![](images/image14.png)
+On old or dirty engines their absolute values can become large, sometimes 20% or more, and can trigger error codes. Fuel trims within a few percent usually indicate normal engine operation.
 
-### Fueling and Events Screen
-
-![](images/image15.jpeg)
-
-The screen is used for the analysis of information on filling stations and hobDrive-stored events.
-
-Data on filling stations and maintenance records are entered in the appropriate screens activated from the "Trip" tab:
-
-![](images/image16.jpeg)
-
-The table shows the following fields:
-
-- **Category**: Event category. On pressing any category the records are filtered to display only the selected category.
-- **Cost**: The sum spent on the event or on filling.
-- **Odometer**: Odometer reading at the time of record entry.
-- **Filled**: For records per filling station - total liters filled.
-- **Instant, Total Consumption**: Two calculated fields showing the estimated fuel consumption. Instant Consumption shows fuel consumption since the last refueling. Correctly calculated only with full-tank filling. Total Consumption - a fuel consumption for entire life-cycle of the system.
-- **Tags, notes:** arbitrary data you can add to a record.
-- **Date:** the date of the event.
-
-The last displayed entry is a line with totals: the total mileage, the total amount of money spent, the total fuel consumption per gas station.
-
-### Vehicle Records Management
-
-For each refueling, select "Actions" → "New Refueling", and in the dialog you need to enter data about the fuel filled:
-
-- Amount of fuel filled
-- Fuel price per liter
-- Total fuel cost (updated automatically)
-- Odometer readings
-- Notes (gas station name, comments, etc.)
-- Method for correcting odometer readings
-
-HobDrive can compare its own estimated odometer values with the actual readings from your vehicle (entered by you).
-
-HobDrive uses the difference between odometers to compensate for the time it wasn't running and during which it lost readings. It can do this automatically or "In Dialog" by manually entering the missed trip. The "Fix" option is just correcting the odometer value without entering lost fuel/mileage. This may be needed if, for example, there is a discrepancy in speed/mileage readings between HobDrive and the ECU on your vehicle.
-
-Entering missed trips allows compensating for data not accounted for by HobDrive and more accurately calculating real fuel consumption.
-
-Using refueling records, HobDrive allows you to estimate your fuel costs per gas station, estimate the total cost of vehicle ownership, total cost per kilometer of mileage, etc.
-
-By pressing the "New Record" button, you can enter an arbitrary vehicle maintenance record.
-
-The "Missed Trip" action allows you to make a correction to the program's calculated data by adding a trip that wasn't accounted for for some reason (for example, when you forgot to turn on HobDrive).
-
-In the dialog you need to independently enter the current odometer reading. After this, hobDrive will calculate the approximate amount of fuel consumed (you can correct it yourself). When saving, this data will be added to your current calculated data.
-
-In vehicles with a fuel level sensor working through the ECU, hobDrive will automatically enter this value in the dialog.
-
-If your vehicle provides readings of the "real" odometer, this data will also be automatically entered in the fields, you just need to check them.
-
-### Diagnostics Screen
-
-This screen gives you a MIL code reading functionality.
-
-Upon activation it reads and describes the Check Engine codes:
-
-![](images/image17.png)
-
-Active error codes need immediate attention and diagnostics.
-
-Pending error codes are potential errors that may trigger at a later point.
-
-Tapping Clear DTCs button will reset all the current DTC codes. Prior to deletion please make sure you don't need this information anymore as deleting the codes will remove the "Freeze Frame" data, which could be useful in diagnostics during car servicing.
-
-Please be aware that deleting the error from the list does not solve the problem itself, therefore the error will probably reappear later.
-
-On some vehicles for complete reset of error codes you should restart the car ignition.
-
-### HUD Mode
-
-![](images/image18.png)HUD mode is a special layout to be used with windscreen projection.
-
-You may activate the mirrored HUD mode by pressing the HUD button.
-
-This mode disables all extra control elements and theme elements.
-
-![](images/image19.png)If you place the you smartphone or navigation unit on a panel, it'll reflect the data to the windscreen, enabling you to read all the data reflected.
-
-This mode provides enhanced comfort on long night journeys, since even with the night themes the display is usually very bright in the darkness, which distracts the eye from the road.
-
-On many cars, simple reflection on the windscreen would "double" or even "triple" the image, but eyes adapt very fast; the blurred background provides a comfortable perception of information, without distracting the driver.
-
-To return back, click the Back button.
-
-### Fuel Trims Screen
-
-![](images/image20.png)STFT and LTFT fuel trims are the parameters that define engine efficiency in using the air-fuel mix.
-
-For old or unclean engines their absolute value may be high (20per cent and more). This could trigger error codes.
-
-Fuel trims within several per cent margin indicate normal engine operation.
-
-### More Sensors Screen
+**Lambda sensors screen**:
 
 ![](images/image21.png)
 
-This screen gives you some detailed sensors which could be of interest to professional servicing teams.
+Shows oxygen sensor readings; depending on the vehicle, not all four values may be present.
 
-### Lambda Sensors Screen
+**More sensors, Toyota sensors, and sensor list screens**:
 
-![](images/image22.png)
+Additional sensors mainly intended for professional diagnostics.
 
-Shows the readings of oxygen sensors (depending on the car less than four values are possible).
+The sensor list screen lets you select any sensor and start reading its value.
 
-### Toyota Sensors Screen
+## HUD Mode
 
-![](images/image23.png)
+HUD hides unnecessary interface elements and prepares the image for windscreen projection. Use it primarily as a supporting mode that does not distract from the road.
 
-Screen with Toyota specific sensors.
+## Data Management, Backups, and Cloud
 
-### Sensor List Screen
+The **Data Management** dialog provides:
 
-![](images/image24.png)
+- backup creation,
+- restore,
+- background cloud upload,
+- upload interval settings,
+- deletion of old data.
 
-Screen with all available sensors and their descriptions. Tapping any of the sensors will activate its reading. Tap once again to deactivate the sensor.
+Recommendation: enable regular backups, especially before changing devices or testing new DashKits.
 
-### Zero to 60 Miles
+For file transfer and restore details, see [Backups and settings migration](backups.md).
 
-![](images/image25.png)
+For cloud and local statistics, see [Trip statistics](statistics.md).
 
-This screen is used to measure vehicle efficiency in 0-100 km/h acceleration.  
-The measurement starts automatically when you start driving.  
-Depending on the refresh rate of movement sensors, the end result may not be entirely accurate.
+## DashKits, Themes, and Extensibility
 
-### Quarter Time
+HobDrive supports interface and behavior customization through DashKits.
 
-![](images/image26.png)
+You can:
 
-Measuring the time needed for passing quarter-mile distance (402 m).
+- connect ready-made panels and themes,
+- choose skins in the DashKits dialog,
+- use multiple isolated sets of user overrides,
+- add your own screens and layouts for a specific use case.
 
-### Brake Time
+For advanced users, additional layout capabilities are available such as conditional output (`if`), sensor filters, element visibility control, graphical decorators, and rendering-stage parameters.
 
-![](images/image27.png)
+Advanced customization articles:
 
-The measurement of braking time and distance at a certain speed. Helps to estimate the efficiency of the braking system, and to experiment with braking styles in dangerous road conditions.
+- [Layouts, skins, and sensor placement](layouts.md)
+- [HobDrive layout language specification](LAYOUT_SPEC.md)
+- [Dynamic expressions in configuration files](dynamic-expr.md)
+- [Dynamic expressions: core syntax](dynamic-expr-core.md)
+- [ECUXML format specification](ecuxml_spec.md)
 
-## Customization of the Sensors
+## Android Widgets
 
-Calibration mode is activated via «Screens» → «Settings» → «Edit sensors layout».
+Android supports widgets that follow the app style and can be configured for the required sensors and parameters. This is useful for quickly viewing key data without opening the app.
 
-After activation, pressing any sensor on any screen will get you a configuration dialogue.
+## iOS and CarPlay
 
-The dialogue mode is used for setting the widget type (text, bar graph, circular graph, chart) and its various parameters.
+iOS is fully supported in HobDrive:
 
-Each parameter has a description which can be activated by pressing the parameter label (left). Typical parameter values can be either selected from drop-down lists or entered manually.
+- Wi-Fi and Bluetooth LE adapter support,
+- improved connection stability,
+- updated screens and system scenario handling,
+- CarPlay mirror display support.
 
-## Vehicle Calibration
+For iOS, after system updates check Bluetooth / location permissions again and make sure the adapter is still available in system settings.
 
-Fuel Economy calculation method calibration is required for more precise MPG calculations or when hobdrive shows incorrect fuel economy values.
+For step-by-step CarPlay auto-start instructions, see [Automated launch via Shortcuts](carplay-shortcut.md).
 
-First, make sure distance and speed values are calculated correctly (f.e. by comparing short trip distance in hobdrive and in car's builtin odometer or GPS device). Sometimes speed calibration is required because of nonstandard tires size or speed value mistakes. Speed (and distance) play important role in fuel economy calculations, as well as total fuel consumed value.
+## Calibration and Accuracy
 
-For fuel consumption calibration, first know your real fuel economy: using full tank method, enter fueling records for a couple of full tanks and hobdrive will show your average fuel economy on "Events and Fillups" screen.
+### Basic Calibration Flow
 
-Then, you should compare these numbers with what you get on main hobdrive screen, applying the difference coefficient into appropriate method's coefficient field.
+1. Enter at least 2-3 refueling records with accurate liters and odometer readings.
+2. On the **All refuelings** screen you can see the fuel consumption calculations.
+3. Compare this result with the consumption that HobDrive shows on the **Trip Computer** screen over a long interval such as **Month** or **All time**.
+4. Adjust the calibration parameters for the chosen method.
 
-### Parameter Calibration
+This manual keeps only the overview algorithm. The full technical part with formulas, AFR/VE, MAP/MAF/Injector/EngineLoad coefficients, and calculation examples is in separate articles:
 
-The simplest way to adjust coefficients and precise fuel consumption calibration is to compare HobDrive readings with real fuel consumption from the tank.
+- [Fuel calculation methods and coefficients](fuel-methods.md)
+- [Fuel consumption: questions and answers](fuel-questions.md)
+- [Speed discrepancy](speed-diff.md)
 
-To calculate real fuel consumption from the tank, you need to enter refueling records with accurate amounts of liters filled and odometer readings. After two refuelings, HobDrive will be able to calculate real fuel consumption from the tank. You can see it on the "Events and Refuelings" screen. If there is enough data and the consumption values are adequate, they can be used for calibration.
+### Number Format
 
-The obtained value should be compared with the consumption readings on the "Trip Computer" screen for a relatively long interval: "refueling", "month", "all time", and based on the discrepancies, correct your parameter (AFR, VE, or "injector performance").
+Use a dot as the decimal separator for numeric parameters.
 
-For example, with a real consumption reading of 12 L/100km, HobDrive shows consumption for the month of 11 L/100km.
+## Typical Problems
 
-This means that when using the MAF method, you need to multiply the current AFR by (12/11 = 1.09). When using MAP, you likewise need to multiply the current VE by 1.09. When using Injector, the injector performance is corrected (multiplied by 1.09).
+### No Connection to the Vehicle
 
-When using EngineLoad, in the simplest case, you need to similarly change the "Load Fuel Consumption Coefficient".
+- Check that the adapter is visible in the system and that the correct connection type is selected.
+- Check the status color: red for adapter, yellow for vehicle.
+- For unstable adapters, increase the ELM communication delay.
 
-The obtained value should be compared with the consumption readings on the "Trip Computer" screen for a relatively long interval: "refueling", "month", "all time", and based on the discrepancies, correct your parameter (AFR, VE, or "injector performance").
+For a deeper look at low-quality adapters, see [Problematic ELM327 adapters](bad-elms.md).
 
-For example, with a real consumption reading of 12 L/100km, HobDrive shows consumption for the month of 11 L/100km.
+### Incorrect Fuel Consumption / Mileage
 
-This means that when using the MAF method, you need to multiply the current AFR by (12/11 = 1.09). When using MAP, you likewise need to multiply the current VE by 1.09. When using Injector, the injector performance is corrected (multiplied by 1.09).
+- Check the fuel calculation method.
+- Check the speed and odometer coefficients.
+- Compare the statistics with actual refueling data.
 
-When using EngineLoad, in the simplest case, you need to similarly change the "Load Fuel Consumption Coefficient".
+See also: [Fuel calculation methods](fuel-methods.md), [Fuel consumption: questions and answers](fuel-questions.md), [Speed discrepancy](speed-diff.md).
 
-Another quick way to select a correction coefficient is to look at fuel consumption in liters/hour on a warmed-up engine at idle speed. For many gasoline engines, it should be equal to half the engine volume. For example, if hobDrive shows 1 liter per hour and you have a 1.6L engine, then idle consumption should be 0.8 liters per hour. New VE value = 95 * 0.8/1 = 76.
+### Interface Looks Wrong After an Update
 
-It may also be worth calibrating speed - since mileage is calculated from it, and therefore consumption also depends on it.
+- Check the selected theme / skin / DashKit.
+- Disable the problematic custom set and test with the standard theme.
 
-**Attention!** All non-integer parameters are entered with a dot as the decimal separator.
+If the problem reproduces, send a report: [How to report a problem](problems.md).
 
-Calibration for «**MAF Sensor**»
+## Future Extensions
 
-- **Air-Fuel ratio (AFR) calibration:** One of the key values, shows the ratio between air and fuel in the combustion chambers.  
-    The default value is «14.7»
+This section is reserved for future manual development. Suggested upcoming chapters:
 
-Examples for different fuels:
+- A detailed guide for building your own DashKit with examples.
+- A catalog of recommended user screens by scenario such as city, highway, or diagnostics.
+- Separate best practices for CarPlay and Android widgets.
+- An extended section on cloud analytics and data exchange between devices.
 
-Air:Fuel (AFR)
+## Important Safety Warning
 
-| Fuel Type | AFR Ratio |
-|-----------|-----------|
-| Unleaded gasoline | 14.7:1 |
-| Propane (LPG) | 15.5:1 |
-| Methane (CNG) | 17.2:1 |
-| Diesel fuel | 14.6:1 |
-| Methanol (methyl alcohol) | 6.4:1 |
-| Ethanol (ethyl alcohol) | 9.0:1 |
-
-Calibration for «**MAP Sensor**»
-
-- **Air-Fuel ratio (AFR) calibration:** Same as the previous.
-- **Engine volume**: Engine volume in liters.  
-    The default value is «1.8» liters.
-- **Volumetric Efficiency (VE)**: Calibration constant for assessing the mix in engine combustion chambers.  
-    The default value is «95» percent.
-
-Calibration for «**Injector Sensor**»
-
-- **Number of Cylinders**: number of cylinders in the engine.  
-    The default value is «4» cylinders.
-- **Injector performance**: Amount of fuel (ml/minute) injected per injector. Historically, only half of the real value must be entered.  
-    The default value is «134.23» ml/min (for real performance of 268 ml/min).
-
-Calibration for «**EngineLoad Sensor**»
-
-- **Engine Load MPG Coefficient**: Global calibration constant.  
-    The default value is «1»
-- **RPM Curve for EngineLoad:** Used for detailed MPG tuneup. The value is a group of comma-separated numbers. Each number means MPG value at a specific RPM (RPM in range from 0 to 10,000). The RPM step is determined by the count of numbers in the parameter line (for 10 numbers RPM step would be 1,000).  
-    The default value is  
-    «0.025, 0.025, 0.10, 0.20, 0.3, 0.4, 0.3, 0.3, 0.3, 0.3»  
-    Each number is a multiplier for the MPG EngineLoad value at the specific RPM.  
-    For instance, RPM 2000 and EngineLoad of 40% mean consumption rate of 0.10\*40 = 4 liters/hour
-
-## Beta-functionality
-
-Part of the hobDrive functionality is still in active development and is being tested. You can experiment with it (we give no guarantees whatsoever).
-
-**Logging the sensor data to the file.**  
-Set up via «user.track» file.  
-The contents of the file can be exported from the default configuration - «default.track» file.
-
-The file lists the sensors used to record data. By default, only cumulative sensors data is recorded.  
-<br/>Data is written to the "track" folder in binary format and can be converted to Excel spreadsheets with «track2csv.exe» utility found here:  
-**<https://github.com/cail/hobd/raw/master/lib/Track2CSV.exe>**
-
-You need to run this program with the full path parameter to the "track" folder:
-
-- In explorer, drag the "track" folder from the "hobdrive" folder to the track2csv.exe program icon
-- After running, the program will convert all log files in the track folder to csv format - which can be opened in Excel or another spreadsheet.
-
-## Optional Requirements
-
-- Internet access: auto updates<sup>[\[1\]](#footnote-1)</sup>, reporting statistics data to the external web-service<sup>[\[2\]](#footnote-2)</sup>.
-- GPS chipset: position tracking, trip tracking<sup>[\[3\]](#footnote-3)</sup>.
+A vehicle is a source of increased danger. Do not configure complex parameters or analyze screens in detail while driving. Perform setup while parked.
