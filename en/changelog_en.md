@@ -1,3 +1,13 @@
+- v1.9.6 30/05/2026
+  - Fixed screen boundaries on Android 16.
+  - On Android, the application used system localization settings, which caused misinterpretation of some numbers in layouts. Now the dot always serves as the decimal separator.
+  - Added protection for devices with incorrect system time at startup. Trips will not be reset. HobDrive accounts for this after receiving the correct time.
+  - Android Widgets are rendered the same as in the app and can be customized.
+  - ECU: 
+    Renault ScenicIII M9R_615+AT_AJ0
+    Renault ScenicIII M9R 615 ENG+AT+BCM+AC
+    Tiggo 8 Pro Max Eng_2.0+7DTC+TPMS+CAN
+
 - v1.9.4 14/03/2026
   - First attempt at implementing Widgets for Android.
   - Fixed black screen (zero brightness) on some head units.

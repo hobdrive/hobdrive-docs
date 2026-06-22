@@ -11,6 +11,8 @@ task :prep do
 end
 
 task :build do
+    ENV['LANG'] = 'C.UTF-8'
+    ENV['LC_ALL'] = 'C.UTF-8'
     sh "bundle exec jekyll b"
     Rake::Task[:relativize_urls].invoke
 end
