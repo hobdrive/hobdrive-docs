@@ -34,7 +34,7 @@
 
 [Спецификация формата Layout](ru/LAYOUT_SPEC_RU.md)
 
-[Оформление, скины и расположение датчиков](ru/layouts.md)
+[Оформление, экраны и DashKits](ru/layouts.md)
 
 [Динамические выражения в файлах настроек](ru/dynamic-expr.md)
 
