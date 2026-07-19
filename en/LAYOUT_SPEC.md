@@ -28,16 +28,42 @@ Example:
 <include file="default-tripcomp.layout" if='${!sexists("GasTrigger")}'/>
 ```
 
+## Layout Files and Load Order
+
+The regular HobDrive interface is assembled from the app's standard layout files and user overrides.
+
+Typical standard files:
+
+- `default-landscape.layout` — top-level layout and common `config` parameters;
+- `default-hobd.layout` — base HobDrive sections;
+- included files such as `default-tripcomp.layout`, `default-dashb3.layout`, and ECU-specific layout files.
+
+User files:
+
+- `user1.layout` — the screen created by the **Your Screen** dialog in main screen settings;
+- `user.layout` — manual user sections and overrides;
+- `user.gauge` — user settings for sensor appearance;
+- `override*` directories — isolated override sets, including installed DashKits.
+
+Standard `default-*.layout` and `default*.gauge` files should not be edited directly: they may be replaced by an app update. Use `user.layout`, `user1.layout`, `user.gauge`, or a DashKit for your own changes.
+
+`user.gauge` is different from `user.layout`: HobDrive can automatically change it from the sensor appearance settings dialog. Manual editing is possible, but requires care to avoid conflicts with settings made through the interface.
+
 ## section
 Defines a logical screen/page block. Common attributes:
 - `name` — human-readable section name (used in UI lists).
-- `fixed` — `true/false` (whether the section is fixed in navigation).
+- `title` — displayed title. If omitted, `name` is used.
+- `fixed` — `true/false` (whether the section is fixed in navigation). `fixed="true"` makes the section part of the main screen panel.
+- `optional` — `true/false`. `optional="true"` keeps the section as an extra screen: it does not enter the main swipe sequence, but can be opened through the **Screens** menu.
+- `order` — numeric section priority. `0` means natural order. Negative values place the section before regular screens, positive values after unnumbered screens.
 - `if` — conditional expression (a sensor name or expression). Section is shown only if condition evaluates truthy. Examples: `if="Oxygen_b1s1"`, `if="PortraitLayout"`, `if="Renault_01_11103.ControlModuleVoltage"`.
 - `class` — CSS-like class used by system to apply predefined behaviors (e.g., `SensorList`).
 - `ns` — namespace for sensor filtering when using `SensorList`.
-- `exclude` — regex to exclude sensor IDs in generated sensor lists
-- `maximize-focus` — (from changelog) `true/false` remove optional controls when focused
-- `controls` — `autohide` or other values to control UI buttons
+- `exclude` — regex to exclude sensor IDs in generated sensor lists.
+- `title-height` — height of the title/top padding area for the section.
+- `maximize-focus` — (from changelog) `true/false` removes optional controls when focused.
+- `controls` — `autohide` or other values to control UI button visibility.
+- `volatile` — hint for temporary/service sections.
 
 Example:
 ```xml
@@ -52,6 +78,43 @@ Example:
 </section>
 ```
 
+Navigation example:
+
+```xml
+<section name="My Diagnostics" title="Diagnostics" optional="true" order="2" if="STFT1">
+  <grid rows="," cols=",">
+    <item id="STFT1"/>
+    <item id="LTFT1"/>
+  </grid>
+</section>
+```
+
+### Section Visibility in the App
+
+At runtime, a section has an `Optional` state.
+
+- `fixed="true"` sets `Optional=false`: the screen enters the main panel and is available by swiping.
+- `optional="true"` keeps the screen as an extra screen.
+- User main screen settings can override `optional` and `order`; they are saved in configuration as `LayoutSection_<SectionName>_Optional` and `LayoutSection_<SectionName>_Order`.
+- Sections whose names start with `@` are used as service actions in the menu.
+
+If a section should be available only for a specific sensor, ECU, or orientation, use `if`.
+
+Common conditions:
+
+```xml
+<section name="Only ATF" if="ATFTemp">
+  ...
+</section>
+
+<section name="Portrait Tools" if="PortraitLayout">
+  ...
+</section>
+
+<section name="Landscape Tools" if="LandscapeLayout">
+  ...
+</section>
+```
 
 
 `config` elements
@@ -81,8 +144,6 @@ Example:
 
 - `union` — allows compositing several alternate layouts into same area (used in TPMS layout).
   - Use `union` when multiple mutually-exclusive sub-layouts should occupy the same grid area; each child typically contains its own `grid`.
-
- - `optional` / `volatile` (section attributes) — lightweight hints used by some default layouts: `optional="true"` marks screens that can be hidden, `volatile` marks temporary screens.
 
 - `switch` — selects one of its child elements to show based on an `index` expression. Useful for small cycling lists or conditional items.
   - Attributes:
@@ -123,13 +184,44 @@ Represents a widget in a grid or stack. Common attributes and usages:
 - `actions` — comma-separated list of actions available in sensor info dialog. Example: `actions="SetupOdometer"`.
 - `units` — visual placement of unit text: `units="below"`, `units="aside"` or `units="hidden"`.
 - `interval` — an update interval used for dynamic UI behaviour or internal timers (different from sensor `period`).
-- `decorator-XXX` - special syntax to enable decorators.
+- `decorator-XXX` — special syntax to enable decorators.
 
 Example usages:
 ```xml
 <item id="FuelLevel" if='${Layout_ECUFuel != true}' inherit="_FuelIndicator, _EditAction" onclick="NewFueling"/>
 <item id="Odometer" if="${Layout_ECU_Odometer != true}" actions="SetupOdometer" size="large" inherit="_EditAction"/>
 ```
+
+### Item Actions
+
+Actions can be attached to items through `onclick`, `ondoubleclick`, `onhold`, `action`, and `actions`.
+
+Examples:
+
+```xml
+<item id="FuelLevel" onclick="NewFueling"/>
+<item id="Speed" onhold="SensorInformation"/>
+<item type="button" text="Min" action="Minimize"/>
+<item id="Speed" actions="SetupOdometer, Minimize, Shutdown"/>
+<item id="EfficiencyPercentage" onclick="Go(Efficiency)"/>
+```
+
+Common actions:
+
+- `ChangeLiterCost` — fuel liter cost dialog;
+- `FuelCalibration` — tank volume calibration dialog;
+- `SensorInformation` — sensor information;
+- `NewFueling` — new refueling entry;
+- `NewMaintenance` — new maintenance entry;
+- `Minimize` — hide the app;
+- `Shutdown` — exit;
+- `VehicleSettings` — vehicle settings;
+- `PortSettings` — connection settings;
+- `ExtraSettings` — system settings;
+- `EditSensorsLayout` — sensor edit mode;
+- `CorrectionInformation` — consumption correction information;
+- `Go(ScreenName)` or `go(ScreenName)` — navigate to a screen;
+- `run(...)` — run an external action/command if supported by the platform.
 
 - type specifics and chart attributes:
   - `type="chart"` — renders a chart for the sensor; common chart attributes: `chart='line'`, `time-scale`, `min-limit`, `max-limit`, `cover-description`.
@@ -153,16 +245,51 @@ Examples:
 
 `item` may contain nested decorators. Example syntax:
 
+```xml
 <item id="Speed">
   <image image-zorder="bottom" image-path="images/dashboard-svgrepo-com.svg" image-scale="0.5"/>
   <image image-zorder="bottom" image-path="images/arrow.png" image-scale="0.5"/>
 </item>
+```
+
+The modern nested form is more convenient for new layouts because all decorator parameters are kept next to the `item`.
+
+The older attribute syntax `decorator-*` is also supported and is common in existing `gauge` and `layout` files:
+
+```xml
+<item id="Speed"
+      decorator-i1="image"
+      i1-image-zorder="bottom"
+      i1-image-path="images/gauges/without_arrow_circle.png"
+      decorator-i2="image"
+      i2-image-zorder="bottom"
+      i2-image-path="images/gauges/arrow.png"
+      i2-image-rotate='$${ Sensor_Value - 45 }'
+      i2-image-scale="1"/>
+```
+
+The identifier after `decorator-` is arbitrary (`i1`, `bg`, `pad`, `action`, and so on). Decorator attributes use the same prefix: `i1-image-path`, `pad-padding`, `action-image-align`.
+
+The overlay order of old-style decorators is determined by sorting their identifiers. For predictable order, numeric or alphabetical prefixes are convenient: `d1`, `d2`, `d3`.
 
 ### `image` decorator
 
-Attributes: `image-zorder`, `image-path`, `image-scale`, `image-width`, `image-height`, `image-rotate` (can contain dynamic expressions).
+Attributes: `image-zorder`, `image-path`, `image-scale`, `image-width`, `image-height`, `image-align`, `image-aspect`, `image-rotate`, `image-rotate-align` (can contain dynamic expressions).
 
 Many attributes can accept dynamic expressions such as `image-rotate='$${ Sensor_Value - 45 }'`.
+
+The `image-path` is usually relative to the HobDrive resource folder or the current DashKit. Use PNG or SVG for transparency.
+
+Dynamic image example:
+
+```xml
+<item id="RPM">
+  <image image-zorder="bottom"
+         image-path='images/gauges/rpms/$${ceiling(Sensor_Value/1000*2)}.png'
+         image-align="hcenter,bottom"
+         image-scale="0.8"/>
+</item>
+```
 
 ### progress decorator
 
@@ -191,7 +318,7 @@ You can use percentage values.
 ```xml
 <item id="Speed">
     <padding padding="0 0 0 120"/>
-</item/>
+</item>
 ```
 
 ### crop decorator
@@ -204,7 +331,7 @@ Crop decorator cuts (hides) part of the previously rendered widget.
 </item>
 ```
 
-### visibile / visibility decorator
+### visible / visibility decorator
 
 This decorator just enables/disables drawing in runtime. You can use dynamic $$ evaluation.
 
@@ -555,11 +682,61 @@ Example: `text-values` and `type=text` usage in dashb3 kits:
 - Use `wrap` filters on noisy sensors (GPS, speed, MAF) for smoother rendering.
 - Keep gauges local to section when possible using `ignore-gauges` and local `gauge` declarations to reduce global side-effects.
 
+## DashKit Packages
+
+A DashKit is a folder with metadata, layout files, and resources that HobDrive can download from GitHub and install into the user directory as a separate override.
+
+Official repository: [hobdrive/hobdrive-dashkits](https://github.com/hobdrive/hobdrive-dashkits).
+
+Template for your own packages: [hobdrive/template-dashkits](https://github.com/hobdrive/template-dashkits).
+
+Minimal structure:
+
+```text
+community/my-dashkit/
+  info.json
+  user.layout
+  images/
+  README.md
+```
+
+`info.json`:
+
+```json
+{
+  "name": "My DashKit",
+  "version": "1.0.0",
+  "description": "Custom dashboard for HobDrive",
+  "author": "Your Name"
+}
+```
+
+Supported `info.json` fields:
+
+- `name` — package name;
+- `version` — version;
+- `author` — author;
+- `description` — description;
+- `exclude` — additional files/folders that should not be downloaded during installation;
+- `repo`, `branch`, `path`, `url`, `localPath` — service fields that HobDrive adds or uses after download.
+
+The `user.layout` inside a DashKit uses the same syntax as a regular user `user.layout`. Images can be placed nearby in `images/` and referenced from `image-path`.
+
+When installing, HobDrive creates a local folder like:
+
+```text
+override-<DashKitName>-<repo>-<branch>/
+```
+
+This folder is read as a user override. Therefore, a DashKit can add its own `user.layout`, images, themes, and other resources without changing the app's standard files.
+
+In the app, DashKits are opened through **Settings -> Dash Panel Settings**. The source is specified as a GitHub `owner/repo` and branch/ref; defaults are `hobdrive/hobdrive-dashkits`, `main`.
+
 ## Appendix — common attributes quick reference
-- section: `name`, `fixed`, `if`, `class`, `ns`, `exclude`, `maximize-focus`, `controls`
+- section: `name`, `title`, `fixed`, `optional`, `order`, `if`, `class`, `ns`, `exclude`, `title-height`, `maximize-focus`, `controls`, `volatile`
 - grid: `rows`, `cols`
-- item: `id`, `type`, `text`, `action`, `size`, `precision`, `inherit`, `colspan`, `rowspan`, `description`, `period`, `wrap`
-- decorators: `image` (`image-path`, `image-scale`, `image-zorder`, `image-rotate`, `image-width`/`image-height`)
+- item: `id`, `type`, `text`, `action`, `onclick`, `ondoubleclick`, `onhold`, `actions`, `size`, `precision`, `inherit`, `colspan`, `rowspan`, `description`, `period`, `wrap`
+- decorators: `image` (`image-path`, `image-scale`, `image-zorder`, `image-rotate`, `image-width`/`image-height`), `padding`, `tile`, `touch-progress`, `crop`, `filter`, `break`
 
 ## Try it — ready templates
 Copy these minimal examples into a skin file to try the patterns.

@@ -12,7 +12,11 @@
 
 ## Visuals
 
+[Main Screen Settings](en/screen-settings.md)
+
 [Layout Format spec](en/LAYOUT_SPEC.md)
+
+[Layouts, Screens, and DashKits](en/layouts.md)
 
 [Dynamic Expressions in Configuration Files](en/dynamic-expr.md)
 

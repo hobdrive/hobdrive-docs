@@ -19,7 +19,7 @@ More detailed technical material has been moved into separate knowledge base art
 
 - Connection, profiles, compatibility: [Ready-made vehicle profiles](profiles.md), [Problematic ELM327 adapters](bad-elms.md), [Diagnostics for ABS/SRS and specific ECUs](custom-ecus.md).
 - Consumption and calibration: [Fuel calculation methods and coefficients](fuel-methods.md), [Fuel consumption: questions and answers](fuel-questions.md), [Speed discrepancy](speed-diff.md), [Voltage correction](voltage.md).
-- Screens and interface setup: [Layouts, skins, and sensor placement](layouts.md), [Layout language specification](LAYOUT_SPEC.md), [Dynamic expressions](dynamic-expr.md), [Dynamic expressions: core syntax](dynamic-expr-core.md).
+- Screens and interface setup: [Main Screen Settings](screen-settings.md), [Layouts, Screens, and DashKits](layouts.md), [Layout language specification](LAYOUT_SPEC.md), [Dynamic expressions](dynamic-expr.md), [Dynamic expressions: core syntax](dynamic-expr-core.md).
 - Data, reports, support: [Backups and settings migration](backups.md), [Trip statistics](statistics.md), [How to report a problem](problems.md), [Licensing](licensing.md).
 - iOS/CarPlay: [Automated launch via Shortcuts](carplay-shortcut.md).
 
@@ -181,6 +181,8 @@ Current capabilities include:
 - Reordering the main screens and selecting screens that should always stay active.
 - Setting the gear indicator style, either Roman or Arabic numerals.
 - Showing or hiding date and time.
+
+Details about screen order, pinning, hiding, personal options, and the custom screen: [Main Screen Settings](screen-settings.md).
 
 ### Appearance
 
@@ -371,7 +373,7 @@ In the dialog you can configure:
 
 Each parameter has a description (you can tap the information icon for details).
 
-Advanced customization via layout files: [Layouts, skins, and sensor placement](layouts.md), [Layout language specification](LAYOUT_SPEC.md), [Dynamic expressions](dynamic-expr.md).
+Advanced customization via layout files: [Layouts, Screens, and DashKits](layouts.md), [Layout language specification](LAYOUT_SPEC.md), [Dynamic expressions](dynamic-expr.md).
 
 **Fuel Trim Screen**:
 
@@ -428,7 +430,7 @@ For advanced users additional layout capabilities are available: conditional out
 
 For advanced customization see:
 
-- [Layouts, skins, and sensor placement](layouts.md)
+- [Layouts, Screens, and DashKits](layouts.md)
 - [HobDrive Layout Language specification](LAYOUT_SPEC.md)
 - [Dynamic expressions in configuration files](dynamic-expr.md)
 - [Dynamic expressions: core syntax](dynamic-expr-core.md)
