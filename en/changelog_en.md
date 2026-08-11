@@ -1,3 +1,37 @@
+- v1.9.13 10/08/2026
+  - Fixed rendering issues on the Service Intervals screen
+  - Non-standard currencies are now saved as "other" - previously you had to select an existing one from the list
+
+- v1.9.12 06/08/2026
+  - Fixed: background would sometimes render black on light theme without wallpaper.
+  - Service Intervals and Reminders: Moved to a separate screen/page.
+    The app notifies about upcoming events. 
+
+- v1.9.11 03/08/2026
+  - Initial implementation of Service Intervals and Reminders - in the Statistics and Events section
+  - In some cases, control buttons would not appear after being hidden
+  - Audio settings (sounds) would sometimes not turn off
+  - In Fuel Cost Settings, you can now choose from more currencies or enter your own money symbol
+  - Google Play license verification system updated
+
+- v1.9.10 26/07/2026
+  - fixes in statistics pages, where edit/delete actions were not working stably.
+  - Existing refuelings can be edited
+
+- v1.9.9 26/07/2026
+  - Fixed excessive screen redraws when switching between applications or viewing the status bar in Android.
+  - Enhanced "Report a Problem" feature - now you can open a chat with an AI assistant directly in the app!
+  - You can also automatically send log files to this chat.
+  - In the Error Codes screen, you can now select an error and send it to the AI assistant chat to get a description and repair recommendations.
+
+- v1.9.8 20/07/2026
+  - Day/night theme switching can now follow fixed hours, sunrise/sunset, or the Android system theme.
+  - Cloud analytics now shows subscription status and expiry notices, respects license upload limits, and blocks cloud sync for unsupported licenses.
+  - Improved Bluetooth LE (BT4) OBD adapter discovery and connection.
+  - Fixed screen brightness handling when night brightness is disabled, and in day mode or HUD mode.
+  - Fixed JSON reading in track report generation.
+  - ECU: fixed SY DSL D20DT(C3I) E4 KWP profile (OBD-II mode disabled).
+
 - v1.9.6 30/05/2026
   - Fixed screen boundaries on Android 16.
   - On Android, the application used system localization settings, which caused misinterpretation of some numbers in layouts. Now the dot always serves as the decimal separator.
