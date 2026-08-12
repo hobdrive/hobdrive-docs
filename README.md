@@ -10,6 +10,14 @@
 
 [Change history](en/changelog_en.md) 
 
+## Features
+
+[Service Intervals and Reminders](en/service-reminders.md)
+
+[Android Widgets](en/android-widgets.md)
+
+[Trip Statistics and Online Analytics](en/statistics.md)
+
 ## Visuals
 
 [Main Screen Settings](en/screen-settings.md)

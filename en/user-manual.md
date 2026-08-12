@@ -20,7 +20,9 @@ More detailed technical material has been moved into separate knowledge base art
 - Connection, profiles, compatibility: [Ready-made vehicle profiles](profiles.md), [Problematic ELM327 adapters](bad-elms.md), [Diagnostics for ABS/SRS and specific ECUs](custom-ecus.md).
 - Consumption and calibration: [Fuel calculation methods and coefficients](fuel-methods.md), [Fuel consumption: questions and answers](fuel-questions.md), [Speed discrepancy](speed-diff.md), [Voltage correction](voltage.md).
 - Screens and interface setup: [Main Screen Settings](screen-settings.md), [Layouts, Screens, and DashKits](layouts.md), [Layout language specification](LAYOUT_SPEC.md), [Dynamic expressions](dynamic-expr.md), [Dynamic expressions: core syntax](dynamic-expr-core.md).
-- Data, reports, support: [Backups and settings migration](backups.md), [Trip statistics](statistics.md), [How to report a problem](problems.md), [Licensing](licensing.md).
+- Service and reports: [Service intervals and reminders](service-reminders.md), [Trip statistics and online analytics](statistics.md).
+- Data and support: [Backups and settings migration](backups.md), [How to report a problem](problems.md), [Licensing](licensing.md).
+- Android: [Home-screen widgets](android-widgets.md).
 - iOS/CarPlay: [Automated launch via Shortcuts](carplay-shortcut.md).
 
 If you are setting up HobDrive for the first time, read this manual top to bottom and use the linked articles for deeper detail where needed.
@@ -32,6 +34,7 @@ HobDrive combines the following in one app:
 - Real-time display of current vehicle and trip parameters.
 - ECU diagnostics, reading and clearing fault codes.
 - Fuel consumption, refueling, cost of ownership, and driving efficiency analysis.
+- Service intervals, maintenance records, and local reminders.
 - Customizable screens, user sensors, themes, and DashKits.
 - Data backups and background cloud uploads.
 - Extra modes: HUD, GPS graphs, acceleration screen, and engine hours.
@@ -329,6 +332,12 @@ Data is entered through the **Actions** panel:
 
 Using refueling records, HobDrive lets you estimate fuel costs, total cost of ownership, and cost per kilometer.
 
+### Service Reminders
+
+The separate **Service reminders** screen tracks maintenance by date, odometer, or both. You can start from presets or create custom intervals, record completed work, snooze or skip a cycle, and receive local notifications when service is due.
+
+Step-by-step instructions: [Service Intervals and Reminders](service-reminders.md).
+
 ### GPS and Motion
 
 The GPS screen has graphs and improved direction display.
@@ -413,7 +422,7 @@ Recommendation: enable regular backups, especially before switching devices or t
 
 For details on files, migration, and restoration: [How to migrate settings or make a backup](backups.md).
 
-For cloud and local statistics details: [Trip statistics and records](statistics.md).
+For setup, comparison analytics, and fueling/expense charts: [Trip Statistics and Online Analytics](statistics.md).
 
 ## DashKits, Themes, and Extensibility
 
@@ -439,6 +448,8 @@ For advanced customization see:
 ## Android: Widgets
 
 Android supports widgets that display in the app style and are customizable for your choice of sensors/parameters. This is convenient for quick viewing of key data without opening the app.
+
+To add, configure, resize, or troubleshoot one, see [HobDrive Widgets for Android](android-widgets.md).
 
 ## iOS and CarPlay
 
@@ -503,8 +514,7 @@ This section is reserved for manual development. Recommended future chapters:
 
 - Detailed guide to creating a custom DashKit with examples.
 - Catalog of recommended custom screens by scenario (city, highway, diagnostics).
-- Separate best practices for CarPlay and Android widgets.
-- Extended section on cloud analytics and data sharing between devices.
+- Separate best practices for CarPlay.
 
 ## Important Safety Warning
 
