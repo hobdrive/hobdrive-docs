@@ -10,7 +10,7 @@ task :prep do
     sh "cp ../hobd/changelog_en ./en/changelog_en.md"
 end
 
-task :build do
+task :build => :prep do
     ENV['LANG'] = 'C.UTF-8'
     ENV['LC_ALL'] = 'C.UTF-8'
     sh "bundle exec jekyll b"
@@ -43,7 +43,7 @@ task :relativize_urls do
       
       # For root path
       if path.empty?
-        "#{attr}=\"#{prefix.chomp('/')}\""
+        "#{attr}=\"#{prefix}index.html\""
       else
         "#{attr}=\"#{prefix}#{path}\""
       end
