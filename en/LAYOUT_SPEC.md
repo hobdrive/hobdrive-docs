@@ -144,6 +144,7 @@ Example:
 
 - `union` — allows compositing several alternate layouts into same area (used in TPMS layout).
   - Use `union` when multiple mutually-exclusive sub-layouts should occupy the same grid area; each child typically contains its own `grid`.
+  - Optional `aspect-ratio` fixes the composition's width / height ratio and centers it inside the actual parent area, including all nested images and live text. For example, `<union aspect-ratio="0.7">` fits a 560 × 800 composition. Omitted or invalid values keep the usual full-area layout. Older app builds without this feature ignore the attribute.
 
 - `switch` — selects one of its child elements to show based on an `index` expression. Useful for small cycling lists or conditional items.
   - Attributes:
