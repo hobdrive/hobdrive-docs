@@ -54,6 +54,21 @@ Includes another ECUXML file. The included file's parameters are loaded into the
 
 Multiple `<include>` elements are allowed.
 
+An include may explicitly reuse the caller's sensor namespace and default header:
+
+```xml
+<include inherit-scope="true">ChryslerDieselCommon.ecuxml</include>
+```
+
+This opt-in applies only to the namespace and default sensor header. Explicit
+qualified parameter IDs and per-parameter headers keep their original meaning.
+Other metadata, connection initialization and model selection are not inherited.
+Ordinary includes keep the included module's own namespace/header. A scoped common
+module should not contain `models`; the caller remains the selectable profile.
+These files require a runtime/generator supporting `inherit-scope`. Older runtimes
+ignore the attribute and load the module with its own scope; do not distribute
+this refactor as an XML-only update to such versions.
+
 #### `<header>`
 
 Default ELM327 header string. Applied to all OBD2 sensors unless overridden. This is an alternative to the `standard-header` attribute on the root element.

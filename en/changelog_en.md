@@ -1,3 +1,62 @@
+- v1.9.22 11/10/2026
+  - Updated the System Settings screen: language, logging level and reconnection intervals
+  - Fixed Android Auto startup and improved sensor navigation
+  - CarPlay now shows connection status; fixed BT4 adapter connection while iPhone is locked
+  - Fixed driving efficiency calculation and fuel cutoff detection during engine braking
+  - Improved sensor data saving and restoration of the selected trip interval when starting from the car screen
+  - Website licenses now work when the verification server is temporarily unavailable
+  - Fixed screen boundaries on older Android versions and rare app crashes
+  - ECU: added profiles
+    Fiat Delphi MT27E
+    VAG MQB 2.0 TDI + DSG DQ381 + BERU TPMS
+    Toyota Frontlander Hybrid 2023
+  - ECU: improved Fiat descriptions, Chrysler Voyager / Jeep Wrangler profiles and Dodge Journey screens
+
+- v1.9.21 06/10/2026
+  - Fixed an issue with the ELM adapter settings screen
+
+- v1.9.20 27/09/2026
+  - Fixes for Google Play licenses
+
+- v1.9.19 21/09/2026
+  - Fixes in Split Screen mode
+  - Fixes on older Android versions - reopening the settings screens did not work
+  - License check sometimes got stuck after pressing "OK"
+
+- v1.9.18 12/09/2026
+  - Fixed issues in the payment gateway
+
+- v1.9.17 10/09/2026
+  - Improved measurement screens (0-100, braking) - more convenient to use
+  - More compact trip interval screen - more convenient to use in portrait mode
+  - Sensor readings are now aligned vertically where possible, screens look neater
+  - Removed the redundant panel with the "reload" button on the statistics/help web pages
+  - Minor bugs causing rare app crashes fixed
+
+- v1.9.16 05/09/2026
+  - Fixed an app crash when playing audio on iOS
+  - The service indicator now appears only when there are upcoming events.
+  - Improved translations for the Statistics and Service screens
+
+- v1.9.15 30/08/2026
+  - Statistics and analytics are now uploaded to the cloud more efficiently.
+  - Cloud recovery mode when the app is installed on a new device.
+    The app automatically detects a cloud backup and offers to restore the data.
+
+- v1.9.14 22/08/2026
+  - Notifications about upcoming service intervals and reminders now arrive through system notifications.
+  - A badge with the count of upcoming events now appears on the home screen.
+  - New section "Vehicle Settings" / "Transport Type and Operating Ranges"
+    - Added detailed settings for limit values of various sensors:
+    - Engine, oil, transmission, coolant, and air temperature
+    - Battery and alternator voltage
+    - TPMS control boundaries.
+    - Fuel consumption
+    - Maximum RPM
+    - You can select a general vehicle type profile - car, truck, motorcycle, special equipment.
+      Depending on the vehicle type, different limit values will be applied for sensors.
+  - Devices without an accelerometer use the legacy estimated accelerometer.
+
 - v1.9.13 10/08/2026
   - Fixed rendering issues on the Service Intervals screen
   - Non-standard currencies are now saved as "other" - previously you had to select an existing one from the list
@@ -19,13 +78,13 @@
   - Existing refuelings can be edited
 
 - v1.9.9 26/07/2026
-  - Fixed excessive screen redraws when switching between applications or viewing the status bar in Android.
+  - Fixed excessive screen redraws when switching between applications or viewing the status bar in A.
   - Enhanced "Report a Problem" feature - now you can open a chat with an AI assistant directly in the app!
   - You can also automatically send log files to this chat.
   - In the Error Codes screen, you can now select an error and send it to the AI assistant chat to get a description and repair recommendations.
 
 - v1.9.8 20/07/2026
-  - Day/night theme switching can now follow fixed hours, sunrise/sunset, or the Android system theme.
+  - Day/night theme switching can now follow fixed hours, sunrise/sunset, or the A system theme.
   - Cloud analytics now shows subscription status and expiry notices, respects license upload limits, and blocks cloud sync for unsupported licenses.
   - Improved Bluetooth LE (BT4) OBD adapter discovery and connection.
   - Fixed screen brightness handling when night brightness is disabled, and in day mode or HUD mode.
@@ -33,17 +92,17 @@
   - ECU: fixed SY DSL D20DT(C3I) E4 KWP profile (OBD-II mode disabled).
 
 - v1.9.6 30/05/2026
-  - Fixed screen boundaries on Android 16.
-  - On Android, the application used system localization settings, which caused misinterpretation of some numbers in layouts. Now the dot always serves as the decimal separator.
+  - Fixed screen boundaries on A 16.
+  - On A, the application used system localization settings, which caused misinterpretation of some numbers in layouts. Now the dot always serves as the decimal separator.
   - Added protection for devices with incorrect system time at startup. Trips will not be reset. HobDrive accounts for this after receiving the correct time.
-  - Android Widgets are rendered the same as in the app and can be customized.
+  - A Widgets are rendered the same as in the app and can be customized.
   - ECU: 
     Renault ScenicIII M9R_615+AT_AJ0
     Renault ScenicIII M9R 615 ENG+AT+BCM+AC
     Tiggo 8 Pro Max Eng_2.0+7DTC+TPMS+CAN
 
 - v1.9.4 14/03/2026
-  - First attempt at implementing Widgets for Android.
+  - First attempt at implementing Widgets for A.
   - Fixed black screen (zero brightness) on some head units.
   - GPS sensors were not displayed (broken in 1.9.3).
   - Refuelings and events were not shown or recorded in statistics (broken in 1.9.3).
