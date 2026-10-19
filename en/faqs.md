@@ -1,6 +1,10 @@
 
 ## Typical Issues
 
+### My ELM327 adapter connects over Wi-Fi
+
+The Wi-Fi network created by an ELM327 adapter usually does not provide internet access. The vehicle connection still uses the adapter's Wi-Fi network, while HobDrive's online features need a separate internet route, such as mobile data from the phone's SIM. If Android reports that the adapter network has no internet, stay connected to that network and allow the phone to use mobile data. Exact behavior depends on the Android version and device firmware.
+
 ### HobDrive cannot connect to the vehicle
 
 You should distinguish between problems connecting to the ELM adapter (the indicator lights up red immediately, with a corresponding error message), and problems connecting the adapter to the vehicle (in this case, messages are usually issued: BUS INIT ERROR, UNABLE TO CONNECT).
