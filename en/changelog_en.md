@@ -1,3 +1,20 @@
+- v1.9.25 07/11/2026
+  - Redesigned offline refueling and maintenance journals with compact cards, full-history search, filters, sorting and pages of 10, 25 or 50 records
+  - Made journal creation, editing and deletion easier; search, filters, the current page and scroll position are restored after saving or cancelling
+  - Clarified journal totals for the current page, filtered records and full history; currencies and units are kept separate, and saved coordinates can be opened on a map
+  - Updated diagnostics with faults grouped by status, expandable descriptions and a dedicated button to send the full description to the AI assistant
+  - Diagnostics preserve the viewing position when returning or rotating the screen; improved the placement of fault-clearing buttons
+  - Fault clearing now follows an explicitly confirmed action; prevented diagnostic commands from running during ordinary sensor viewing
+  - Fixed polling interval propagation through XML sensor aliases so source sensor polling follows requests from screens and background consumers
+  - Updated the bundled vehicle catalog to 1,838 profiles, up from 1,316
+  - Fixed DashKit previews after screen rotation, status labels and the message shown when no themes are available
+  - Improved the settings menu, label and TPMS warning contrast, and help icons; vehicle search cards now fit the list width
+  - Completed translations in settings, help and theme previews; Android license and update messages respect the selected language
+  - Fixed Android display cutout spacing, text input behavior and access to Wi-Fi settings above the keyboard in landscape
+  - Improved returning to the Android app from system settings, restoration of the title and Back button, and the version screen with license source guidance
+  - ECU: fixed the voltage sensor on the Chery M11 ABS screen; added unconfirmed B1101/B1102 descriptions for Chery M11 SRS
+  - ECU: added a preliminary Moto Guzzi IAW5AM HW610 profile with engine RPM and ECU supply voltage; ELM connectivity and readings still need verification on the motorcycle
+
 - v1.9.24 31/10/2026
   - Updated refueling and fuel price forms: automatic total and volume calculation, mileage correction and quick journal access
   - Fixed secondary fuel prices and counters, and odometer accounting during refueling
