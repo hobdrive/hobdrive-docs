@@ -1,3 +1,39 @@
+- v1.9.24 31/10/2026
+  - Updated refueling and fuel price forms: automatic total and volume calculation, mileage correction and quick journal access
+  - Fixed secondary fuel prices and counters, and odometer accounting during refueling
+  - Updated maintenance entry and reminder completion: work search, a calendar and preservation of historical data when editing
+  - Refueling and maintenance save failures keep entered data in the form and roll back partial changes
+  - Fixed journal totals: decimal amounts, separate currency totals and volume in the selected units
+  - Updated sensor information: scrollable descriptions, reading status and copyable diagnostics
+  - Updated appearance settings for a cell, a sensor or all gauges: live preview, inheritance and color thresholds
+  - Updated sensor recording settings: batch selection, pauses, data size estimates and changes without reconnecting
+  - Fixed sensor polling intervals and automatic recording resumption after a pause
+  - Updated backup, cloud analytics and data cleanup settings with status summaries and license guidance
+  - Cloud sync results and subscription reminders now use system notifications that open the settings when tapped
+  - Fixed restoration of RuStore cloud access after restarting the Android app
+  - Improved the vehicle catalog and forms on small landscape screens; primary actions stay above the keyboard on Android and iOS
+  - Fixed returning from forms and reopening them on Android; prevented crashes after closing web pages
+  - Potential fix for the distorted diagnostics screen on Android
+  - Fixed iOS handling of open files during backgrounding that caused the app to be terminated
+  - ECU: fixed formulas, units and ECU communication in Subaru SSM2 CAN profiles
+  - ECU: improved Mitsubishi PHEV BMU/CMU reply validation; added preliminary supply voltage readings and OBC 100/200 V charge counters
+  - ECU: added unconfirmed Geely EX5 BECM power limits and minimum/maximum-voltage cell identifiers, with dedicated screens
+  - ECU: added five unconfirmed ABS MK70 fault code descriptions in English and Russian
+
+- v1.9.23 23/10/2026
+  - Redesigned vehicle profiles: all vehicles in one list with selection, copying, sharing and deletion
+  - Added catalogue search by make or model, easier template selection and guidance when the exact year is missing
+  - Added vehicle profile import and export, plus clearer public catalogue submission with moderator review
+  - Improved the first vehicle setup flow, access to current vehicle settings and the selected fuel type display
+  - Fixed tire pressure display and adapted the TPMS screen for portrait and landscape orientations
+  - The TPMS status icon now appears only for warnings or critically low or high pressure
+  - Fixed a crash in fuel consumption settings when no OBD engine is available
+  - Improved acceleration and driving efficiency calculations around starts, stops and reconnections; acceleration is derived from vehicle speed
+  - Fixed handling of cumulative sensors when selecting trip intervals
+  - Fixed an Android crash when updating GPS status if GPS sensors are unavailable
+  - ECU: added preliminary Geely EX5 support for the traction battery (BECM), onboard charger and DC/DC converter, with dedicated screens
+  - ECU: improved transmission data decoding, sensor descriptions and screens for Geely Atlas / NL3
+
 - v1.9.22 11/10/2026
   - Updated the System Settings screen: language, logging level and reconnection intervals
   - Fixed Android Auto startup and improved sensor navigation
