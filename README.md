@@ -38,6 +38,12 @@
 
 [Automatically Launch hobDrive on CarPlay with Shortcuts](en/carplay-shortcut.md)
 
+## Calibration
+
+[Speed, distance and choosing a reference](en/speed-diff.md)
+
+[Fuel methods and calibration](en/fuel-methods.md)
+
 ## Questions
 
 [FAQs](en/faqs.md)

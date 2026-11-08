@@ -141,7 +141,7 @@ Detailed article on profiles and templates: [Ready-made vehicle profiles](profil
 - **ECU Settings**: ECU manufacturer filter, ECU type (such as standard OBD-II or a specific control unit profile), ELM initialization string, and available additional sensor sets. ECU type controls how the vehicle is queried and which sensors are available; the manufacturer filter only narrows the list. Standard OBD-II vehicles usually need no custom initialization string.
 - **Fuel Type Settings**: petrol / diesel / gas / petrol+gas / diesel+gas / petrol+electricity / electricity configuration and primary tank capacity. Dual-fuel configurations also show a secondary tank capacity and fuel-switch controls, primarily for gas systems: automatic, ECU based, temperature and RPM, voltage, or a custom signal. When changing to dual-fuel accounting, the app asks how to migrate accumulated data.
 - **Fuel Consumption Settings**: a separate form for primary fuel and, in a dual-fuel profile, secondary fuel. Available methods are MAF, MAP, injector pulse, cyclomatic consumption, engine load, and built-in consumption sensor. The form reports whether the selected method is available with the current connection, shows current fuel use per hour, and offers **Apply and Check data**. Engine displacement, cylinder count, AFR, VE, injector flow, consumption coefficients, and fuel-cutoff, LTFT, and Lambda corrections are here; the applicable fields depend on the method. [Fuel calculation methods and coefficients](fuel-methods.md) · [Consumption principles](fuel-questions.md).
-- **Fuel tank setup**: tank capacity and the volume already consumed from the tank. Dual-fuel profiles have the same fields for the secondary tank. These values initialize the estimated fuel remaining.
+- **Tank and remaining fuel**: tank capacity and the volume already consumed from the tank. Dual-fuel profiles have the same fields for the secondary tank. These values initialize the estimated fuel remaining.
 - **Vehicle Wheels Size**: factory and installed rim/tire sizes, a factory-tire switch, speed correction coefficient, and an action to calculate that coefficient from wheel sizes.
 - **Setup Gears**: a template and gear ratios for the final drive and individual gears. These support gear detection from RPM and speed.
 - **Power Settings**: vehicle weight, drag coefficient and frontal area, rolling resistance, road angle, transmission loss, maximum speed, and rated engine power; the form also shows calculated power.
@@ -180,7 +180,7 @@ This is the screen with current vehicle state while driving. All sensors are rea
 
 **Main sensors:**
 
-- **Speed**: the current vehicle speed. Readings come from vehicle sensors and should match the speedometer. They may differ from GPS speed. For correction, see the calibration section.
+- **Speed**: speed from the configured source, usually the ECU. It can differ from the speedometer and GPS. Speed and distance corrections are separate: see [speed and distance](speed-diff.md).
 - **Acceleration**: instantaneous acceleration in meters per second squared, showing acceleration or deceleration intensity.
 - **RPM**: current engine speed.
 - **Fuel level**: estimated fuel level in the tank. Requires initial calibration; see the Fuel Details screen.
@@ -437,10 +437,11 @@ Step-by-step instructions for CarPlay auto-launch: [Automated launch via Shortcu
 
 ### Basic Calibration Algorithm
 
-1. Enter at least 2-3 refuelings with accurate liters and odometer readings.
-2. On the "All Refuelings" screen see the calculated "tank-based" consumption.
-3. Roughly compare this value with the consumption shown by HobDrive on the "Trip Computer" screen for a long interval (e.g., "Month" or "All time").
-4. Adjust calibration parameters of the chosen method (see the coefficients section below).
+1. Open Settings → Fuel consumption calibration. Actual fuel requires completed full-to-full intervals including all intermediate refuellings.
+2. For distance, choose the vehicle odometer or an independent reference. Compare identical, fully recorded sections.
+3. Calibrate fuel defaults to average consumption. Choose a refuelling period and a hobDrive week, month or all-time average, or enter your own values. Different periods are allowed; the correction is approximate. By fuel volume is available for matching sections.
+4. Select Calibrate distance or Calibrate fuel, enter comparable measurements, review the proposed value and apply it. When comparing volumes or distance, the displayed current settings must have applied throughout the control section.
+5. Check the result on a new section. Corrections apply forward; existing totals are not recalculated. The date and basis of application are stored in the profile.
 
 This manual covers only the basic calibration algorithm. Full technical details with formulas, AFR/VE, MAP/MAF/Injector/EngineLoad coefficients, and calculation examples are in separate articles:
 
@@ -450,7 +451,7 @@ This manual covers only the basic calibration algorithm. Full technical details 
 
 ### Important Number Format
 
-For decimal parameters use a period as the decimal separator.
+Quick calibration accepts decimal points and commas. In other older parameter forms, use a decimal point.
 
 ## Common Problems
 
