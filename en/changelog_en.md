@@ -1,3 +1,17 @@
+- v1.9.26 15/11/2026
+  - Added distance and fuel consumption calibration. Compare distance with the odometer or an independent measurement, and consumption with the refueling journal or a value you enter. Preview each correction before saving and review applied corrections in the history.
+  - Compare consumption over a week, a month, all time, the current tank or Trip A/B. Choose the cumulative average for all fill-ups or the average between full tanks. Each fuel has its own correction.
+  - The refueling journal shows all three consumption figures again, with color comparisons and separate sorting. The next-refuel forecast now accounts for the elapsed portion of the current month.
+  - Search for an ECU by make, model or ECU name in vehicle settings. Before choosing, see which vehicle profiles use it and how many parameters the profile defines.
+  - Fixed transferring the Ford C-Max 2007 and SsangYong Rexton 2007 profiles that include Android sensors.
+  - Sensor information now leaves more room for readings and shows calculated values as soon as their inputs are available. Fixed filters on automatically generated sensor screens and opening settings from the side menu.
+  - On Android, an installed website license is kept when updating the app offline. Improved startup screen and system bar readability and fixed failures when starting or stopping Bluetooth and BLE connections.
+  - Support reports now include the current log.txt while the app is still writing to it. Large logs include the most recent entries.
+  - ECU: added a pressure, injection and fuel level screen for the Opel Astra J A14NET. Fixed fuel level averaging on Great Wall/Haval H5 and ABS wheel speed decoding with CAN headers on Haval H5.
+  - ECU: added experimental Hyundai SIMK41 CA660079 voltage and temperature readings and Haval H6 HEV wheel speed and evaporator temperature profiles. Connectivity and readings still need in-vehicle verification.
+  - Added Russian descriptions for P0672, P0674 and pressure control solenoid B faults, plus ten wheel speed fault descriptions in English and Russian. Applicability of the wheel speed codes to a particular module still needs verification.
+  - On iOS, refueling form actions no longer overlap after dismissing the keyboard.
+
 - v1.9.25 07/11/2026
   - Redesigned offline refueling and maintenance journals with compact cards, full-history search, filters, sorting and pages of 10, 25 or 50 records
   - Made journal creation, editing and deletion easier; search, filters, the current page and scroll position are restored after saving or cancelling
