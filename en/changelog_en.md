@@ -1,3 +1,11 @@
+- v1.9.27 16/11/2026
+  - The dashboard now has a Control center. The button in the header opens screens, frequent actions and trip intervals. Each interval shows the available distance and fuel figures. You can restore the classic bottom buttons in User Interface Settings.
+  - Charts lets you compare multiple sensors live or in a recorded track. Choose a preset or build your own set, with up to three sensors in the demo and 32 in the full version.
+  - In the full version you can record a diagnostic session, mark an event and jump back to it during playback. The history calendar shows days with recordings. Fast reading temporarily pauses distance and fuel calculations and ordinary track recording.
+  - On Android, the loading screen follows the system’s light or dark theme.
+  - Fixed decoding of acceleration, steering angle, yaw rate and brake pressure from multi-frame CAN replies in the Haval H5 ABS profile. Decoding was tested with sample data. The readings still need verification on a vehicle.
+  - Added ten English and Russian descriptions for ABS pump and wheel speed sensor faults. Their applicability to a particular control unit still needs verification.
+
 - v1.9.26 15/11/2026
   - Added distance and fuel consumption calibration. Compare distance with the odometer or an independent measurement, and consumption with the refueling journal or a value you enter. Preview each correction before saving and review applied corrections in the history.
   - Compare consumption over a week, a month, all time, the current tank or Trip A/B. Choose the cumulative average for all fill-ups or the average between full tanks. Each fuel has its own correction.
@@ -44,7 +52,7 @@
   - Fixed restoration of RuStore cloud access after restarting the Android app
   - Improved the vehicle catalog and forms on small landscape screens; primary actions stay above the keyboard on Android and iOS
   - Fixed returning from forms and reopening them on Android; prevented crashes after closing web pages
-  - Potential fix for the distorted diagnostics screen on Android
+  - Fixed the distorted diagnostics screen on Android; users confirmed the issue is resolved
   - Fixed iOS handling of open files during backgrounding that caused the app to be terminated
   - ECU: fixed formulas, units and ECU communication in Subaru SSM2 CAN profiles
   - ECU: improved Mitsubishi PHEV BMU/CMU reply validation; added preliminary supply voltage readings and OBC 100/200 V charge counters
