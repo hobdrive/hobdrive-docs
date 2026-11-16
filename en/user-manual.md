@@ -56,7 +56,7 @@ Open: **Screens -> Settings -> ELM Connection Parameters**.
 
 Connection options:
 
-- **Bluetooth**: select the adapter from the list, or choose BTLE4. On Android/iOS the adapter usually needs to be paired in the system settings first.
+- **Bluetooth**: select an available connection type and the adapter from the list. On Android, BLE may be labeled `BTLE4`. On iOS, it may appear simply as `Bluetooth` / `Bluetooth device`, without a separate `BTLE4` option; select that entry and the adapter. Pair in system settings only when the platform or adapter provides that step.
 - **Wi-Fi**: connect to the adapter's Wi-Fi network and enter an address in the form `ip:port`.
 - **USB** (Android, if supported by the device and adapter): select the detected USB adapter.
 - **Simulator**: for GPS-based testing without a real vehicle.
