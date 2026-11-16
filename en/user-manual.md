@@ -361,7 +361,11 @@ Advanced customization via layout files: [Layouts, Screens, and DashKits](layout
 
 Fuel trims STFT (short-term) and LTFT (long-term) are ECU parameters that determine how efficiently the vehicle uses the fuel-air mixture.
 
-On older or dirty engines their absolute value can be large (20% or more) and may trigger error codes. Fuel trims within a few percent indicate normal engine operation.
+A positive trim means that the ECU adds fuel to its calculated amount; a negative trim means that it subtracts fuel. The sign describes the direction of adjustment. By itself it does not establish the actual rich or lean mixture or identify a failed component.
+
+An **LTFT / WARNING** in HobDrive compares the parameter with the configured application threshold; it is not a separate ECU diagnostic trouble code. The application threshold is not a universal manufacturer specification. Assess the operating conditions, bank, STFT, other codes and symptoms, and check the applicable vehicle documentation for limits.
+
+Preserve existing data before clearing codes or adaptations. Do not prescribe replacement parts or judge driving safety from a single trim value.
 
 **Lambda Sensors Screen**:
 
