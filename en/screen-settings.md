@@ -68,6 +68,8 @@ Examples of such options:
 - show average speed excluding idle time;
 - show odometer data from the ECU.
 
+In the current version, fuel level and odometer values received from the ECU are used for display only. HobDrive does not yet use these values in fuel-consumption, distance, or estimated remaining-fuel calculations. Support for those calculations is planned for a future version.
+
 The available options may differ depending on the app version, platform, vehicle profile, and available screens. If a specific screen has no additional switches, then only the general visibility and order settings are currently available for it.
 
 ## Sensor Appearance Settings

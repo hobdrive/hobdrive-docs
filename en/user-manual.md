@@ -261,7 +261,7 @@ Tapping one of the fuel level sensors opens the tank calibration dialog. On firs
 
 HobDrive then automatically decreases the estimated fuel amount. To keep it accurate, you need to enter fueling records regularly.
 
-HobDrive does not use the raw ECU sensor value directly. Instead, it shows the calculated value based on entered fuel data and consumption.
+The estimated fuel amount described here uses fueling records and calculated consumption; it is distinct from a fuel level value read from the ECU.
 
 Additional values calculated on this screen include:
 
@@ -271,7 +271,7 @@ Additional values calculated on this screen include:
 - **Maximum temperature and speed**: the maximum observed value
 - **Average speed**: calculated for the current selected interval including all idle time
 
-Some cars transmit the real fuel level from the ECU. In HobDrive this sensor is called **ECUFuelLevel**. HobDrive displays the calculated value instead, based on entered data and fuel consumption.
+When the vehicle and selected profile provide fuel level from the ECU, HobDrive can display it (**ECUFuelLevel**) separately from the estimated level, including in its place where the screen setting allows it. Selecting the ECU display does not itself change estimated fuel remaining in liters, fuel consumption, remaining range, or HobDrive's own odometer: those calculations continue to use their respective inputs.
 
 ### Refueling and Events
 
