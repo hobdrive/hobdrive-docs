@@ -25,7 +25,7 @@ Accepting hobDrive's suggested odometer when entering a refuelling record is not
 
 ## Quick distance correction
 
-Open **Settings → Fuel consumption calibration → Calibrate distance**.
+Open **Actions → Fuel consumption calibration → Calibrate distance**.
 
 1. Choose the vehicle odometer or independent distance as your reference.
 2. Enter distance travelled, not an absolute odometer reading: subtract the start from the end. For the vehicle reference, selected completed refuelling intervals can supply the odometer differences.

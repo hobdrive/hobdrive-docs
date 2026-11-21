@@ -17,7 +17,7 @@ The quick correction screen uses the effective current parameter, including defa
 
 ## Quick fuel correction
 
-Open **Settings → Fuel consumption calibration → Calibrate fuel**. The screen uses the currently saved method and selected fuel. Save any method change in vehicle settings before calibrating it.
+Open **Actions → Fuel consumption calibration → Calibrate fuel**. The screen uses the currently saved method and selected fuel. Save any method change in vehicle settings before calibrating it.
 
 ### By average consumption
 

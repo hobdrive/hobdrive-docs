@@ -437,7 +437,7 @@ Step-by-step instructions for CarPlay auto-launch: [Automated launch via Shortcu
 
 ### Basic Calibration Algorithm
 
-1. Open Settings → Fuel consumption calibration. Actual fuel requires completed full-to-full intervals including all intermediate refuellings.
+1. Open **Actions → Fuel consumption calibration**. If you use the Control Center, open **All actions**. Actual fuel requires completed full-to-full intervals including all intermediate refuellings.
 2. For distance, choose the vehicle odometer or an independent reference. Compare identical, fully recorded sections.
 3. Calibrate fuel defaults to average consumption. Choose a refuelling period and a hobDrive week, month or all-time average, or enter your own values. Different periods are allowed; the correction is approximate. By fuel volume is available for matching sections.
 4. Select Calibrate distance or Calibrate fuel, enter comparable measurements, review the proposed value and apply it. When comparing volumes or distance, the displayed current settings must have applied throughout the control section.
