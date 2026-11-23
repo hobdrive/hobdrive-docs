@@ -36,6 +36,8 @@ Open the main **Statistics & Events** screen. HobDrive prepares a report with tr
 
 The report lets you move between all-time, year, month, and day pages, open individual trips, and view maps and charts. The **Fuelings** and **Events** pages support sorting, searching, and filtering.
 
+If a table has multiple pages, check the selected page, the date sort direction, and the displayed row range. The last page may contain the oldest records: open the first page and adjust sorting if needed before concluding that recent trips are missing. If the required period is still absent, tell support whether you opened the local or online report and include a screenshot of the selected page and filters.
+
 The local report does not require a cloud subscription. Features that require server processing or a broader history may be available only in the online report.
 
 ## Enabling Cloud Analytics
