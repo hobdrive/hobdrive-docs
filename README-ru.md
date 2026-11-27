@@ -10,7 +10,17 @@
 
 ## Дополнительные функции
 
+[Центр управления: Единый пульт](ru/control-center.md)
+
+[Калибровка пробега и расхода](ru/calibration.md)
+
+[Пробеги, заправки и расходы](ru/trips-and-expenses.md)
+
+[Графики датчиков и запись диагностических сессий](ru/charts.md)
+
 [Сервисные интервалы и напоминания](ru/service-reminders.md)
+
+[Мониторинг автомобиля](ru/monitoring.md)
 
 [Виджеты HobDrive для Android](ru/android-widgets.md)
 

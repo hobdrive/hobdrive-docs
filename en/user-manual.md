@@ -19,11 +19,12 @@ This manual now serves as an **overview layer**: it explains the basic setup flo
 
 More detailed technical material has been moved into separate knowledge base articles:
 
-- Connection, profiles, compatibility: [Ready-made vehicle profiles](profiles.md), [Problematic ELM327 adapters](bad-elms.md), [Diagnostics for ABS/SRS and specific ECUs](custom-ecus.md).
-- Consumption and calibration: [Fuel calculation methods and coefficients](fuel-methods.md), [Fuel consumption: questions and answers](fuel-questions.md), [Speed discrepancy](speed-diff.md), [Voltage correction](voltage.md).
-- Screens and interface setup: [Main Screen Settings](screen-settings.md), [Layouts, Screens, and DashKits](layouts.md), [Layout language specification](LAYOUT_SPEC.md), [Dynamic expressions](dynamic-expr.md), [Dynamic expressions: core syntax](dynamic-expr-core.md).
-- Service and reports: [Service intervals and reminders](service-reminders.md), [Trip statistics and online analytics](statistics.md).
-- Data and support: [Backups and settings migration](backups.md), [How to report a problem](problems.md), [Licensing](licensing.md).
+- Connection, profiles, compatibility: [Ready-made vehicle profiles (Russian)](../ru/profiles.md), [Problematic ELM327 adapters (Russian)](../ru/bad-elms.md), [Diagnostics for ABS/SRS and specific ECUs (Russian)](../ru/custom-ecus.md).
+- Consumption and calibration: [Distance and fuel consumption calibration](calibration.md), [Fuel calculation methods and coefficients](fuel-methods.md), [Fuel consumption: questions and answers (Russian)](../ru/fuel-questions.md), [Speed discrepancy](speed-diff.md), [Voltage correction (Russian)](../ru/voltage.md).
+- Screens and interface setup: [Control center](control-center.md), [Main Screen Settings](screen-settings.md), [Layouts, Screens, and DashKits](layouts.md), [Layout language specification](LAYOUT_SPEC.md), [Dynamic expressions](dynamic-expr.md), [Dynamic expressions: core syntax](dynamic-expr-core.md).
+- Trips, service, and reports: [Trips and expenses](trips-and-expenses.md), [Service intervals and reminders](service-reminders.md), [Trip statistics and online analytics](statistics.md).
+- Diagnostics: [Sensor charts and session recording](charts.md), [Vehicle monitoring](monitoring.md).
+- Data and support: [Backups and settings migration (Russian)](../ru/backups.md), [How to report a problem (Russian)](../ru/problems.md), [Licensing (Russian)](../ru/licensing.md).
 - Android: [Home-screen widgets](android-widgets.md).
 - iOS/CarPlay: [Automated launch via Shortcuts](carplay-shortcut.md).
 
@@ -37,6 +38,9 @@ HobDrive combines the following in one app:
 - ECU diagnostics, reading and clearing fault codes.
 - Fuel consumption, refueling, cost of ownership, and driving efficiency analysis.
 - Service intervals, maintenance records, and local reminders.
+- Distance and fuel calibration with a correction preview and application history.
+- Charts for several sensors, saved history, and diagnostic session recording in the full version.
+- Sensor monitoring with rules, alerts, and event history.
 - Customizable screens, user sensors, themes, and DashKits.
 - Data backups and background cloud uploads.
 - Extra modes: HUD, GPS graphs, acceleration screen, and engine hours.
@@ -65,7 +69,7 @@ Connection options:
 
 *ELM327 connection settings on Android (Bluetooth mode).*
 
-More about adapter quality and compatibility: [Problematic ELM327 adapters](bad-elms.md).
+More about adapter quality and compatibility: [Problematic ELM327 adapters (Russian)](../ru/bad-elms.md).
 
 ### 2. Check the Connection Status
 
@@ -87,7 +91,7 @@ Recommended order:
 2. If no template exists, configure the profile manually.
 3. When the setup works, share the profile through **Share**.
 
-More: [Ready-made vehicle profiles](profiles.md), [Diagnostics for ABS/SRS and specific ECUs](custom-ecus.md).
+More: [Ready-made vehicle profiles (Russian)](../ru/profiles.md), [Diagnostics for ABS/SRS and specific ECUs (Russian)](../ru/custom-ecus.md).
 
 ## Interface Basics
 
@@ -110,6 +114,10 @@ The **Screens** menu gives access to additional controls:
 - Activate Settings tab
 - Choose and activate additional screens
 
+### Control Center
+
+Recent versions offer an additional navigation layout: the **Control center**. Tap the round **D** button in the header to open a panel with connection status, intervals, screen groups, and frequent actions. From here you can select a period, open a log, add a fill-up, or go to Charts and Calibration. Expand **All** to find more actions. The classic **Trip**, **Actions**, and **Screens** buttons remain available: turn off **Control center** under **Settings → User Interface Settings** and return to the gauges. This manual retains the familiar paths; the [Control Center guide](control-center.md) explains the new entry points and how to switch layouts.
+
 ## Settings Screen
 
 Key sections:
@@ -131,7 +139,7 @@ Open **Settings → Vehicle Settings** to edit the active profile. If a ready-ma
 
 ![Vehicle settings on Android](images/manual-android/vehicle-settings.png){: width="400" }
 
-Detailed article on profiles and templates: [Ready-made vehicle profiles](profiles.md).
+Detailed article on profiles and templates: [Ready-made vehicle profiles (Russian)](../ru/profiles.md).
 
 **Main profile screen.** **Profile Name**, **Manufacturer**, **Model**, **Year**, and **Details** identify the vehicle. Below them are buttons for the nested settings and fields for **Weight**, **Speed correction coeff**, **Odometer correction coeff**, **Maximum Idle Speed**, **Warm Engine Temperature**, **Time gap to autoreset trip**, **Fuel Economy Idle Speed**, and **Reset Fuel Economy On Idle**. Speed correction also affects calculated distance; odometer correction adjusts distance further without changing displayed speed. The trip interval is in seconds: if the car reconnects before it expires, Auto Trip continues. The last two settings control instant and short-term fuel economy around stops.
 
@@ -140,7 +148,7 @@ Detailed article on profiles and templates: [Ready-made vehicle profiles](profil
 - **Vehicle type and operating ranges**: choose Passenger car, Truck, Motorcycle, ATV / UTV, or Other independently of the ECU type. The selection fills initial ranges; you can then change each range separately. This screen contains electrical system voltage, maximum RPM scale, fuel consumption range, coolant/engine oil/transmission oil warning temperatures, maximum LTFT, and normal/critical TPMS pressure ranges. Choose the TPMS range using the vehicle placard or manual.
 - **ECU Settings**: ECU manufacturer filter, ECU type (such as standard OBD-II or a specific control unit profile), ELM initialization string, and available additional sensor sets. ECU type controls how the vehicle is queried and which sensors are available; the manufacturer filter only narrows the list. Standard OBD-II vehicles usually need no custom initialization string.
 - **Fuel Type Settings**: petrol / diesel / gas / petrol+gas / diesel+gas / petrol+electricity / electricity configuration and primary tank capacity. Dual-fuel configurations also show a secondary tank capacity and fuel-switch controls, primarily for gas systems: automatic, ECU based, temperature and RPM, voltage, or a custom signal. When changing to dual-fuel accounting, the app asks how to migrate accumulated data.
-- **Fuel Consumption Settings**: a separate form for primary fuel and, in a dual-fuel profile, secondary fuel. Available methods are MAF, MAP, injector pulse, cyclomatic consumption, engine load, and built-in consumption sensor. The form reports whether the selected method is available with the current connection, shows current fuel use per hour, and offers **Apply and Check data**. Engine displacement, cylinder count, AFR, VE, injector flow, consumption coefficients, and fuel-cutoff, LTFT, and Lambda corrections are here; the applicable fields depend on the method. [Fuel calculation methods and coefficients](fuel-methods.md) · [Consumption principles](fuel-questions.md).
+- **Fuel Consumption Settings**: a separate form for primary fuel and, in a dual-fuel profile, secondary fuel. Available methods are MAF, MAP, injector pulse, cyclomatic consumption, engine load, and built-in consumption sensor. The form reports whether the selected method is available with the current connection, shows current fuel use per hour, and offers **Apply and Check data**. Engine displacement, cylinder count, AFR, VE, injector flow, consumption coefficients, and fuel-cutoff, LTFT, and Lambda corrections are here; the applicable fields depend on the method. [Fuel calculation methods and coefficients](fuel-methods.md) · [Consumption principles (Russian)](../ru/fuel-questions.md).
 - **Tank and remaining fuel**: tank capacity and the volume already consumed from the tank. Dual-fuel profiles have the same fields for the secondary tank. These values initialize the estimated fuel remaining.
 - **Vehicle Wheels Size**: factory and installed rim/tire sizes, a factory-tire switch, speed correction coefficient, and an action to calculate that coefficient from wheel sizes.
 - **Setup Gears**: a template and gear ratios for the final drive and individual gears. These support gear detection from RPM and speed.
@@ -273,37 +281,13 @@ Additional values calculated on this screen include:
 
 Some cars transmit the real fuel level from the ECU. In HobDrive this sensor is called **ECUFuelLevel**. HobDrive displays the calculated value instead, based on entered data and fuel consumption.
 
+### Trips and Expenses
+
+View current distance and fuel use on the gauge screens for the selected interval, past trips under **Statistics & Events → Statistics**, and actual spending in **Fillups** and **Events**. In the Control center, these views are in **Statistics**. Estimated trip cost depends on the fuel price, while journal amounts reflect the expenses you entered. The online report adds spending over time, expense breakdowns, and trip comparisons. See [Trips and Expenses](trips-and-expenses.md) for the workflow and differences between data sources, and [Trip Statistics and Online Analytics](statistics.md) for cloud report setup.
+
 ### Refueling and Events
 
-![Refueling records on Android](images/manual-android/fuelings.png){: width="400" }
-
-This screen is used to analyze refueling and event data saved by HobDrive.
-
-The table contains the following fields:
-
-- **Category**: event category. Tapping a category filters displayed records.
-- **Cost**: amount spent on the event or refueling.
-- **Odometer**: odometer reading at the time of entry.
-- **Fueled**: for refueling records — amount of fuel added in liters.
-- **Instant consumption, total consumption**: two calculated fields showing estimated fuel economy. Instant — consumption since the last refueling (accurate for full-tank refuels). Total — average consumption across all previous refuelings.
-- **Tags, notes** — arbitrary data you can add to the record.
-- **Date** — event date.
-
-The last row shows summary totals: total distance, total cost, average consumption.
-
-Sorting, filtering, and record editing are available.
-
-**Keeping records:**
-
-Data is entered through the **Actions** menu:
-
-- **New refuel**: at each refuel, select this action and enter fuel volume, cost, odometer reading, and notes. HobDrive can compare its distance estimate with your actual odometer. You can choose how to correct it: automatically, manually in a dialog, or only fix the odometer without adjusting consumption.
-
-- **New record**: enter an arbitrary vehicle maintenance record.
-
-- **Missed trip**: allows correction of calculated data by adding an unrecorded trip (for example, if you forgot to start HobDrive). Enter your current odometer reading, and HobDrive will estimate fuel consumed (you can adjust). On vehicles with ECU fuel level sensors these values are entered automatically.
-
-Using refueling records, HobDrive lets you estimate fuel costs, total cost of ownership, and cost per kilometer.
+The journals show compact record cards with search across the whole history, filters, sorting, and 10, 25, or 50 records per page. Choose **New Fueling** or **New Record** from **Actions**, or add a record from the journal itself. For fill-ups, record the volume, cost, odometer, and full-tank status; for maintenance, record the work, cost, and notes. A fill-up card shows **Tank**, **Last 3**, and **Cumulative** consumption. Totals distinguish the current page, matching records, and the entire history, with currencies kept separate. Editing, deletion, maps, and missing-trip entry are covered in [Trips and Expenses](trips-and-expenses.md).
 
 ### Service Reminders
 
@@ -333,12 +317,22 @@ In addition to main screens, HobDrive provides extended diagnostic information.
 
 ![Diagnostics and fault codes on Android](images/manual-android/diagnostics.png){: width="400" }
 
+Tap **Monitoring** at the bottom of the screen to open rules, active warnings, and history. See [Vehicle Monitoring](monitoring.md).
+
 When activated, fault codes are read:
 
 - **Active codes**: require immediate attention and diagnosis.
 - **Pending codes**: potential errors in the future.
 
 The **Clear Errors** button allows clearing codes if necessary. _Note_: clearing does not solve the underlying problem. Freeze-frame codes can be useful for diagnostics at a service center.
+
+### Sensor Charts
+
+Open **Screens → Charts** or choose **Charts** in the Control center to compare several sensors on a shared timeline. Choose a preset or create a set, pause the view, adjust the scale, and open saved history. The full version records diagnostic sessions with markers, including available buffered readings from before you pressed Record. **Fast scan mode** temporarily pauses ordinary distance and fuel calculations and ordinary track recording, so leave it off for everyday trip accounting. For a walkthrough, see [Sensor Charts](charts.md).
+
+### Vehicle Monitoring
+
+Monitoring checks readings against rules, reports confirmed violations, and saves events in the selected vehicle's history. Open **Diagnostics → Monitoring** or **Monitoring** in Settings for **Rules**, **Active** warnings, and **History**. Enable a built-in check or create a rule with limits, confirmation delays, and conditions such as city driving, winter, or a full load. Checks run while hobDrive receives the required data. See [Vehicle Monitoring](monitoring.md).
 
 ## Customizing Sensor Appearance
 
@@ -389,7 +383,7 @@ In the **Data Management** dialog you can access:
 
 Recommendation: enable regular backups, especially before switching devices or testing new DashKits.
 
-For details on files, migration, and restoration: [How to migrate settings or make a backup](backups.md).
+For details on files, migration, and restoration: [How to migrate settings or make a backup (Russian)](../ru/backups.md).
 
 For setup, comparison analytics, and fueling/expense charts: [Trip Statistics and Online Analytics](statistics.md).
 
@@ -435,23 +429,9 @@ Step-by-step instructions for CarPlay auto-launch: [Automated launch via Shortcu
 
 ## Calibration and Calculation Accuracy
 
-### Basic Calibration Algorithm
+**Actions → Fuel consumption calibration**, or **Calibration** in the Control center, lets you adjust distance and fuel separately. First compare hobDrive's distance with the vehicle odometer or an independent measurement over the same section. Then check fuel use through average consumption or fuel volumes over matching full-to-full intervals. The screen previews the proposed factor and expected change before you apply it and keeps a history of recent corrections. Changes affect future measurements without recalculating existing totals. **Tank and remaining fuel** separately initializes the fuel remaining in the tank.
 
-1. Open **Actions → Fuel consumption calibration**. If you use the Control Center, open **All actions**. Actual fuel requires completed full-to-full intervals including all intermediate refuellings.
-2. For distance, choose the vehicle odometer or an independent reference. Compare identical, fully recorded sections.
-3. Calibrate fuel defaults to average consumption. Choose a refuelling period and a hobDrive week, month or all-time average, or enter your own values. Different periods are allowed; the correction is approximate. By fuel volume is available for matching sections.
-4. Select Calibrate distance or Calibrate fuel, enter comparable measurements, review the proposed value and apply it. When comparing volumes or distance, the displayed current settings must have applied throughout the control section.
-5. Check the result on a new section. Corrections apply forward; existing totals are not recalculated. The date and basis of application are stored in the profile.
-
-This manual covers only the basic calibration algorithm. Full technical details with formulas, AFR/VE, MAP/MAF/Injector/EngineLoad coefficients, and calculation examples are in separate articles:
-
-- [Fuel calculation methods and calibration coefficients](fuel-methods.md)
-- [Fuel consumption: principles and common questions](fuel-questions.md)
-- [Speed discrepancy](speed-diff.md)
-
-### Important Number Format
-
-Quick calibration accepts decimal points and commas. In other older parameter forms, use a decimal point.
+For illustrated instructions, see [Distance and Fuel Consumption Calibration](calibration.md). Formulas and method details are in [Fuel calculation methods](fuel-methods.md), [Speed and distance](speed-diff.md), and [Fuel consumption principles (Russian)](../ru/fuel-questions.md). Quick calibration accepts decimal points and commas; use a decimal point in older parameter forms.
 
 ## Common Problems
 
@@ -461,7 +441,7 @@ Quick calibration accepts decimal points and commas. In other older parameter fo
 - Check the status color: red (adapter) or yellow (vehicle).
 - For unreliable adapters increase the ELM communication delay.
 
-Detailed analysis of low-quality adapters: [Problematic ELM327 adapters](bad-elms.md).
+Detailed analysis of low-quality adapters: [Problematic ELM327 adapters (Russian)](../ru/bad-elms.md).
 
 ### Incorrect Consumption/Distance
 
@@ -469,14 +449,14 @@ Detailed analysis of low-quality adapters: [Problematic ELM327 adapters](bad-elm
 - Check the speed and odometer correction coefficients.
 - Compare statistics with actual refuelings.
 
-For details see: [Fuel calculation methods](fuel-methods.md), [Fuel consumption: questions and answers](fuel-questions.md), [Speed discrepancy](speed-diff.md).
+For details see: [Fuel calculation methods](fuel-methods.md), [Fuel consumption: questions and answers (Russian)](../ru/fuel-questions.md), [Speed discrepancy](speed-diff.md).
 
 ### Interface Looks Wrong After Update
 
 - Check the selected theme/skin/DashKit.
 - Disable the problematic custom set and check behavior on the standard theme.
 
-If the problem persists, file a report: [How to report a problem](problems.md).
+If the problem persists, file a report: [How to report a problem (Russian)](../ru/problems.md).
 
 ## Section for Future Extensions
 

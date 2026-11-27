@@ -12,7 +12,17 @@
 
 ## Features
 
+[Control Center](en/control-center.md)
+
+[Distance and Fuel Consumption Calibration](en/calibration.md)
+
+[Trips, Fill-ups, and Expenses](en/trips-and-expenses.md)
+
+[Sensor Charts and Diagnostic Session Recording](en/charts.md)
+
 [Service Intervals and Reminders](en/service-reminders.md)
+
+[Vehicle Monitoring](en/monitoring.md)
 
 [Android Widgets](en/android-widgets.md)
 

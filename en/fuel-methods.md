@@ -1,5 +1,7 @@
 # Fuel calculation methods and calibration
 
+For a walkthrough of the calibration screen, interval selection, applying a correction, and its history, see [Distance and Fuel Consumption Calibration](calibration.md). This article explains the calculation methods and how their factors change.
+
 hobDrive can calculate fuel from MAF, MAP, injector pulse width, cycle consumption, engine load, or a fuel-rate sensor supplied by the ECU. The available data determine which method is usable. Select the method in vehicle fuel settings; calibrating a factor does not automatically choose a different method.
 
 ## Methods and parameters
@@ -21,7 +23,9 @@ Open **Actions → Fuel consumption calibration → Calibrate fuel**. The screen
 
 ### By average consumption
 
-This is the default mode. Choose the refuelling average from the latest full-tank interval, the latest three, 90 days, or all completed intervals. hobDrive offers its existing week, month and all-time averages, with the latest measurement date and recorded distance. An available monthly average is preferred, then weekly or all-time. These are the existing period counters, not rolling 7-day or 30-day windows.
+This is the default mode. **All fill-ups (journal)** uses the latest **Cumulative** consumption figure in the fill-up journal, with the same units and rounding. Completed full-tank intervals are a separate reference: choose the latest interval, the last three, 90 days, or all full-tank intervals. If the journal combines different fuels, use completed intervals or a manually entered average for the selected fuel.
+
+hobDrive offers its existing week, month, all-time, current-tank, and Trip A/B averages, with the latest measurement date and recorded distance. An available monthly average is preferred, then weekly or all-time. These are the existing period counters, not rolling 7-day or 30-day windows.
 
 Either side can use **Enter my own value**. Missing data offers another period or manual entry. Period boundaries need not match; the proposal is labelled approximate.
 

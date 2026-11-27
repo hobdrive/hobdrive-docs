@@ -4,6 +4,8 @@
 
 HobDrive records trips, fuelings, expenses, and selected vehicle readings. You can view these in a local in-app report or synchronize them to the cloud and open **Hobdrive Analytics** from a phone or computer.
 
+For entering fill-ups, using local logs, and reading the current counters, see [Trips and Expenses](trips-and-expenses.md). For live sensor readings, saved sensor history, and diagnostic sessions, use [Sensor Charts](charts.md).
+
 Cloud analytics is an optional service. Availability, permitted synchronization frequency, and subscription term depend on your license.
 
 ## Data Included in Reports
