@@ -41,6 +41,14 @@ In the example below, the rule applies in the city in winter with a full load. A
 
 Use **Rules → Modes** to set the current road type, choose winter months or override the season, and set the vehicle load. Road type resets when the trip changes. The selected load applies until you change it.
 
+## Set the polling frequency
+
+In the rule editor, open **Polling frequency**. **Profile default** shows the normal interval for the rule. Temperatures and long-term fuel trim default to once a minute. The personal speed limit checks once a second. Select **Custom interval** to set 1 to 3600 seconds or **Maximum frequency** to poll as often as the connection allows.
+
+**Poll faster on deviation** is on by default. With a 60-second interval and a 5-second confirmation delay, the rule first waits for its next reading. After a reading outside the limits, it requests a reading every 2.5 seconds until recovery. With faster polling turned off, confirmation waits for the next reading at the normal interval. A fixed interval helps when you want to keep the load on the adapter or ECU predictable.
+
+The interval sets the rate the rule requests. If a screen or another rule already reads the same sensor more often, monitoring uses those readings. The request queue and connection speed also affect when a reading arrives.
+
 ## How warnings appear
 
 | Alert type | Where to see the event |
